@@ -1,0 +1,15 @@
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { PreferenceComponent } from "@Component/feature/preference/preference.component";
+import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
+
+@Component({
+    selector: 'op-page-home',
+    standalone: true,
+    imports: [PreferenceComponent, TitleHeaderComponent],
+    templateUrl: './home.page.html',
+    styleUrl: './home.page.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class HomePage {
+
+}

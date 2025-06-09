@@ -1,0 +1,25 @@
+.menu-card {
+    width: calc(100% - 20px);
+    height: 30px;
+    color: var(--menu-text-secondary);
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: var(--transition);  
+
+    &.active {
+        background: var(--bg-hover);
+        color: var(--light);
+        white-space: nowrap;
+    }
+
+    &:hover {
+        background: var(--bg-hover);
+        color: var(--light);
+    }
+}

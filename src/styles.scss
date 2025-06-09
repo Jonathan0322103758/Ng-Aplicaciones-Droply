@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+/* Fonts * Roboto * * Montserrat * */
+@import 'node_modules/typeface-roboto/index.css';
+@import 'node_modules/typeface-montserrat/index.css';
+
+/* * Fort Awesome (Icons) * */
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+/* * Variables css root * */
+@import '@Scss/abstract/_root.scss';
+
+/* * Class Css and Scss * */
+@import '@Scss/utilities/_utilities.scss';
+
+// /* * Themes * */
+@import '@Scss/theme/_normal.scss';
+@import '@Scss/theme/_dark.scss';
+@import '@Scss/theme/_light.scss';
+@import '@Scss/theme/_alternative.scss';

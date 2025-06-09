@@ -1,0 +1,44 @@
+$layouts: (
+    container: (
+        background: var(--bg-container),
+        height:     var(--height-container),
+        width:      var(--width-container),
+        display:    flex,
+        position:   relative,
+        transition: var(--transition)
+    ),
+    menu: (
+        background: var(--bg-menu),
+        height:     var(--height-menu),
+        width:      var(--width-menu),
+        position:   relative,
+        transition: var(--transition)
+    ),
+    body: (
+        background: var(--bg-body),
+        height:     var(--height-body),
+        width:      var(--width-body),
+        position:   relative,
+        transition: var(--transition)
+    ),
+    header: (
+        background: var(--bg-header),
+        width:      var(--width-header),
+        height:     var(--height-header),
+        position:   relative,
+        transition: var(--transition)
+    ),
+    content: (
+        background: var(--bg-content),
+        height:     var(--height-content),
+        width:      var(-hea-content),
+        position:   relative,
+        transition: var(--transition)
+    )
+);
+
+@mixin layout($section) {
+    @each $property, $value in map-get($layouts, $section) {
+        #{$property}: $value;
+    }
+}

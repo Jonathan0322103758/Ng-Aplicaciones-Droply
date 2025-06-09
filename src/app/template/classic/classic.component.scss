@@ -1,0 +1,10 @@
+@import '@Scss/abstract/_layout.scss';
+
+#container {
+    @include layout(container);
+
+    #body {
+        @include layout(body);
+    }
+}
+

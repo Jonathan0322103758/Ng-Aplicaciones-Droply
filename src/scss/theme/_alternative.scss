@@ -1,0 +1,26 @@
+body.theme-alternative {
+  opacity: 1;
+  #menu {
+    --bg-menu: #1A1C1E;
+    --menu-text-primary:   #FFFFFF;
+    --menu-text-secondary: #EEEEEE;
+    --bg-hover: #A3AED14D;
+    --light: #FFFFFF; 
+
+    --color-scrollbar: #333333;
+  }
+  
+  #header {
+    --bg-header: #FFFFFF;
+  }
+
+  #content {
+    --bg-content: #F7F8FA;
+  }
+
+  #preference-container {
+    --bg-main:    #252729;
+    --bg-surface: #1A1C1E;
+    --color-text: var(--light);
+  }
+}

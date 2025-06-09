@@ -1,0 +1,43 @@
+    @import '@Scss/abstract/_layout.scss';
+    @import '@Scss/abstract/_placeholder.scss';
+
+    #menu {
+        @include layout(menu);
+        border-right: 1px solid var(--color-muted);
+        overflow: hidden;
+        
+        .header {
+            flex-shrink: 0;
+            height: var(--height-header);
+            width: 100%;
+            border-bottom: 1px solid var(--color-muted);
+            color: var(--menu-text-primary);
+            font-weight: bold;
+            font-size: 18px;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.250rem;
+            gap: 10px;
+        
+            img {
+                width: 60px;
+                height: 60px
+            }
+        }
+
+        .body {
+            @extend %scrollbar;
+
+            flex: 1;
+            width: calc(100% - 20px);
+            padding: 10px;
+            gap: 2px;
+
+            .section {
+                gap: 10px;
+            }
+        }
+
+        &.open {
+            width: var(--open-menu);
+        }
+    }

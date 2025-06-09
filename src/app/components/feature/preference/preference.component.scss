@@ -1,0 +1,106 @@
+@import '@Scss/abstract/_palette.scss';
+@import '@Scss/abstract/_placeholder.scss';
+
+#preference-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    background: var(--bg-glass);
+    transition: var(--transition);
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+
+        .preference-panel {
+            right: 0;
+        }
+    }
+
+    .preference-panel {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: calc(100% - 40px);
+        padding: 20px;
+        gap: 20px;
+        z-index: 1000;
+        background: var(--bg-main);
+        transition: var(--transition);
+
+        .option-card {
+            background: var(--bg-surface);
+            width: 220px;
+            padding: 20px;
+            border-radius: 5px;
+            gap: 15px;
+
+            i {
+                @extend %color-dynamic;
+            }
+
+            label {
+                font-size: 14px;
+                color: var(--color-text);
+            }
+            
+            .flex-start {
+                gap: 10px;
+            }
+
+            .accent {
+                @extend %background-dynamic;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                cursor: pointer;
+
+                &.selected {
+                    box-shadow: 0 0 0 2px $blue4;
+                    scale: 1.2;
+                }
+
+                &.normal {
+                    background: linear-gradient(90deg, $blue7 50%, $light 50%);
+                }
+
+                &.light {
+                    border: 1px solid $slate3
+                }
+
+                &.dark {
+                    border: 1px solid $slate7
+                }
+
+                &.alternative {
+                    background: linear-gradient(90deg, $light 50%, $dark 50%);
+                    border: 1px solid $slate3;
+                }
+            }
+        }
+    }
+}
+
+
+.button-container {
+    @extend %background-dynamic;
+    width: 40px;
+    position: fixed;
+    z-index: 1000;
+    top: 10%;
+    right: 0;
+    transition: var(--transition);
+
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+
+    &.open {
+        right: 300px;
+    }
+}

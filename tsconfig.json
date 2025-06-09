@@ -2,6 +2,21 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@Assets/*": ["assets/*"],
+      "@Scss/*": ["src/scss/*"],
+      "@Types_/*": ["src/app/core/types/*"],
+      "@Interface/*": ["src/app/core/interface/*"],
+      "@Interceptor/*": ["src/app/core/interceptor/*"],
+      "@Client/*": ["src/app/core/client/*"],
+      "@Guard/*": ["src/app/core/guard/*"],
+      "@Service/*": ["src/app/core/service/*"],
+      "@Layout/*": ["src/app/layout/*"],
+      "@Component/*": ["src/app/components/*"],
+      "@Page/*": ["src/app/page/*"],
+      "@Template/*": ["src/app/template/*"]
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,

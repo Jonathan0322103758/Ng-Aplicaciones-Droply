@@ -1,0 +1,31 @@
+<div id="preference-container" class="flex-end" [class]="status()">
+    <div class="preference-panel flex-column">
+        <qx-title-header title="Panel de Preferencias"/>
+        <div class="option-card flex-column" >
+            <div class="flex-start">
+                <i class="fas fa-brush {{ preference().color }}"></i>
+                <label>Colores</label>
+            </div>
+            <div class="flex-start">
+                @for(color of colorPalette; track color) {
+                    <div class="accent" [class]="'rounded ' + color + (colorSelected(color) ? ' selected' : '')" (click)="setColor(color)"></div>
+                }
+            </div>
+        </div>
+        <div class="option-card theme flex-column">
+            <div class="flex-start">
+                <i class="fas fa-palette {{ preference().color }}"></i>
+                <label>Tema</label>
+            </div>
+            <div class="flex-start">
+                @for(theme of themes; track theme) {
+                    <div class="accent" [class]="'rounded ' + theme + (themeSelected(theme) ? ' selected' : '')" (click)="setTheme(theme)"></div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="button-container {{ preference().color }} {{ status() }}">
+    <qx-button type="icon" [styleClass]="buttonStyle()" [icon]="icon()" (onClick)="statusSettings()"/>
+</div>

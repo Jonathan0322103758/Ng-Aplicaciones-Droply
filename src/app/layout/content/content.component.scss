@@ -1,0 +1,6 @@
+@import '@Scss/abstract/_layout.scss';
+
+#content {
+    @include layout(content);
+}
+

@@ -1,0 +1,25 @@
+@import '@Scss/abstract/_palette.scss';
+@import '@Scss/abstract/_placeholder.scss';
+
+.title-header {
+    background: var(--bg-surface);
+    height: 60px;
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+
+    .line-color {
+        @extend %background-dynamic;
+        width: 4px;
+        height: 40px;
+        margin-right: 20px;
+    }
+    
+    label {
+        color: var(--color-text);
+        font-size: 20px;
+        font-weight: 600;
+    }
+}

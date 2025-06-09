@@ -1,0 +1,49 @@
+@import '@Scss/abstract/_placeholder.scss';
+
+.button {
+    @extend %background-dynamic;
+    @extend %background-dynamic-hover;
+
+    position: var(--button-position);
+    height:   var(--button-height);
+    width:    var(--button-width);
+    border:   var(--button-border);
+    border-radius: var(--button-border-radius);
+
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    label {
+        cursor: pointer;
+    }
+
+    &.square {
+        --button-border-radius: 5px;
+    }
+
+    &.rounded {
+        --button-border-radius: 50%;
+    }
+
+    &.label, &.label-icon {
+        --button-width: max-content;
+        --button-height: 25px;
+        padding: 8px 12px;
+        font-weight: 600;
+        
+        &.rounded {
+            --button-border-radius: 20px;
+        }
+    }
+
+    &.label-icon {
+        gap: 10px;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+}

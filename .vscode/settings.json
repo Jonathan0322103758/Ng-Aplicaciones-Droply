@@ -1,0 +1,8 @@
+{
+    "material-icon-theme.folders.associations": {
+        "http": "Public",
+        "interceptor": "Keys",
+        "abstract": "Plugin",
+        "feature": "Controller"
+    }
+}

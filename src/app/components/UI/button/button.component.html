@@ -1,0 +1,20 @@
+<div
+    [class]="'button flex-center ' + styleClass()"
+    [class.label]="type() === 'label'"
+    [class.label-icon]="type() === 'label-icon'"
+    [class.disabled]="disabled()"
+    (click)="click()">
+
+    @switch(type()) {
+        @case('icon') {
+            <i class="{{ icon() }}"></i>
+        }
+        @case('label') {
+            <label>{{ label() }}</label>
+        }
+        @case('label-icon') {
+            <i class="{{ icon() }}"></i>
+            <label>{{ label() }}</label>
+        }
+    }
+</div>

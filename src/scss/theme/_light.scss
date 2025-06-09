@@ -1,0 +1,42 @@
+body.theme-light {
+    opacity: 1;
+    #menu {
+      --bg-menu: #FFFFFF;
+      --menu-text-primary:   #A3AED9;
+      --menu-text-secondary: #8691BC;
+      --bg-hover: #A3AED14D;
+      --light: #616D9E; 
+
+      --color-scrollbar: #EEEEEE;
+    }
+    
+    #header {
+      --bg-header: #FFFFFF;
+    }
+  
+    #content {
+      --bg-content: #F7F8FA;
+    }
+}
+      
+    
+    
+    // /*  Colors */
+    // --color-text:   #343434;    // General Text
+    // --color-muted:  #A3AED14D;  // Border
+    // --color-accent: #212529;    // Main Buttons, Icons, Links
+    
+    // /* Surfaces */
+    // --bg-main:   #F8F9FA;       // Main
+    // --bg-surface:#FFFFFF;       // Containers
+    // --bg-glass:  #A3AED14D;     // Translucent Background
+    // // --bg-accent: transparent;     // Buttons, Icons, etc  
+    // --bg-hover:  #FFFFFF0D;     // Hover Elements (:hover)
+
+    // /* Elevation & effects */
+    // --box-shadow: 0 1px 8px rgba(0, 0, 0, 0.02);    // Elements with shadow
+    // --transition: all 0.3s ease;                      // Elements Transition (DOM)
+
+    // /* Helpers Theme */
+    // --light: #F8F9FA;
+    // --dark:  #212529;

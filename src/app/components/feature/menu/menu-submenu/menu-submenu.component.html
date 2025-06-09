@@ -1,0 +1,17 @@
+@for(sub of submenu(); track sub.id) {
+    <div class="menu-card flex-start" [class.active]="isActive(sub.pages)" (click)="toggleSubmenu(sectionIndex(), sub.id)">
+        <i class="fas fa-{{ sub.icon }}"></i>
+        <label>{{ sub.label }}</label>
+        <i class="fas fa-chevron-down" [class.rotate]="activeSubmenu(sectionIndex(), sub.id)"></i>
+    </div>
+
+    <!-- Submenu Container -->
+    <div class="sub-container" [class.open]="activeSubmenu(sectionIndex(), sub.id)">
+        @for(subPage of sub.pages; track subPage.id) {
+            <div class="sub menu-card flex-start" [routerLink]="[subPage.path]" routerLinkActive="active">
+                <i class="far fa-circle"></i>
+                <label>{{ subPage.label }}</label>
+            </div>
+        }
+    </div>
+}

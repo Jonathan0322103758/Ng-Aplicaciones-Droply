@@ -1,0 +1,63 @@
+@import './palette';
+
+%background-dynamic {
+    @each $name, $color-palette in $palette {
+        &.#{$name} {
+            background: $color-palette;
+            color: map-get($clr-palette, $name);
+        }
+
+        &.#{$name}-light {
+            background: map-get($bg-palette, $name);
+            color: $color-palette;
+        }
+
+        &.#{$name}-ghost {
+            background: transparent;
+            color: $color-palette;
+        }
+
+    }
+}
+
+%background-dynamic-hover {
+    @each $name, $color-palette in $palette {
+
+        &.#{$name}-light:hover {
+            background: $color-palette;
+            color: map-get($clr-palette, $name);
+        }
+
+        &.#{$name}-ghost:hover {
+            background: map-get($bg-palette, $name);
+            color: $color-palette;
+        }
+    }
+}
+
+%color-dynamic {
+    @each $name, $color-palette in $palette {
+        &.#{$name} {
+            color: $color-palette;
+        }
+    }
+}
+
+%scrollbar {
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background: var(--color-scrollbar);
+        height: var(--h-scrollbar);
+    }
+}
