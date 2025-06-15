@@ -25,8 +25,8 @@ export class MenuService {
             icon: 'user',
             label: 'Usuarios',
             pages: [
-              { id: 0, label: 'Administración de Usuarios', path: 'none' },
-              { id: 1, label: 'Roles y Permisos', path: 'none' },
+              { id: 0, label: 'Administración de Usuarios', path: 'admin-users' },
+              { id: 1, label: 'Roles y Permisos', path: 'admin-permitions' },
             ]
           },
         ],
