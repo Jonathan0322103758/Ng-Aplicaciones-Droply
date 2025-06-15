@@ -1,6 +1,7 @@
 <div id="menu" [class]="'flex-column ' + status()">
-    <div class="header flex-center">
-        <label>TITULO</label>
+    <div class="header flex-center flex-column">
+        <label>QubeFlex</label>
+        <label class="subtitle">DROPLY</label>
     </div>
     <div class="body flex-column">
         @switch(template()) {
@@ -8,16 +9,17 @@
                 @for(section of sections; track section.id) {
                     <div class="section flex-column">
                         <qx-menu-section-label [label]="section.section"/>
+                        
+                        <!-- Submenu -->
+                        @if(section.submenus) {
+                            <qx-menu-submenu [submenu]="section.submenus" [sectionIndex]="section.id"/>
+                        }
+                        
                         <!-- Pages -->
                         @if(section.pages) {
                             @for(page of section.pages; track page.id) {
                                 <qx-menu-card [icon]="page.icon" [label]="page.label" [path]="page.path"/>
                             }
-                        }
-                        
-                        <!-- Submenu -->
-                        @if(section.submenus) {
-                            <qx-menu-submenu [submenu]="section.submenus" [sectionIndex]="section.id"/>
                         }
                     </div>
                 }
