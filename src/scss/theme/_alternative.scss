@@ -8,6 +8,10 @@ body.theme-alternative {
     --light: #FFFFFF; 
 
     --color-scrollbar: #333333;
+
+      .menu-card.active {
+        color: #A3AED1;
+      }
   }
   
   #header {

@@ -3,11 +3,16 @@ body.theme-dark {
     --color-text: var(--light);
     --bg-main:    #252729;
     --bg-surface: #1A1C1E;
+    
     #menu {
       --bg-menu: #1A1C1E;
       --menu-text-primary:   #FFFFFF;
       --menu-text-secondary: #EEEEEE;
       --color-scrollbar: #333333;
+
+      .menu-card.active {
+        color: #A3AED1;
+      }
     }
     
     #header {
