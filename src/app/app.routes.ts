@@ -11,7 +11,19 @@ export const routes: Routes = [
     },
     {
         path: 'admin-permitions',
-        loadComponent: () => import('./page/admin/permitions/permitons.page').then((m) => m.PermitionsPage)
+        loadComponent: () => import('./page/admin/permitions/permitions.page').then((m) => m.PermitionsPage)
+    },
+    {
+        path: 'admin-alerts',
+        loadComponent: () => import('./page/admin/alerts/alerts.page').then((m) => m.AlertsPage)
+    },
+    {
+        path: 'admin-notifications',
+        loadComponent: () => import('./page/admin/notifications/notifications.page').then((m) => m.NotificationsPage)
+    },
+    {
+        path: 'admin-meters',
+        loadComponent: () => import('./page/admin/meters/meters.page').then((m) => m.MetersPage)
     },
     {
         path: '',
