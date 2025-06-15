@@ -7,12 +7,8 @@ body.theme-dark {
     #menu {
       --bg-menu: #1A1C1E;
       --menu-text-primary:   #FFFFFF;
-      --menu-text-secondary: #EEEEEE;
+      --menu-text-secondary: #E1E1E1;
       --color-scrollbar: #333333;
-
-      .menu-card.active {
-        color: #A3AED1;
-      }
     }
     
     #header {
