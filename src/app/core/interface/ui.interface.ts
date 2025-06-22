@@ -27,4 +27,8 @@ export interface Menu {
     pages?:    Page[];
     submenus?: Submenu[];
 }
-  
+
+export interface Dropdown {
+    label: string;
+    value: any;
+}

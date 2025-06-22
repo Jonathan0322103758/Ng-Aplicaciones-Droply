@@ -1,0 +1,21 @@
+<div class="dropdown">
+  <div class="vertical flex-start">
+    <label>{{ label() }}</label>
+    @if (required()) {
+      <i class="fas fa-asterisk"></i>
+    }
+  </div>
+  <div class="dropdown-toggle flex-between {{styleClass()}} {{ accentColor() }}" (click)="toggleDropdown()">
+    {{ internalSelected()?.label || placeholder() }}
+    <i class="fas fa-caret-down" [class.rotate]="open()"></i>
+  </div>
+  @if (open()) {
+    <ul class="dropdown-menu">
+      @for(option of options(); track option.value) {
+        <li class="text-light" (click)="selectOption(option)">
+          {{ option.label }}
+        </li>
+      }
+    </ul>
+  }
+</div>
