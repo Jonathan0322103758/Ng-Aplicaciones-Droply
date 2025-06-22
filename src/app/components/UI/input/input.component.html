@@ -1,0 +1,32 @@
+<div class="input-container" [class.disabled]="disabled()">
+    <div class="vertical flex-start">
+        <label>{{ label() }}</label>
+        @if (required()) {
+            <i class="fas fa-asterisk"></i>
+        }
+    </div>
+    <div class="input-content flex-center">
+        <input 
+            class="input {{ styleClass() }} {{ accentColor() }} text-light" 
+            [type]="isType()"
+            [placeholder]="placeholder() ?? ''" 
+            [required]="required()" 
+            [name]="name()"
+            [value]="internalValue()"
+            (input)="onChange($event)"
+            (blur)="onBlur()"
+            [class.required]="isRequired()"
+            [disabled]="disabled()"
+        >
+    
+        @if(type() === 'password') {
+            <div class="eye">
+                <qx-button type="icon" [styleClass]="buttonStyle()" [icon]="isEye()" (onClick)="viewPassword()"/>
+            </div>
+        }
+    </div>
+
+    @if(isRequired()) {
+        <qx-badge text="Este campo es requerido" styleClass="danger-ghost"/>
+    }
+</div>

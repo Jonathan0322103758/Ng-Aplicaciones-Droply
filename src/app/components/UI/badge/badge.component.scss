@@ -1,0 +1,18 @@
+@import '@Scss/abstract/_placeholder.scss';
+
+.badge{
+    @extend %background-dynamic;
+    font-size: 12px;
+    font-weight: bold;
+    height: 5px;
+    width: max-content;
+    padding: 10px;
+ 
+    &.square {
+        border-radius: 5px;
+    }
+    
+    &.rounded {
+        border-radius: 20px;
+    }
+}
