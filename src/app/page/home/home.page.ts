@@ -3,7 +3,7 @@ import { PreferenceComponent } from "@Component/feature/preference/preference.co
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 
 @Component({
-    selector: 'op-page-home',
+    selector: 'page-home',
     standalone: true,
     imports: [PreferenceComponent, TitleHeaderComponent],
     templateUrl: './home.page.html',

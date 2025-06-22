@@ -16,30 +16,76 @@ export class MenuService {
         { id: 0, label: 'Inicio', path: 'home', icon: 'house-chimney' },
       ]
     },
-    // {
-    //     id: 1,
-    //     section: 'Gestión de Nómina',
-    //     submenus: [
-    //       {
-    //         id: 0,
-    //         icon: 'user-tie',
-    //         label: 'Empleados',
-    //         pages: [
-    //           { id: 0, label: 'Lista de Empleados', path: 'employee/list-employee' },
-    //           { id: 1, label: 'Registro de Empleados', path: 'employee/register-employee' },
-    //         ]
-    //       },
-    //       {
-    //         id: 1,
-    //         icon: 'calculator',
-    //         label: 'Cálculo de Salarios',
-    //         pages: [
-    //           { id: 0, label: 'Configuración de Cálculo de Nómina', path: 'calculation-salary/payroll-calculation-settings' },
-    //         ]
-    //       },
-
-    //     ],
-    //   },
+    {
+        id: 1,
+        section: 'Administración',
+        submenus: [
+          {
+            id: 0,
+            icon: 'user',
+            label: 'Usuarios',
+            pages: [
+              { id: 0, label: 'Administración de Usuarios', path: 'admin-users' },
+              { id: 1, label: 'Roles y Permisos', path: 'admin-permitions' },
+            ]
+          },
+        ],
+        pages: [
+          { id: 0, label: 'Alertas', path: 'admin-alerts', icon: 'triangle-exclamation' },
+          { id: 1, label: 'Notificaciones', path: 'admin-notifications', icon: 'bell' },
+          { id: 2, label: 'Medidores', path: 'admin-meters', icon: 'stopwatch' },
+        ]
+      },
+      {
+        id: 2,
+        section: 'Gestión Hídrica',
+        submenus: [
+          {
+            id: 0,
+            icon: 'droplet',
+            label: 'Lineas de Agua',
+            pages: [
+              { id: 0, label: 'Monitores', path: 'none' },
+              { id: 1, label: 'Lecturas', path: 'none' },
+              { id: 2, label: 'Medidores', path: 'none' },
+            ]
+          },
+          {
+            id: 1,
+            icon: 'chart-column',
+            label: 'Costos y Tarifas',
+            pages: [
+              { id: 0, label: 'Tarifas de Agua', path: 'none' },
+              { id: 1, label: 'Cálculo de Costos', path: 'none' },
+            ]
+          },
+        ]
+      },
+      {
+        id: 3,
+        section: 'Operación General',
+        submenus: [
+          {
+            id: 0,
+            icon: 'screwdriver-wrench',
+            label: 'Actividades',
+            pages: [
+              { id: 0, label: 'General', path: 'none'},
+              { id: 1, label: 'Espacio Personal', path: 'none'},
+              { id: 2, label: 'Bitácoras', path: 'none'}
+            ]
+          },
+          {
+            id: 1,
+            icon: 'folder',
+            label: 'Reportes',
+            pages: [
+              { id: 0, label: 'Subir Reporte', path: 'none'},
+              { id: 1, label: 'Histórico', path: 'none'},
+            ]
+          }
+        ]
+      }
   ];
 
   public getStatus(): StatusType {
