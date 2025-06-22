@@ -14,10 +14,6 @@ export const routes: Routes = [
         loadComponent: () => import('./page/admin/permitions/permitions.page').then((m) => m.PermitionsPage)
     },
     {
-        path: 'admin-alerts',
-        loadComponent: () => import('./page/admin/alerts/alerts.page').then((m) => m.AlertsPage)
-    },
-    {
         path: 'admin-notifications',
         loadComponent: () => import('./page/admin/notifications/notifications.page').then((m) => m.NotificationsPage)
     },

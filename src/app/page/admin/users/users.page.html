@@ -1,3 +1,26 @@
 <div class="content-page">
     <qx-title-header title="Administración de Usuarios"/>
+    
+    <div class="container flex-row">
+        <div class="list">
+            <qx-user-list/>
+        </div>
+        <div class="content flex-column">
+            <qx-title-header title="Crear usuario"/>
+            <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-circle-plus" label="Nuevo usuario"/>
+            <div class="body-content flex-row">
+                <div class="user-info flex-column">
+                    <div class="photo flex-column">
+                        <i class="fas fa-circle-user"></i>
+                        <div class="circle flex-center  ">
+                            <i class="fas fa-image {{ preference().color }}"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-info flex-column">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
