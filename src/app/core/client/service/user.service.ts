@@ -15,7 +15,7 @@ export class UserService {
             _id: 1,
             name: 'Andrea Guadalupe Quintana Zepeda',
             email: '0322103758@ut-tijuana.edu.mx',
-            number: '0322103758',
+            number: '03221037593',
             rol: 'Desarrollador',
         },
         {
@@ -28,15 +28,15 @@ export class UserService {
         {
             _id: 3,
             name: 'Miguel Isaac Garcia Lopez',
-            email: '0322103758@ut-tijuana.edu.mx',
-            number: '0322103758',
+            email: '0322103717@ut-tijuana.edu.mx',
+            number: '0322103717',
             rol: 'Desarrollador',
         },
         {
             _id: 4,
             name: 'José De Jesús Ponce Duarte',
-            email: '0322103758@ut-tijuana.edu.mx',
-            number: '0322103758',
+            email: '0322103790@ut-tijuana.edu.mx',
+            number: '0322103790',
             rol: 'Desarrollador',
         },
         {
