@@ -1,7 +1,7 @@
 @import '@Scss/abstract/_palette.scss';
 @import '@Scss/abstract/_placeholder.scss';
 
-.title-header {
+.title-header, .subtitle-header {
     background: var(--bg-surface);
     height: 60px;
     width: auto;
@@ -14,12 +14,29 @@
         @extend %background-dynamic;
         width: 4px;
         height: 40px;
-        margin-right: 20px;
+    }
+
+    i {
+        @extend %color-dynamic;
+        font-size: 30px;
     }
     
     label {
         color: var(--color-text);
         font-size: 20px;
         font-weight: 600;
+    }
+
+    .line-color, i {
+        margin-right: 20px;
+    }
+}
+
+.subtitle-header {
+    i {
+        font-size: 20px;
+    }
+    label {
+        font-size: 16px;
     }
 }
