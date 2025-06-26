@@ -32,3 +32,9 @@ export interface Dropdown {
     label: string;
     value: any;
 }
+
+export interface Checkout {
+    id:      number,
+    value:   string,
+    checked: boolean
+}

@@ -1,0 +1,11 @@
+<div class="checkbox-container flex-center">
+    <input 
+      [id]="id()"
+      class="checkbox {{ styleClass() }} flex-center"
+      type="checkbox"
+      [checked]="internalValue()"
+      (change)="onChange($event)"
+    >
+    <label [class.text-bold]="bold()">{{ alias() || value() }}</label>
+</div>
+  
