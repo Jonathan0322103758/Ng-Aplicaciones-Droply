@@ -18,6 +18,6 @@ export class UserCardSettingsComponent {
   public user = input.required<User>();
 
   public buttonStyle(): ButtonStyle {
-    return `square ${this.accentColor()}-light` as ButtonStyle;
+    return `square ${this.accentColor()}-ghost` as ButtonStyle;
   }
 }

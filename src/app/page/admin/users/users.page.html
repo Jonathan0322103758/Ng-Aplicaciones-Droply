@@ -29,10 +29,11 @@
                     <qx-input type="text" styleClass="square" label="Matricula" placeholder="Escribir matrícula" />
                 </div>
                 <div class="user-form flex-column">
-                    <div class="title flex-row">
+                    <!-- <div class="title flex-row">
                         <i class="fas fa-unlock {{ preference().color }}"></i>
                         <label class="text-bold">Asignar Permisos</label>
-                    </div>
+                    </div> -->
+                    <qx-title-header icon="fas fa-unlock" title="Asignar permisos" [subtitle]="true"/>
                     <div class="info flex-row text-light">
                         <i class="fas fa-circle-info"></i>
                         <span>
@@ -44,10 +45,7 @@
                         </span>
                     </div>
                     <qx-dropdown styleClass="square" label="Rol de usuario" [options]="roles" [required]="true"/>
-                    <div class="title flex-row">
-                        <i class="fas fa-cube {{ preference().color }}"></i>
-                        <label class="text-bold">Habilitar módulos</label>
-                    </div>
+                    <qx-title-header icon="fas fa-cube" title="Habilitar módulos" [subtitle]="true"/>
                 </div>
             </div>
         </div>
