@@ -1,0 +1,13 @@
+.info {
+    height: auto;
+    width: 100%;
+    font-size: 12px;
+    padding: 10px;
+    gap: 10px;
+    color: var(--color-glass);
+
+    &.outline {
+        border-radius: 5px;
+        border: 1px solid var(--color-muted);
+    }
+}
