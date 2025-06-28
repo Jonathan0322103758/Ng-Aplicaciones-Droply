@@ -29,23 +29,15 @@
                     <qx-input type="text" styleClass="square" label="Matricula" placeholder="Escribir matrícula" />
                 </div>
                 <div class="user-form flex-column">
-                    <!-- <div class="title flex-row">
-                        <i class="fas fa-unlock {{ preference().color }}"></i>
-                        <label class="text-bold">Asignar Permisos</label>
-                    </div> -->
-                    <qx-title-header icon="fas fa-unlock" title="Asignar permisos" [subtitle]="true"/>
-                    <div class="info flex-row text-light">
-                        <i class="fas fa-circle-info"></i>
-                        <span>
+                    <qx-title-header icon="fas fa-unlock" title="Asignar permisos" [subtitle]="true" />
+                    <qx-info info="
                             La gestión de roles y permisos determina qué acciones puede realizar cada usuario dentro
                             del sistema. Asignarlos correctamente es clave para mantener la seguridad, la organización y
                             el control del acceso.
                             Modifica estos valores con precaución, ya que un error podría otorgar privilegios
-                            innecesarios o restringir funciones importantes.
-                        </span>
-                    </div>
-                    <qx-dropdown styleClass="square" label="Rol de usuario" [options]="roles" [required]="true"/>
-                    <qx-title-header icon="fas fa-cube" title="Habilitar módulos" [subtitle]="true"/>
+                            innecesarios o restringir funciones importantes."/>
+                    <qx-dropdown styleClass="square" label="Rol de usuario" [options]="roles" [required]="true" />
+                    <qx-title-header icon="fas fa-cube" title="Habilitar módulos" [subtitle]="true" />
                 </div>
             </div>
         </div>
