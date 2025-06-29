@@ -1,17 +1,24 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Signal } from "@angular/core";
 import { PreferenceService } from "@Client/preference/preference.service";
+import { ModuleListComponent } from "@Component/feature/permisions/module-list/module-list.component";
 import { UserListComponent } from "@Component/feature/users/user-list/user-list.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
-import { ButtonComponent } from "@Component/UI/button/button.component";
-import { DropdownComponent } from "@Component/UI/dropdown/dropdown.component";
-import { InfoComponent, InputComponent } from "@Component/UI/standalone";
+import { ButtonComponent, DropdownComponent, InfoComponent, InputComponent } from "@Component/UI/standalone";
 import { Dropdown, Preference } from "@Interface/ui.interface";
 import { ButtonStyle } from "@Types_/ui.types";
 
 @Component({
     selector: 'page-users',
     standalone: true,
-    imports: [TitleHeaderComponent, ButtonComponent, InputComponent, DropdownComponent, InfoComponent, UserListComponent],
+    imports: [
+        TitleHeaderComponent,
+        ButtonComponent, 
+        InputComponent, 
+        DropdownComponent, 
+        InfoComponent, 
+        UserListComponent, 
+        ModuleListComponent
+    ],
     templateUrl: './users.page.html',
     styleUrl: './users.page.scss',
     changeDetection: ChangeDetectionStrategy.OnPush

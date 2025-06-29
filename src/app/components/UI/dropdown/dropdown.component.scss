@@ -56,7 +56,7 @@
         &.rounded { --input-border-radius: 15px; }
     }
 
-    ul.dropdown-menu {
+    ul.dropdown-menu {  
         width: calc(var(--input-width) + 20px);
         cursor: pointer;
         background: var(--bg-surface);

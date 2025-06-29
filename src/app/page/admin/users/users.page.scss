@@ -55,8 +55,8 @@
                     }
                 }
 
-                qx-input {
-                    --input-width: 100%;
+                qx-input, qx-dropdown {
+                    --input-width: calc(100% - 10px);
                 }
 
                 .title, .info {
