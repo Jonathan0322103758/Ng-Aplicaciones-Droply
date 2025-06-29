@@ -12,7 +12,7 @@
                 (valueChange)="sendModules(module, $event.checked)">
                 </qx-checkbox> -->
             <!-- </div> -->
-            <qx-button type="label" styleClass="rounded primary-ghost" [label]="module.status === false ? 'Habilitar' : 'Habilitado'" (onClick)="sendModules(module, !module.status)"/>
+            <qx-button type="label" [styleClass]="buttonStyle()" [label]="module.status === false ? 'Habilitar' : 'Habilitado'" (onClick)="sendModules(module, !module.status)"/>
         </div>
     }
 </div>

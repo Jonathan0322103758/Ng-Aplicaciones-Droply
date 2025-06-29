@@ -30,16 +30,16 @@
                     @extend %color-dynamic;
                     font-size: 20px;
                 }
-                
+
                 .photo {
                     width: 100px;
                     position: relative;
                     cursor: pointer;
-    
+
                     i {
                         font-size: 100px;
                     }
-    
+
                     .circle {
                         position: absolute;
                         background: var(--bg-surface);
@@ -47,7 +47,7 @@
                         right: -10px;
                         padding: 10px;
                         border-radius: 50%;
-    
+
                         i {
                             @extend %color-dynamic;
                             font-size: 30px;
@@ -55,11 +55,13 @@
                     }
                 }
 
-                qx-input, qx-dropdown {
+                qx-input,
+                qx-dropdown {
                     --input-width: calc(100% - 10px);
                 }
 
-                .title, .info {
+                .title,
+                .info {
                     padding: 10px;
                     gap: 20px;
                 }
@@ -69,7 +71,7 @@
                     font-size: 14px;
                     text-align: justify;
                 }
-            }   
+            }
         }
     }
 
@@ -77,5 +79,17 @@
         position: absolute;
         top: 20px;
         right: 20px;
+
+        &.cancel {
+            top: auto;
+            bottom: 10px;
+            right: 130px;
+        }
+
+        &.save {
+            top: auto;
+            bottom: 10px;
+            right: 10px;
+        }
     }
 }

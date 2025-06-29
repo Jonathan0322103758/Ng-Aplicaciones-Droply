@@ -44,4 +44,5 @@ export class UsersPage {
         const color = this.preference().color;
         return `rounded ${color}-ghost` as ButtonStyle;
     }
+
 }
