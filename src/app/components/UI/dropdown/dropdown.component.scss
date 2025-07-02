@@ -1,0 +1,84 @@
+@import '@Scss/abstract/_placeholder.scss';
+
+.dropdown {
+    font-size: 14px;
+    .vertical {
+        width: 100%;
+        padding: 0px 0 10px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        gap: 5px;
+        color: var(--color-text);
+        
+        .fas {
+            color: $danger;
+            font-size: 10px;
+        }
+    }
+    
+    .dropdown-toggle {
+        @extend %input-dynamic;
+        
+        background: var(--input-background);
+        height: var(--input-height);
+        width: var(--input-width);
+        color: var(--color-text);
+        border-radius: var(--input-border-radius);
+        padding: 10px;
+        outline: none;
+        border: 1px solid var(--color-muted);
+        caret-color: $secondary;
+        cursor: pointer;
+
+        &:not(:focus):hover {
+            border-color: $secondary;
+        }
+    
+        &:focus {
+            outline: 1px solid $secondary;
+            border-color: $secondary;
+        }
+
+        &.required {
+            border-color: $danger;
+        }
+
+        i.fa-caret-down {
+            color: var(--color-muted);
+            transition: transform 0.3s ease;
+            
+            &.rotate {
+                transform: rotate(180deg);
+            }
+        }
+
+        &.square { --input-border-radius: 5px; }
+        &.rounded { --input-border-radius: 15px; }
+    }
+
+    ul.dropdown-menu {  
+        width: calc(var(--input-width) + 20px);
+        cursor: pointer;
+        background: var(--bg-surface);
+        border: 1px solid var(--color-muted);
+        border-radius: 5px;
+        max-height: 200px;
+        overflow-y: auto;
+        list-style: none;
+        padding: 0;
+        li {
+            padding: 15px;
+            font-size: 14px;
+            color: var(--color-text);
+    
+            &:hover {
+                background: var(--color-muted);
+            }
+    
+            &.selected {
+                font-weight: bold;
+                background-color: var(--color-text);
+            }
+        }
+    }
+}

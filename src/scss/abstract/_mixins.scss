@@ -1,0 +1,44 @@
+$breakpoints: (
+    xs: 479px,
+    sm: 480px,
+    md: 768px,  
+    lg: 1024px,
+    xl: 1280px,
+    xxl: 1400px
+);
+
+@mixin responsive($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (max-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn "Breakpoint no definido: #{$breakpoint}.";
+    }
+}
+
+@mixin grid-span($breakpoint, $columns: null, $rows: null) {
+  @if not map-has-key($breakpoints, $breakpoint) {
+    @warn "Breakpoint no definido: #{$breakpoint}.";
+  }
+
+  $bp-value: map-get($breakpoints, $breakpoint);
+
+  @if $breakpoint == xs {
+    @if $columns != null {
+      grid-column: span #{$columns};
+    }
+    @if $rows != null {
+      grid-row: span #{$rows};
+    }
+  } @else {
+    @media (min-width: #{$bp-value}) {
+      @if $columns != null {
+        grid-column: span #{$columns};
+      }
+      @if $rows != null {
+        grid-row: span #{$rows};
+      }
+    }
+  }
+}

@@ -43,6 +43,23 @@
     }
 }
 
+%input-dynamic {
+    @each $name, $color-palette in $palette {
+        &.#{$name} {
+            caret-color: $color-palette;
+        }
+
+        &.#{$name}:not(:focus):hover {
+            border-color: $color-palette;
+        }
+        
+        &.#{$name}:focus {
+            outline: 1px solid $color-palette;
+            border-color: $color-palette;
+        }
+    }
+}
+
 %scrollbar {
     overflow: hidden;
     overflow-y: auto;

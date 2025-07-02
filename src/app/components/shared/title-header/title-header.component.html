@@ -1,4 +1,8 @@
-<div class="title-header flex-start">
-    <div class="line-color" [class]="accentColor()"></div>
+<div [class]="subtitle() ? 'subtitle-header flex-start' : 'title-header flex-start'">
+    @if(icon()) {
+        <i class="{{ icon() }}  {{ accentColor() }}"></i>
+    } @else {
+        <div class="line-color" [class]="accentColor()"></div>
+    }
     <label>{{title()}}</label>
 </div>

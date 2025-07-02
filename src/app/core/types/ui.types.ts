@@ -25,6 +25,7 @@ class UI {
 export type ButtonType = (typeof UI.buttonType)[number];
 export type ButtonStyle =`${typeof UI.shapeType[number]}` | `${typeof UI.buttonColorType[number]}`| `${typeof UI.shapeType[number]} ${typeof UI.buttonColorType[number]}`;
 /* C */
+export type ClassType =`${typeof UI.shapeType[number]}` | `${typeof UI.buttonColorType[number]}`| `${typeof UI.shapeType[number]} ${typeof UI.buttonColorType[number]}`;
 export type ColorType = (typeof UI.colorType)[number];
 /* L */
 export type LenguageType = (typeof UI.lenguageType)[number];

@@ -1,0 +1,55 @@
+@import '@Scss/abstract/_placeholder.scss';
+@import '@Scss/abstract/_palette.scss';
+
+.checkbox-container {
+
+  .checkbox {
+    font-size: 14px;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--color-muted);
+    border-radius: 0;
+    background: var(--bg-glass);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  
+    &::after {
+      content: '';
+      opacity: 0;
+      top: 4px;
+      left: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: $light;
+    }
+  
+    &:checked::after {
+      opacity: 1;
+    }
+  
+    &.square {
+      border-radius: 5px;
+    }
+  
+    &.rounded {
+      border-radius: 50%;
+    }
+  }
+  
+  @each $name, $color in $palette {
+    .checkbox.#{$name} {
+      border-color: var(--color-muted);
+    }
+  
+    .checkbox.#{$name}:checked {
+      background-color: $color;
+      border-color: $color;
+    }
+  }
+
+  label {
+    font-size: var(--checkbox-label-size);
+  }
+}

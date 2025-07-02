@@ -21,6 +21,12 @@
     flex-direction: column;
 }
 
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
 .flex-between {
     display: flex;
     justify-content: space-between;
@@ -28,10 +34,28 @@
 }
 
 .content-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     height: calc(100% - 40px);
     width: calc(100% - 40px);
     padding: 20px;
     overflow: hidden;
     overflow-y: auto;
     color: #A3AED1;
+}
+
+.text-line {
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.text-bold {
+    color: var(--color-text);
+    font-weight: bold;
+}
+
+.text-light {
+    color: var(--color-text);
+    font-weight: 300;
 }

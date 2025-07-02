@@ -1,0 +1,26 @@
+.info {
+    width: 100%;
+    font-size: 12px;
+    padding: 10px;
+    gap: 10px;
+    color: var(--color-glass);
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
+    line-height: 1.5;
+
+    &.flex-start {
+        align-items: start;
+    }
+
+    &.outline {
+        border-radius: 5px;
+        border: 1px solid var(--color-muted);
+    }
+
+    .fas.fa-circle-info {
+        padding-top: 5px;
+        font-size: 14px;
+    }
+}
