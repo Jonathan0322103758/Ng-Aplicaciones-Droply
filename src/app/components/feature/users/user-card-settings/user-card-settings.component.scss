@@ -1,0 +1,25 @@
+.user-card {
+    height: 80px;
+    border-bottom: 1px solid var(--color-muted);
+    padding: 20px;
+
+    i {
+        font-size: 50px;
+    }
+    .user-info {
+        flex: 1;
+        overflow: hidden;
+        font-size: 14px;
+        padding: 20px;
+
+        label {
+            white-space: nowrap;      
+            overflow: hidden;           
+            text-overflow: ellipsis;
+        }
+    }
+
+    &:hover {
+        background: var(--color-muted);
+    }
+}

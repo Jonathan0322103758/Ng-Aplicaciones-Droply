@@ -31,9 +31,8 @@ export class MenuService {
           },
         ],
         pages: [
-          { id: 0, label: 'Alertas', path: 'admin-alerts', icon: 'triangle-exclamation' },
-          { id: 1, label: 'Notificaciones', path: 'admin-notifications', icon: 'bell' },
-          { id: 2, label: 'Medidores', path: 'admin-meters', icon: 'stopwatch' },
+          { id: 0, label: 'Notificaciones', path: 'admin-notifications', icon: 'bell' },
+          { id: 1, label: 'Medidores', path: 'admin-meters', icon: 'stopwatch' },
         ]
       },
       {

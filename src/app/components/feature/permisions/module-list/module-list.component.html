@@ -1,0 +1,18 @@
+<div class="flex-column">
+    @for(module of modules; track module._id) {
+        <div class="list-card flex-start" [class.status-false]="!module.status" [class.selected]="module.status">
+            <i class="fas fa-{{ module.icon }} {{ accentColor() }}"></i>
+            <label class="text-light">{{module.name}}</label>
+            <!-- <div class="btn-enable text-light {{ accentColor() }}"> -->
+               <!-- <qx-checkbox 
+                [id]="module._id"
+                styleClass="rounded"
+                [value]="'Habilitar'"
+                [check]="module.status"
+                (valueChange)="sendModules(module, $event.checked)">
+                </qx-checkbox> -->
+            <!-- </div> -->
+            <qx-button type="label" [styleClass]="buttonStyle()" [label]="module.status === false ? 'Habilitar' : 'Habilitado'" (onClick)="sendModules(module, !module.status)"/>
+        </div>
+    }
+</div>

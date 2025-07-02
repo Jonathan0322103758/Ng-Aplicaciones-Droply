@@ -1,0 +1,10 @@
+<div class="user-card flex-between">
+    <i class="fas fa-circle-user"></i>
+    <div class="user-info flex-column text-line">
+        <label class="text-bold">{{ user().name }}</label>
+        <label class="text-light">{{ user().email }}</label>
+        <label class="text-light">0322103758</label>
+        <label class="text-light">{{ user().rol }}</label>
+    </div>
+    <qx-button type="icon" [styleClass]="buttonStyle()" icon="fas fa-gear"></qx-button>
+</div>
