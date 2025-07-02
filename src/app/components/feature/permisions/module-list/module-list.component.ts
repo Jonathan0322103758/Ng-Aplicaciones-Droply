@@ -1,5 +1,6 @@
 import { Component, computed, inject, Signal } from '@angular/core';
 import { PreferenceService } from '@Client/preference/preference.service';
+import { ModuleService } from '@Client/service/module.service';
 import { ButtonComponent } from '@Component/UI/standalone';
 import { ButtonStyle, ColorType } from '@Types_/ui.types';
 
@@ -12,6 +13,8 @@ import { ButtonStyle, ColorType } from '@Types_/ui.types';
 })
 export class ModuleListComponent {
   private readonly _preferenceService: PreferenceService = inject(PreferenceService);
+  private readonly _moduleService: ModuleService = inject(ModuleService);
+
   public accentColor: Signal<ColorType> = computed(() => this._preferenceService.getPreference().color)
 
   modules = [

@@ -17,6 +17,7 @@ export class DropdownComponent {
   public label = input.required<string>();
   public placeholder = input<string>('Seleccionar opción');
   public selectedValue = input<any>(null); // input externo
+  public selectedValueChange = output<any>();
 
   public selectionChange = output<any>();
   public open = signal(false);
@@ -30,10 +31,13 @@ export class DropdownComponent {
     // Efecto para mantener sincronizado el valor externo si cambia desde fuera
     effect(() => {
       const external = this.selectedValue();
-      if (external !== this.internalSelected()) {
-        this.internalSelected.set(external);
+      const selectedOption = this.options().find(opt => opt.value === external);
+      if (selectedOption && selectedOption !== this.internalSelected()) {
+        this.internalSelected.set(selectedOption);
       }
-    });
+    }, { allowSignalWrites: true });
+
+
   }
 
   public toggleDropdown(): void {
@@ -43,6 +47,7 @@ export class DropdownComponent {
   public selectOption(option: any): void {
     this.internalSelected.set(option);
     this.selectionChange.emit(option);
+    this.selectedValueChange.emit(option.value);
     this.open.set(false);
   }
 }

@@ -17,16 +17,16 @@
                         </div>
                     </div>
                     <qx-input type="text" styleClass="square" label="Primer nombre" placeholder="Escribir primer nombre"
-                        [required]="true" />
+                        [required]="true" [(value)]="userForm.firstName"/>
                     <qx-input type="text" styleClass="square" label="Segundo nombre"
-                        placeholder="Escribir segundo nombre" />
+                        placeholder="Escribir segundo nombre" [(value)]="userForm.middleName"/>
                     <qx-input type="text" styleClass="square" label="Primer apellido"
-                        placeholder="Escribir primer apellido" [required]="true" />
+                        placeholder="Escribir primer apellido" [required]="true" [(value)]="userForm.lastName"/>
                     <qx-input type="text" styleClass="square" label="Segundo apellido"
-                        placeholder="Escribir segundo nombre" />
+                        placeholder="Escribir segundo nombre" [(value)]="userForm.secondLastName"/>
                     <qx-input type="text" styleClass="square" label="Correo" placeholder="Escribir correo"
-                        [required]="true" />
-                    <qx-input type="text" styleClass="square" label="Matricula" placeholder="Escribir matrícula" />
+                        [required]="true" [(value)]="userForm.email"/>
+                    <qx-input type="text" styleClass="square" label="Matricula" placeholder="Escribir matrícula" [(value)]="userForm.employeeId"/>
                 </div>
                 <div class="user-form flex-column">
                     <qx-title-header icon="fas fa-unlock" title="Asignar permisos" [subtitle]="true" />
@@ -36,14 +36,14 @@
                             el control del acceso.
                             Modifica estos valores con precaución, ya que un error podría otorgar privilegios
                             innecesarios o restringir funciones importantes."/>
-                    <qx-dropdown styleClass="square" label="Rol de usuario" [options]="roles" [required]="true" />
+                    <qx-dropdown styleClass="square" label="Rol de usuario" [options]="roles" [required]="true" [(selectedValue)]="userForm.rol"/>
                     <qx-title-header icon="fas fa-cube" title="Habilitar módulos" [subtitle]="true"/>
                     <qx-module-list></qx-module-list>
                 </div>
             </div>
             <div class="flex-end">
-                <qx-button class="cancel" type="label-icon" styleClass="rounded danger" icon="fas fa-xmark" label="Cancelar" [disabled]="true"/>
-                <qx-button class="save" type="label-icon" styleClass="rounded success" icon="fas fa-floppy-disk" label="Guardar" [disabled]="true"/>
+                <qx-button class="cancel" type="label-icon" styleClass="rounded danger" icon="fas fa-xmark" label="Cancelar" (onClick)="cleanForm()"/>
+                <qx-button class="save" type="label-icon" styleClass="rounded success" icon="fas fa-floppy-disk" label="Guardar" [disabled]="!isFormValid()" (onClick)="createUser()"/>
             </div>
         </div>
     </div>

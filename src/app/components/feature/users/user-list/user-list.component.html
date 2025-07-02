@@ -1,12 +1,14 @@
-<div class="list-content flex-column">
+@if(users$ | async) {
+    <div class="list-content flex-column">
     <qx-title-header title="Lista de usuarios"/>
     <div class="search flex-start">
         <i class="fas fa-magnifying-glass"></i>
-        <input class="text-light" type="text" placeholder="Buscar usuario..." (input)="searchUser()" [(ngModel)]="searchTerm">
+        <input class="text-light" type="text" placeholder="Buscar usuario..." (input)="filteredUsers()" [(ngModel)]="searchTerm">
     </div>
     <div class="user-list">
-        @for(user of filteredUsers; track user._id) {
+        @for(user of filteredUsers(); track user._id) {
             <qx-user-card-settings [user]="user"/>
         }
     </div>
 </div>
+}

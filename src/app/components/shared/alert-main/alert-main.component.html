@@ -1,0 +1,45 @@
+<div class="alert-container flex-center" [class.show]="hiddenAlert()">
+    <div class="alert">
+      
+      <div class="alert-header flex-center">
+        <label>{{ isType() }}</label>
+        <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-close" (onClick)="changeStatus()"/>
+      </div>
+      <div 
+        class="alert-line"
+        [class.question]="status() === 100"
+        [class.success]="status() === 200"
+        [class.warning]="status() === 300"
+        [class.error]="status() === 400"
+      >
+
+      </div>
+      <div class="alert-content">
+
+        @if(status() === 999) {
+          <div class="alert-content flex-column">
+            <div class="loader"></div>
+            <label>Cargando, espere por favor</label>
+          </div>
+        } @else {
+          <label>{{ isText() }}</label>
+          <div class="image">
+            <img [src]="image()">
+          </div>
+        }
+      </div>      
+    
+      <div class="alert-footer flex-end" [class.load]="status() === 999">
+        <div 
+          class="alert-status flex-center"
+          [class.question]="status() === 100"
+          [class.success]="status() === 200"
+          [class.warning]="status() === 300"
+          [class.error]="status() === 400"
+          [class.load]="status() === 999"
+        >
+          Estatus: {{ alert().status }}
+        </div>
+      </div>
+    </div>
+</div>

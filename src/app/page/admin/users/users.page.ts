@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Signal } from "@angular/core";
 import { PreferenceService } from "@Client/preference/preference.service";
+import { UserService } from "@Client/service/user.service";
 import { ModuleListComponent } from "@Component/feature/permisions/module-list/module-list.component";
 import { UserListComponent } from "@Component/feature/users/user-list/user-list.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 import { ButtonComponent, DropdownComponent, InfoComponent, InputComponent } from "@Component/UI/standalone";
 import { Dropdown, Preference } from "@Interface/ui.interface";
+import { CreateUser } from "@Interface/user.interface";
 import { ButtonStyle } from "@Types_/ui.types";
 
 @Component({
@@ -12,11 +14,11 @@ import { ButtonStyle } from "@Types_/ui.types";
     standalone: true,
     imports: [
         TitleHeaderComponent,
-        ButtonComponent, 
-        InputComponent, 
-        DropdownComponent, 
-        InfoComponent, 
-        UserListComponent, 
+        ButtonComponent,
+        InputComponent,
+        DropdownComponent,
+        InfoComponent,
+        UserListComponent,
         ModuleListComponent
     ],
     templateUrl: './users.page.html',
@@ -25,6 +27,7 @@ import { ButtonStyle } from "@Types_/ui.types";
 })
 export class UsersPage {
     private readonly _preferenceService: PreferenceService = inject(PreferenceService);
+    private readonly _userService: UserService = inject(UserService);
     public preference: Signal<Preference> = computed(() => this._preferenceService.getPreference());
 
     public roles: Dropdown[] = [
@@ -39,10 +42,50 @@ export class UsersPage {
 
     ]
 
+    public userForm: CreateUser = {
+        firstName: '',
+        middleName: '',
+        lastName: '',
+        secondLastName: '',
+        email: '',
+        employeeId: '',
+        password: '1234567890',
+        rol: '',
+        modules: []
+    }
 
     public buttonStyle(): ButtonStyle {
         const color = this.preference().color;
         return `rounded ${color}-ghost` as ButtonStyle;
     }
 
+    public createUser(): void {
+        this._userService.post(this.userForm);
+        this.cleanForm();
+    }
+
+    public cleanForm(): void {
+        this.userForm = {
+            firstName: '',
+            middleName: '',
+            lastName: '',
+            secondLastName: '',
+            email: '',
+            employeeId: '',
+            password: '1234567890',
+            rol: '',
+            modules: []
+        };
+    }
+
+    public isFormValid(): boolean {
+        const { firstName, lastName, email, rol } = this.userForm;
+
+        return (
+            firstName.trim() !== '' &&
+            lastName.trim() !== '' &&
+            email.trim() !== '' &&
+            rol.trim() !== ''
+        );
+    }
 }

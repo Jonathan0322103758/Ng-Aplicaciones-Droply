@@ -1,0 +1,132 @@
+@import "@Scss/abstract/_placeholder.scss";
+
+.alert-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-glass);
+    z-index: 10000;
+
+    .alert {
+        background: var(--bg-surface);
+        width: 90%;
+        max-width: 500px;
+        border-radius: 8px;
+        position: relative;
+        font-size: 14px;
+
+        .alert-header {
+            justify-content: space-between;
+            width: calc(100% - 30px);
+            height: 40px;
+            padding: 10px 10px 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .alert-line {
+            // @extend %background-dynamic;
+            height: 4px;
+            width: 100%;
+            background: $purple1;
+        }
+
+        .alert-content {
+            width: calc(100% - 40px);
+            padding: 20px;
+            justify-content: space-between;
+            color: var(--color-text);
+
+            &.flex-column {
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .image {
+                width: 150px;
+                height: 150px;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .alert-footer {
+            padding: 10px;
+
+            .alert-status {
+                background: var(--bg-surface);
+                width: 100px;
+                height: 10px;
+                padding: 10px;
+                border-radius: 5px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+
+            &.load {
+                height: 10px;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+        }
+        .success {
+            background: $success;
+            color: $success;
+        }
+        .question {
+            background: $purple1;
+            color: $purple1;
+        }
+        .warning {
+            background: $warning;
+            color: $warning;
+        }
+        .error {
+            background: $danger;
+            color: $danger;
+        }
+
+        .load {
+            background: var(--bg-surface);
+            color: var(--bg-surface);
+        }
+    }
+
+    &.show {
+        display: flex;
+        .alert {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+.loader {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-surface);
+}
+
+.loader::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--light);
+    border-top-color: $purple1;
+    border-radius: 50%;
+    animation: loading ease 0.75s infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
