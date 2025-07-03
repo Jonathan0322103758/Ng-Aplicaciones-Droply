@@ -1,3 +1,50 @@
 <div class="content-page">
-    <qx-title-header title="Administración de Usuarios"/>
+    <qx-title-header title="Administración de Usuarios" />
+
+    <div class="container flex-row">
+        <div class="list">
+            <qx-user-list />
+        </div>
+        <div class="content flex-column">
+            <qx-title-header title="Crear usuario" />
+            <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-circle-plus" label="Nuevo usuario"/>
+            <div class="body-content flex-row">
+                <div class="user-form flex-column">
+                    <div class="photo flex-column">
+                        <i class="fas fa-circle-user"></i>
+                        <div class="circle flex-center  ">
+                            <i class="fas fa-image {{ preference().color }}"></i>
+                        </div>
+                    </div>
+                    <qx-input type="text" styleClass="square" label="Primer nombre" placeholder="Escribir primer nombre"
+                        [required]="true" [(value)]="userForm.firstName"/>
+                    <qx-input type="text" styleClass="square" label="Segundo nombre"
+                        placeholder="Escribir segundo nombre" [(value)]="userForm.middleName"/>
+                    <qx-input type="text" styleClass="square" label="Primer apellido"
+                        placeholder="Escribir primer apellido" [required]="true" [(value)]="userForm.lastName"/>
+                    <qx-input type="text" styleClass="square" label="Segundo apellido"
+                        placeholder="Escribir segundo nombre" [(value)]="userForm.secondLastName"/>
+                    <qx-input type="text" styleClass="square" label="Correo" placeholder="Escribir correo"
+                        [required]="true" [(value)]="userForm.email"/>
+                    <qx-input type="text" styleClass="square" label="Matricula" placeholder="Escribir matrícula" [(value)]="userForm.employeeId"/>
+                </div>
+                <div class="user-form flex-column">
+                    <qx-title-header icon="fas fa-unlock" title="Asignar permisos" [subtitle]="true" />
+                    <qx-info info="
+                            La gestión de roles y permisos determina qué acciones puede realizar cada usuario dentro
+                            del sistema. Asignarlos correctamente es clave para mantener la seguridad, la organización y
+                            el control del acceso.
+                            Modifica estos valores con precaución, ya que un error podría otorgar privilegios
+                            innecesarios o restringir funciones importantes."/>
+                    <qx-dropdown styleClass="square" label="Rol de usuario" [options]="roles" [required]="true" [(selectedValue)]="userForm.rol"/>
+                    <qx-title-header icon="fas fa-cube" title="Habilitar módulos" [subtitle]="true"/>
+                    <qx-module-list></qx-module-list>
+                </div>
+            </div>
+            <div class="flex-end">
+                <qx-button class="cancel" type="label-icon" styleClass="rounded danger" icon="fas fa-xmark" label="Cancelar" (onClick)="cleanForm()"/>
+                <qx-button class="save" type="label-icon" styleClass="rounded success" icon="fas fa-floppy-disk" label="Guardar" [disabled]="!isFormValid()" (onClick)="createUser()"/>
+            </div>
+        </div>
+    </div>
 </div>

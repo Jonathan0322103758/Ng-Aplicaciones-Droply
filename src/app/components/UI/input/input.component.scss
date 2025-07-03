@@ -2,11 +2,7 @@
 
 .input-container {
     font-size: 14px;
-<<<<<<< HEAD
-    width: max-content;
-=======
     width: 100%;
->>>>>>> desarrollo
     height: auto;
     
     .vertical {
@@ -23,11 +19,7 @@
     }
 
     .input-content {
-<<<<<<< HEAD
-        width: max-content;
-=======
         width: 100%;
->>>>>>> desarrollo
         position: relative;
         
         input {
@@ -43,10 +35,7 @@
             border: 1px solid var(--color-muted);
             caret-color: $secondary;
             font-size: 14px;
-<<<<<<< HEAD
-=======
             letter-spacing: .065rem;
->>>>>>> desarrollo
     
             &:not(:focus):hover {
                 border-color: $secondary;

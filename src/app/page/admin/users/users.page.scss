@@ -1,0 +1,95 @@
+@import "@Scss/abstract/_placeholder.scss";
+
+.container {
+    width: 100%;
+    height: calc(100% - 100px);
+    background: var(--bg-surface);
+    border-radius: 5px;
+    border: 1px solid var(--color-muted);
+    overflow: hidden;
+
+    .list {
+        border-right: 1px solid var(--color-muted);
+    }
+
+    .content {
+        position: relative;
+        flex: 1;
+
+        .body-content {
+            height: calc(100% - 160px);
+            padding: 20px;
+
+            .user-form {
+                @extend %scrollbar;
+                width: 50%;
+                gap: 20px;
+                padding: 0 20px;
+
+                .fas {
+                    @extend %color-dynamic;
+                    font-size: 20px;
+                }
+
+                .photo {
+                    width: 100px;
+                    position: relative;
+                    cursor: pointer;
+
+                    i {
+                        font-size: 100px;
+                    }
+
+                    .circle {
+                        position: absolute;
+                        background: var(--bg-surface);
+                        top: 60px;
+                        right: -10px;
+                        padding: 10px;
+                        border-radius: 50%;
+
+                        i {
+                            @extend %color-dynamic;
+                            font-size: 30px;
+                        }
+                    }
+                }
+
+                qx-input,
+                qx-dropdown {
+                    --input-width: calc(100% - 10px);
+                }
+
+                .title,
+                .info {
+                    padding: 10px;
+                    gap: 20px;
+                }
+
+                .info {
+                    color: var(--color-text);
+                    font-size: 14px;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+
+    qx-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        &.cancel {
+            top: auto;
+            bottom: 10px;
+            right: 130px;
+        }
+
+        &.save {
+            top: auto;
+            bottom: 10px;
+            right: 10px;
+        }
+    }
+}
