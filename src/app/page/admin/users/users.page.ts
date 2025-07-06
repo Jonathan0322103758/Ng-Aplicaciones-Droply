@@ -1,12 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, inject, Signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, signal, Signal } from "@angular/core";
 import { PreferenceService } from "@Client/preference/preference.service";
-import { ModuleService } from "@Client/service/module.service";
+import { UserService } from "@Client/service/user.service";
 import { ModuleListComponent } from "@Component/feature/permisions/module-list/module-list.component";
+import { UserDetailComponent } from "@Component/feature/users/user-detail/user-detail.component";
 import { UserListComponent } from "@Component/feature/users/user-list/user-list.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 import { ButtonComponent, DropdownComponent, InfoComponent, InputComponent } from "@Component/UI/standalone";
 import { Dropdown, Preference } from "@Interface/ui.interface";
-import { CreateUser } from "@Interface/user.interface";
+import { CreateUser, User } from "@Interface/user.interface";
 import { ButtonStyle } from "@Types_/ui.types";
 
 @Component({
@@ -19,6 +20,7 @@ import { ButtonStyle } from "@Types_/ui.types";
         DropdownComponent,
         InfoComponent,
         UserListComponent,
+        UserDetailComponent,
         ModuleListComponent
     ],
     templateUrl: './users.page.html',
@@ -27,7 +29,9 @@ import { ButtonStyle } from "@Types_/ui.types";
 })
 export class UsersPage {
     private readonly _preferenceService: PreferenceService = inject(PreferenceService);
-    private readonly _moduleService: ModuleService = inject(ModuleService);
+    private readonly _userService: UserService = inject(UserService);
+
+    public userDetail = signal<User | null>(null);
     public preference: Signal<Preference> = computed(() => this._preferenceService.getPreference());
     public roles: Dropdown[] = [
         {
@@ -59,9 +63,12 @@ export class UsersPage {
     }
 
     public createUser(): void {
-        // this._userService.post(this.userForm);
-        console.log(this.userForm)
+        this._userService.post(this.userForm);
         this.cleanForm();
+    }
+
+    public userSelected(user: User) {
+        this.userDetail.set(user)
     }
 
     public cleanForm(): void {
@@ -89,9 +96,8 @@ export class UsersPage {
         );
     }
 
-    public isRole(): void {
-        switch (this.userForm.rol) {
-        }
+    public formSelected(): void {
+        this.userDetail.set(null)
     }
 
 }

@@ -6,7 +6,7 @@ import { catchError, map, Observable, of, tap } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    private readonly _url: string = 'http://localhost:9000/user';
+    private readonly _URI: string = '/user';
     private readonly _http: ClientService = inject(ClientService);
     private readonly _alert: AlertMainService = inject(AlertMainService);
     private readonly _userService: WritableSignal<User[]> = signal<User[]>([]);
@@ -66,7 +66,7 @@ export class UserService {
     }
 
     public fetch(): Observable<User[]> {
-        return this._http.get<{ status: number; message: string; data: User[] }>(this._url).pipe(
+        return this._http.get<{ status: number; message: string; data: User[] }>(this._URI).pipe(
             map(response => response.data),
             tap(users => {
                 // console.log('Response:', users);
@@ -85,7 +85,7 @@ export class UserService {
 
     public post(data: CreateUser): void {
         this._alert.loader()
-        this._http.post<CreateUser>(this._url, data).subscribe({
+        this._http.post<CreateUser>(this._URI, data).subscribe({
             next: (response) => {
                 this._alert.setAlert(200, "Usuario registrado exitosamente!")
                 console.log(response)

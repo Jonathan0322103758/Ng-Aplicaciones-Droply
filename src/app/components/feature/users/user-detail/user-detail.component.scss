@@ -1,0 +1,34 @@
+.container {
+    flex: 1;
+    padding: 20px;
+
+    .flex-row {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .fas.fa-circle-user {
+        font-size: 100px;
+        padding: 0 20px;
+        flex-shrink: 0;
+    }
+
+    .user-info {
+        flex: 1;
+        padding: 0 20px;
+        color: var(--color-text);
+
+        .user-data-grid {
+            display: grid;
+            padding: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 14px;
+            white-space: normal;
+        }
+
+        .user-modules {
+            width: calc(100% - 160px);
+        }
+    }
+}

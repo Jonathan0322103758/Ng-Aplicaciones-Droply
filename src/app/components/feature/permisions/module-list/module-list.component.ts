@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'qx-module-list',
   standalone: true,
-  imports: [ButtonComponent,BadgeComponent, AsyncPipe],
+  imports: [ButtonComponent, BadgeComponent, AsyncPipe],
   templateUrl: './module-list.component.html',
   styleUrl: './module-list.component.scss'
 })
@@ -19,7 +19,7 @@ export class ModuleListComponent implements OnInit {
 
   private readonly _preferenceService: PreferenceService = inject(PreferenceService);
   private readonly _moduleService: ModuleService = inject(ModuleService);
-  
+
   public accentColor: Signal<ColorType> = computed(() => this._preferenceService.getPreference().color)
   public modules$!: Observable<Module[]>
   public modules: Signal<Module[]> = computed(() => this._moduleService.get());
@@ -44,7 +44,7 @@ export class ModuleListComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-      this.modules$ = this._moduleService.fetch()
+    this.modules$ = this._moduleService.fetch()
   }
 
 }
