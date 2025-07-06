@@ -8,11 +8,12 @@ import { PreferenceService } from '@Client/preference/preference.service';
 import { ColorType } from '@Types_/ui.types';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { InfoComponent } from '@Component/UI/standalone';
 
 @Component({
   selector: 'qx-user-list',
   standalone: true,
-  imports: [TitleHeaderComponent, UserCardSettingsComponent, FormsModule, AsyncPipe],
+  imports: [TitleHeaderComponent, UserCardSettingsComponent, FormsModule, AsyncPipe, InfoComponent],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss'
 })
@@ -25,10 +26,16 @@ export class UserListComponent implements OnInit {
   public users$!: Observable<User[]>;
   public users: Signal<User[]> = computed(() => this._userService.get())
   public searchTerm = signal('');
-  public filteredUsers = computed(() => {
+  
+public filteredUsers = computed(() => {
   const term = this.searchTerm().toLowerCase();
-  return this.users().filter(user => user.name.toLowerCase().includes(term));
+  return this.users().filter(user =>
+    user.name.toLowerCase().includes(term) ||
+    user.email.toLowerCase().includes(term) ||
+    user.rol.toLowerCase().includes(term)
+  );
 });
+
 
   public ngOnInit(): void {
     this.users$ = this._userService.fetch();

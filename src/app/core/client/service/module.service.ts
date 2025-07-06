@@ -12,12 +12,11 @@ export class ModuleService {
     public fetch(): Observable<Module[]> {
         return this._http.get<{ status: number; message: string; data: Module[] }>(this._url).pipe(
             map(response => response.data),
-            tap(users => {
-                console.log('Response:', users);
-                this._moduleService.set(users);
+            tap(modules => {
+                this._moduleService.set(modules);
             }),
             catchError(error => {
-                console.error('Error fetching users:', error);
+                console.error('Error fetching modules:', error);
                 return of([]);
             })
         );
@@ -25,5 +24,9 @@ export class ModuleService {
 
     public get(): Module[] {
         return this._moduleService()
+    }
+
+    public setAdminModules() {
+        
     }
 }

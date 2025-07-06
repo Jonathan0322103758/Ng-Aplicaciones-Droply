@@ -1,31 +1,28 @@
-import { Component, computed, inject, Signal } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Component, computed, inject, input, OnInit, Signal } from '@angular/core';
 import { PreferenceService } from '@Client/preference/preference.service';
 import { ModuleService } from '@Client/service/module.service';
-import { ButtonComponent } from '@Component/UI/standalone';
+import { BadgeComponent, ButtonComponent } from '@Component/UI/standalone';
+import { Module } from '@Interface/module.interface';
 import { ButtonStyle, ColorType } from '@Types_/ui.types';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'qx-module-list',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent,BadgeComponent, AsyncPipe],
   templateUrl: './module-list.component.html',
   styleUrl: './module-list.component.scss'
 })
-export class ModuleListComponent {
+export class ModuleListComponent implements OnInit {
+  public selector = input<boolean>(true)
+
   private readonly _preferenceService: PreferenceService = inject(PreferenceService);
   private readonly _moduleService: ModuleService = inject(ModuleService);
-
+  
   public accentColor: Signal<ColorType> = computed(() => this._preferenceService.getPreference().color)
-
-  modules = [
-    { _id: 0, name: "Usuarios", icon: "user", status: false },
-    { _id: 0, name: "Notificaciones", icon: "bell", status: false },
-    { _id: 0, name: "Medidores", icon: "stopwatch", status: false },
-    { _id: 0, name: "Lineas de Agua", icon: "droplet", status: false },
-    { _id: 0, name: "Costos y Tarifas", icon: "chart-column", status: false },
-    { _id: 0, name: "Actividades", icon: "screwdriver-wrench", status: false },
-    { _id: 0, name: "Reportes", icon: "folder", status: false },
-  ]
+  public modules$!: Observable<Module[]>
+  public modules: Signal<Module[]> = computed(() => this._moduleService.get());
 
   selectedModules: any[] = [];
 
@@ -44,6 +41,10 @@ export class ModuleListComponent {
   public buttonStyle(): ButtonStyle {
     const color = this.accentColor();
     return `rounded ${color}-ghost` as ButtonStyle;
+  }
+
+  public ngOnInit(): void {
+      this.modules$ = this._moduleService.fetch()
   }
 
 }

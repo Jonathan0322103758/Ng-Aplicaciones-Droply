@@ -9,6 +9,12 @@
         @for(user of filteredUsers(); track user._id) {
             <qx-user-card-settings [user]="user"/>
         }
+
+        @if(filteredUsers().length === 0) {
+            <div class="user-not-found">
+                <qx-info info="No se ha encontrado ningun usuario, intenta buscar por nombre, correo, matricula o rol de usuario"/>
+            </div>
+        }
     </div>
 </div>
 }

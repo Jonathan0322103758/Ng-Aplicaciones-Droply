@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Signal } from "@angular/core";
 import { PreferenceService } from "@Client/preference/preference.service";
-import { UserService } from "@Client/service/user.service";
+import { ModuleService } from "@Client/service/module.service";
 import { ModuleListComponent } from "@Component/feature/permisions/module-list/module-list.component";
 import { UserListComponent } from "@Component/feature/users/user-list/user-list.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
@@ -27,9 +27,8 @@ import { ButtonStyle } from "@Types_/ui.types";
 })
 export class UsersPage {
     private readonly _preferenceService: PreferenceService = inject(PreferenceService);
-    private readonly _userService: UserService = inject(UserService);
+    private readonly _moduleService: ModuleService = inject(ModuleService);
     public preference: Signal<Preference> = computed(() => this._preferenceService.getPreference());
-
     public roles: Dropdown[] = [
         {
             label: "Administrador",
@@ -60,7 +59,8 @@ export class UsersPage {
     }
 
     public createUser(): void {
-        this._userService.post(this.userForm);
+        // this._userService.post(this.userForm);
+        console.log(this.userForm)
         this.cleanForm();
     }
 
@@ -88,4 +88,10 @@ export class UsersPage {
             rol.trim() !== ''
         );
     }
+
+    public isRole(): void {
+        switch (this.userForm.rol) {
+        }
+    }
+
 }

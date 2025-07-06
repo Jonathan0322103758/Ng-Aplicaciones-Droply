@@ -27,5 +27,12 @@
 
     .user-list {
         @extend %scrollbar;
+
+        .user-not-found {
+            font-size: 14px;
+            width: 390px;
+            padding: 20px;
+        }
     }
+
 }

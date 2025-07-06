@@ -1,3 +1,5 @@
+import { Module } from "./module.interface";
+
 export interface User {
     _id: number;
     name: string;
@@ -16,5 +18,5 @@ export interface CreateUser {
     employeeId: string;
     password: string;
     rol: string;
-    modules: []
+    modules: Module[]
 }

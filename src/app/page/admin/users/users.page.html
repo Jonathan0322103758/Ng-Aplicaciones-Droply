@@ -3,10 +3,10 @@
 
     <div class="container flex-row">
         <div class="list">
-            <qx-user-list />
+            <qx-user-list (click)="createUser()"/>
         </div>
         <div class="content flex-column">
-            <qx-title-header title="Crear usuario" />
+            <qx-title-header title="Crear usuario"/>
             <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-circle-plus" label="Nuevo usuario"/>
             <div class="body-content flex-row">
                 <div class="user-form flex-column">
@@ -37,8 +37,8 @@
                             Modifica estos valores con precaución, ya que un error podría otorgar privilegios
                             innecesarios o restringir funciones importantes."/>
                     <qx-dropdown styleClass="square" label="Rol de usuario" [options]="roles" [required]="true" [(selectedValue)]="userForm.rol"/>
-                    <qx-title-header icon="fas fa-cube" title="Habilitar módulos" [subtitle]="true"/>
-                    <qx-module-list></qx-module-list>
+                    <qx-title-header icon="fas fa-cube" title="Mdulos Habilitados" [subtitle]="true"/>
+                    <qx-module-list/>
                 </div>
             </div>
             <div class="flex-end">
