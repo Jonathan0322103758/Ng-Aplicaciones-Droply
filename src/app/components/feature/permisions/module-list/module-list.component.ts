@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, computed, inject, input, OnInit, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, Signal } from '@angular/core';
 import { PreferenceService } from '@Client/preference/preference.service';
 import { ModuleService } from '@Client/service/module.service';
 import { BadgeComponent, ButtonComponent } from '@Component/UI/standalone';
@@ -12,7 +12,8 @@ import { Observable } from 'rxjs';
   standalone: true,
   imports: [ButtonComponent, BadgeComponent, AsyncPipe],
   templateUrl: './module-list.component.html',
-  styleUrl: './module-list.component.scss'
+  styleUrl: './module-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModuleListComponent implements OnInit {
   public selector = input<boolean>(true)

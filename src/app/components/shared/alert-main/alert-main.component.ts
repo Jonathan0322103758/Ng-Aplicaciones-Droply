@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { AlertMainService } from './alert-main.service';
 import { ButtonComponent } from '@Component/UI/standalone';
 
@@ -7,7 +7,8 @@ import { ButtonComponent } from '@Component/UI/standalone';
   standalone: true,
   imports: [ButtonComponent],
   templateUrl: './alert-main.component.html',
-  styleUrl: './alert-main.component.scss'
+  styleUrl: './alert-main.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlertMainComponent {
   private readonly alertService = inject(AlertMainService);

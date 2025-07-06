@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, OnInit, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, Signal } from '@angular/core';
 import { ModuleService } from '@Client/service/module.service';
 import { ModuleListComponent } from '@Component/feature/permisions/module-list/module-list.component';
 import { TitleHeaderComponent } from '@Component/shared/title-header/title-header.component';
@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
   standalone: true,
   imports: [TitleHeaderComponent, ModuleListComponent],
   templateUrl: './user-detail.component.html',
-  styleUrl: './user-detail.component.scss'
+  styleUrl: './user-detail.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserDetailComponent implements OnInit{
   public user = input.required<User | null>();
