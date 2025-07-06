@@ -7,7 +7,7 @@
             @if(selector()) {
                 <qx-button type="label" [styleClass]="buttonStyle()" [label]="module.status === false ? 'Habilitar' : 'Habilitado'" (onClick)="sendModules(module, !module.status)"/>
             } @else {
-                <qx-badge text="Activo" styleClass="rounded success"/>
+                <qx-badge text="Habilitado" styleClass="rounded success"/>
             }
         </div>
     }
