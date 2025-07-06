@@ -26,18 +26,20 @@ export class UserListComponent implements OnInit {
   public dummyUsers: User[] = this._userService.getDummyUsers();
   public users$!: Observable<User[]>;
   public users: Signal<User[]> = computed(() => this._userService.get())
-  public searchTerm = signal('');
+  public searchTerm = signal<string>('');
 
   public userSelected = output<User>();
 
-  public filteredUsers = computed(() => {
-    const term = this.searchTerm().toLowerCase();
-    return this.users().filter(user =>
-      user.name.toLowerCase().includes(term) ||
-      user.email.toLowerCase().includes(term) ||
-      user.rol.toLowerCase().includes(term)
-    );
-  });
+public filteredUsers: Signal<User[]> = computed(() => {
+  const term = this.searchTerm().toLowerCase();
+
+  return this.users().filter(user =>
+    (user.name?.toLowerCase().includes(term) ?? false) ||
+    (user.email?.toLowerCase().includes(term) ?? false) ||
+    (user.rol?.toLowerCase().includes(term) ?? false)
+  );
+});
+
 
   public detailUser(user: User): void {
     this.userSelected.emit(user);
