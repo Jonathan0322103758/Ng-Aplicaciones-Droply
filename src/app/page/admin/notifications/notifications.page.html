@@ -1,35 +1,82 @@
 <div class="content-page">
   <qx-title-header title="Notificaciones" />
 
-  <!-- BOTONES GRANDES ARRIBA -->
-  <div class="container option flex-end">
-    <qx-button type="label-icon" styleClass="rounded primary" icon="fas fa-envelope-open-text" label="Últimos mensajes" (onClick)="openLatestMessages()" />
-    <qx-button type="label-icon" styleClass="rounded success" icon="fas fa-paper-plane" label="Enviar mensaje" (onClick)="sendMessage()" />
-    <qx-button type="label-icon" styleClass="rounded warning" icon="fas fa-clock" label="Recordar más tarde" (onClick)="remindLater()" />
-    <qx-button type="label-icon" styleClass="rounded secondary" icon="fas fa-archive" label="Archivados" (onClick)="openArchived()" />
-    <qx-button type="label-icon" styleClass="rounded danger" icon="fas fa-trash" label="Papelera" (onClick)="openTrash()" />
-  </div>
-
-  <!-- DOS COLUMNAS -->
-  <div class="bottom-section">
-    <!-- IZQUIERDA: LISTA -->
-    <div class="messages-list">
-      <qx-title-header title="Últimos mensajes" />
-      <div class="message-item" *ngFor="let msg of messages">
-        <div class="info">
-          <h4>{{ msg.title }}</h4>
-          <p>{{ msg.concept }}</p>
-        </div>
-        <div class="actions">
-          <qx-button type="icon" styleClass="rounded primary" icon="fas fa-eye" (onClick)="view(msg)" />
-          <qx-button type="icon" styleClass="rounded warning" icon="fas fa-clock" (onClick)="snooze(msg)" />
-          <qx-button type="icon" styleClass="rounded secondary" icon="fas fa-archive" (onClick)="archive(msg)" />
-          <qx-button type="icon" styleClass="rounded danger" icon="fas fa-trash" (onClick)="delete(msg)" />
-        </div>
+  <div class="container option flex-end cards-buttons">
+    <div class="card-button" (click)="openLatestMessages()">
+      <div class="icon primary"><i class="fas fa-envelope-open-text"></i></div>
+      <div class="text">
+        <strong>Últimos mensajes</strong>
       </div>
     </div>
+    <div class="card-button" (click)="sendMessage()">
+      <div class="icon success"><i class="fas fa-paper-plane"></i></div>
+      <div class="text">
+        <strong>Enviar mensaje</strong>
+      </div>
+    </div>
+    <div class="card-button" (click)="remindLater()">
+      <div class="icon warning"><i class="fas fa-clock"></i></div>
+      <div class="text">
+        <strong>Recordar más tarde</strong>
+      </div>
+    </div>
+    <div class="card-button" (click)="openArchived()">
+      <div class="icon secondary"><i class="fas fa-archive"></i></div>
+      <div class="text">
+        <strong>Archivados</strong>
+      </div>
+    </div>
+    <div class="card-button" (click)="openTrash()">
+      <div class="icon danger"><i class="fas fa-trash"></i></div>
+      <div class="text">
+        <strong>Papelera</strong>
+      </div>
+    </div>
+  </div>
 
-    <!-- DERECHA: SIEMPRE VISIBLE -->
+  <div class="bottom-section">
+    <div class="list">
+      <qx-title-header title="Últimos mensajes" />
+
+      @for (msg of messages; track $index) {
+        <div class="message-item">
+          <div class="msg-icon">
+            <i class="fas fa-message"></i>
+          </div>
+          <div class="info">
+            <h4>{{ msg.title }}</h4>
+            <p>{{ msg.concept }}</p>
+          </div>
+          <div class="actions">
+            <qx-button
+              type="icon"
+              styleClass="rounded primary"
+              icon="fas fa-eye"
+              (onClick)="view(msg)"
+            />
+            <qx-button
+              type="icon"
+              styleClass="rounded warning"
+              icon="fas fa-clock"
+              (onClick)="snooze(msg)"
+            />
+            <qx-button
+              type="icon"
+              styleClass="rounded secondary"
+              icon="fas fa-archive"
+              (onClick)="archive(msg)"
+            />
+            <qx-button
+              type="icon"
+              styleClass="rounded danger"
+              icon="fas fa-trash"
+              (onClick)="delete(msg)"
+            />
+          </div>
+        </div>
+      }
+    </div>
+
     <div class="message-preview">
       <div class="header">
         <qx-title-header [title]="selectedMessage?.title || 'Nombre Nuevo Mensaje'" />
