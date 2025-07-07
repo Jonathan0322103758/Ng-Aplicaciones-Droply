@@ -29,17 +29,16 @@ export class DropdownComponent {
   public internalSelected = signal<any>(this.selectedValue());
 
   constructor() {
-    // Efecto para mantener sincronizado el valor externo si cambia desde fuera
     effect(() => {
-      const external = this.selectedValue();
-      const selectedOption = this.options().find(opt => opt.value === external);
-      if (selectedOption && selectedOption !== this.internalSelected()) {
-        this.internalSelected.set(selectedOption);
-      }
+      const externalValue = this.selectedValue();
+      const allOptions = this.options();
+      const match = allOptions.find(opt => opt.value === externalValue || this.selectedValue());
+
+      this.internalSelected.set(match ?? null);
     }, { allowSignalWrites: true });
 
-
   }
+
 
   public toggleDropdown(): void {
     this.open.update((v) => !v);

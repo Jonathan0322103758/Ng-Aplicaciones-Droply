@@ -31,6 +31,7 @@ export class UsersPage {
     private readonly _preferenceService: PreferenceService = inject(PreferenceService);
     private readonly _userService: UserService = inject(UserService);
 
+    public formStatus: boolean = true;
     public userDetail = signal<User | null>(null);
     public preference: Signal<Preference> = computed(() => this._preferenceService.getPreference());
     public roles: Dropdown[] = [
@@ -63,11 +64,12 @@ export class UsersPage {
     }
 
     public createUser(): void {
-        this._userService.post(this.userForm);
+        // this._userService.post(this.userForm);
         this.cleanForm();
     }
 
     public userSelected(user: User) {
+        this.formStatus = false
         this.userDetail.set(user)
     }
 
@@ -89,15 +91,44 @@ export class UsersPage {
         const { firstName, lastName, email, rol } = this.userForm;
 
         return (
-            firstName.trim() !== '' &&
-            lastName.trim() !== '' &&
-            email.trim() !== '' &&
-            rol.trim() !== ''
+            (firstName ?? '').trim() !== '' &&
+            (lastName ?? '').trim() !== '' &&
+            (email ?? '').trim() !== '' &&
+            (rol ?? '').trim() !== ''
         );
     }
 
+
+
     public formSelected(): void {
+        this.formStatus = true
         this.userDetail.set(null)
+        this.cleanForm()
     }
 
+    private mapUserToCreateUser(user: User): CreateUser {
+        const [firstName, middleName, lastName, secondLastName] = (user.name ?? '').split(' ');
+
+        return {
+            firstName: firstName ?? '',
+            middleName: middleName ?? '',
+            lastName: lastName ?? '',
+            secondLastName: secondLastName ?? '',
+            email: user.email,
+            employeeId: user.number ?? '',
+            password: '**********',
+            rol: user.rol,
+            modules: []
+        };
+    }
+
+
+    public editUser(): void {
+        this.formStatus = true;
+        const user = this.userDetail();
+        if (!user) return;
+
+        this.userForm = this.mapUserToCreateUser(user);
+        console.log(this.userForm)
+    }
 }

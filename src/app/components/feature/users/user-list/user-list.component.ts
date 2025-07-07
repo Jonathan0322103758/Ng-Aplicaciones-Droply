@@ -23,7 +23,6 @@ export class UserListComponent implements OnInit {
   private readonly _userService: UserService = inject(UserService);
 
   public accentColor: Signal<ColorType> = computed(() => this._preferenceService.getPreference().color);
-  public dummyUsers: User[] = this._userService.getDummyUsers();
   public users$!: Observable<User[]>;
   public users: Signal<User[]> = computed(() => this._userService.get())
   public searchTerm = signal<string>('');

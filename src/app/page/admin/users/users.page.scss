@@ -79,12 +79,22 @@
             }
         }
     }
-
-    qx-button {
+    
+    .option {
         position: absolute;
         top: 20px;
         right: 20px;
+        qx-button {
+            position: relative;
+        }
 
+        &.none {
+            display: none;
+        }
+    }
+
+    qx-button {
+        position: absolute;
         &.cancel {
             top: auto;
             bottom: 10px;
