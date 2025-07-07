@@ -1,0 +1,30 @@
+.container-target {
+    width: 460px;
+    flex: 1;
+    background: var(--bg-surface);
+    border-radius: 5px;
+    border: 1px solid var(--color-muted);
+
+    .body-target {
+        padding: 20px;
+
+        .rol-target {
+            font-size: 14px;
+            gap: 20px;
+            padding: 15px;
+            border-bottom: 1px solid var(--color-muted);
+
+            .text-light {
+                font-size: 12px;
+            }
+
+            .fas.fa-user-shield {
+                font-size: 20px;
+            }
+
+            qx-button {
+                margin-left: auto;
+            }
+        }
+    }
+}

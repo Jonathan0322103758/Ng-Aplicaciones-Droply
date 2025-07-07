@@ -1,3 +1,21 @@
 <div class="content-page">
-    <qx-title-header title="Roles y Permisos"/>
+    <qx-title-header title="Roles y Permisos" />
+    <div class="container-target flex-column">
+        <qx-title-header title="Lista de roles" />
+        <div class="body-target flex-column">
+            <qx-info
+                info="La gestión de roles y permisos determina qué acciones puede realizar cada usuario dentro del sistema. Asignarlos correctamente es clave para mantener la seguridad, la organización y el control del acceso.
+                Modifica estos valores con precaución, ya que un error podría otorgar privilegios innecesarios o restringir funciones importantes." />
+                @for(rol of listaRoles; track rol._id){
+                    <div class="rol-target flex-start">
+                        <i class="fas fa-user-shield"></i>
+                        <div class="flex-column">
+                            <label class="text-bold">{{ rol.name }}</label>
+                            <label class="text-light">{{ rol.description }}</label>
+                        </div>
+                        <qx-button type="icon" icon="fas fa-lock" [styleClass]="buttonStyle()" [disabled]="true"/>
+                    </div>
+                }
+        </div>
+    </div>
 </div>
