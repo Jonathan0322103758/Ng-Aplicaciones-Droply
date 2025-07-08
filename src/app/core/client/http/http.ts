@@ -4,8 +4,12 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
+<<<<<<< HEAD
   private readonly _URL = 'http://localhost:9000';
   private readonly _http = inject(HttpClient);
+=======
+  private readonly http = inject(HttpClient);
+>>>>>>> FEAT-componentes
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
@@ -13,6 +17,7 @@ export class ClientService {
     });
   }
 
+<<<<<<< HEAD
   get<T>(uri: string, params?: { [key: string]: any }): Observable<T> {
     return this._http.get<T>(`${this._URL}${uri}`, {
       headers: this.getHeaders(),
@@ -36,3 +41,24 @@ export class ClientService {
   }
 }
 
+=======
+  get<T>(url: string): Observable<T> {
+    return this.http.get<T>(url, { headers: this.getHeaders() });
+  }
+
+  post<T>(url: string, body: any): Observable<T> {
+    console.log('POST:', url, body);
+    return this.http.post<T>(url, body, { headers: this.getHeaders() });
+  }
+
+  put<T>(url: string, data: any): Observable<T> {
+    console.log('PUT:', url, data);
+    return this.http.put<T>(url, data, { headers: this.getHeaders() });
+  }
+
+  delete<T>(url: string): Observable<T> {
+    console.log('DELETE:', url);
+    return this.http.delete<T>(url, { headers: this.getHeaders() });
+  }
+}
+>>>>>>> FEAT-componentes

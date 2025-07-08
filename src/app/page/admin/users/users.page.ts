@@ -1,13 +1,24 @@
+<<<<<<< HEAD
 import { ChangeDetectionStrategy, Component, computed, inject, signal, Signal } from "@angular/core";
 import { PreferenceService } from "@Client/preference/preference.service";
 import { UserService } from "@Client/service/user.service";
 import { ModuleListComponent } from "@Component/feature/permisions/module-list/module-list.component";
 import { UserDetailComponent } from "@Component/feature/users/user-detail/user-detail.component";
+=======
+import { ChangeDetectionStrategy, Component, computed, inject, Signal } from "@angular/core";
+import { PreferenceService } from "@Client/preference/preference.service";
+import { UserService } from "@Client/service/user.service";
+import { ModuleListComponent } from "@Component/feature/permisions/module-list/module-list.component";
+>>>>>>> FEAT-componentes
 import { UserListComponent } from "@Component/feature/users/user-list/user-list.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 import { ButtonComponent, DropdownComponent, InfoComponent, InputComponent } from "@Component/UI/standalone";
 import { Dropdown, Preference } from "@Interface/ui.interface";
+<<<<<<< HEAD
 import { CreateUser, User } from "@Interface/user.interface";
+=======
+import { CreateUser } from "@Interface/user.interface";
+>>>>>>> FEAT-componentes
 import { ButtonStyle } from "@Types_/ui.types";
 
 @Component({
@@ -20,7 +31,10 @@ import { ButtonStyle } from "@Types_/ui.types";
         DropdownComponent,
         InfoComponent,
         UserListComponent,
+<<<<<<< HEAD
         UserDetailComponent,
+=======
+>>>>>>> FEAT-componentes
         ModuleListComponent
     ],
     templateUrl: './users.page.html',
@@ -30,10 +44,15 @@ import { ButtonStyle } from "@Types_/ui.types";
 export class UsersPage {
     private readonly _preferenceService: PreferenceService = inject(PreferenceService);
     private readonly _userService: UserService = inject(UserService);
+<<<<<<< HEAD
 
     public formStatus: boolean = true;
     public userDetail = signal<User | null>(null);
     public preference: Signal<Preference> = computed(() => this._preferenceService.getPreference());
+=======
+    public preference: Signal<Preference> = computed(() => this._preferenceService.getPreference());
+
+>>>>>>> FEAT-componentes
     public roles: Dropdown[] = [
         {
             label: "Administrador",
@@ -64,6 +83,7 @@ export class UsersPage {
     }
 
     public createUser(): void {
+<<<<<<< HEAD
         // this._userService.post(this.userForm);
         this.cleanForm();
     }
@@ -73,6 +93,12 @@ export class UsersPage {
         this.userDetail.set(user)
     }
 
+=======
+        this._userService.post(this.userForm);
+        this.cleanForm();
+    }
+
+>>>>>>> FEAT-componentes
     public cleanForm(): void {
         this.userForm = {
             firstName: '',
@@ -91,6 +117,7 @@ export class UsersPage {
         const { firstName, lastName, email, rol } = this.userForm;
 
         return (
+<<<<<<< HEAD
             (firstName ?? '').trim() !== '' &&
             (lastName ?? '').trim() !== '' &&
             (email ?? '').trim() !== '' &&
@@ -131,4 +158,12 @@ export class UsersPage {
         this.userForm = this.mapUserToCreateUser(user);
         console.log(this.userForm)
     }
+=======
+            firstName.trim() !== '' &&
+            lastName.trim() !== '' &&
+            email.trim() !== '' &&
+            rol.trim() !== ''
+        );
+    }
+>>>>>>> FEAT-componentes
 }
