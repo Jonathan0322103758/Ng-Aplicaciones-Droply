@@ -1,0 +1,14 @@
+<div class="info-card flex-center">
+    <div class="icon flex-center {{ color() }}">
+        <i [class]="icon()"></i>
+    </div>
+    <div class="text flex-column">
+        <label class="text-bold">{{title()}}</label>
+        @if(text()){
+            <label class="text-light">{{text()}}</label>
+        }
+        @if(info()){
+            <label class="info text-bold {{color()}}">{{info()}}</label>
+        }
+    </div>
+</div>
