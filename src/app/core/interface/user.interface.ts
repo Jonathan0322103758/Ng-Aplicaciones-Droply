@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import { Module } from "./module.interface";
 
-=======
->>>>>>> FEAT-componentes
 export interface User {
     _id: number;
     name: string;
@@ -21,9 +18,5 @@ export interface CreateUser {
     employeeId: string;
     password: string;
     rol: string;
-<<<<<<< HEAD
     modules: Module[]
-=======
-    modules: []
->>>>>>> FEAT-componentes
 }

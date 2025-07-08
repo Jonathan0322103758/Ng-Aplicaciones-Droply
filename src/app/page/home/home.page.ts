@@ -11,10 +11,6 @@ import { TitleHeaderComponent } from "@Component/shared/title-header/title-heade
     styleUrl: './home.page.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-<<<<<<< HEAD
 export class HomePage {
 
 }
-=======
-export class HomePage { /** Solo componentes */ }
->>>>>>> FEAT-componentes

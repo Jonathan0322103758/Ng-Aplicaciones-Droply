@@ -16,14 +16,11 @@
         position: relative;
         flex: 1;
 
-<<<<<<< HEAD
         &.scroll {
             @extend %scrollbar;
             min-height: 350px;
         }
 
-=======
->>>>>>> FEAT-componentes
         .body-content {
             height: calc(100% - 160px);
             padding: 20px;
@@ -82,7 +79,6 @@
             }
         }
     }
-<<<<<<< HEAD
     
     .option {
         position: absolute;
@@ -99,14 +95,6 @@
 
     qx-button {
         position: absolute;
-=======
-
-    qx-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-
->>>>>>> FEAT-componentes
         &.cancel {
             top: auto;
             bottom: 10px;
