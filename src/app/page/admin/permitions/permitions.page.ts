@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Signal } from "@angular/core";
 import { PreferenceService } from "@Client/preference/preference.service";
+import { InfoCardComponent } from "@Component/shared/info-card/info-card.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 import { ButtonComponent, InfoComponent } from "@Component/UI/standalone";
 import { ButtonStyle, ColorType } from "@Types_/ui.types";
@@ -7,7 +8,7 @@ import { ButtonStyle, ColorType } from "@Types_/ui.types";
 @Component({
     selector: 'page-permitions',
     standalone: true,
-    imports: [TitleHeaderComponent, InfoComponent, ButtonComponent],
+    imports: [TitleHeaderComponent, InfoComponent, ButtonComponent, InfoCardComponent],
     templateUrl: './permitions.page.html',
     styleUrl: './permitions.page.scss',
     changeDetection: ChangeDetectionStrategy.OnPush

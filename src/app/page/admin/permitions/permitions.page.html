@@ -1,21 +1,42 @@
 <div class="content-page">
     <qx-title-header title="Roles y Permisos" />
-    <div class="container-target flex-column">
-        <qx-title-header title="Lista de roles" />
-        <div class="body-target flex-column">
-            <qx-info
-                info="La gestión de roles y permisos determina qué acciones puede realizar cada usuario dentro del sistema. Asignarlos correctamente es clave para mantener la seguridad, la organización y el control del acceso.
+    <div class="single-content grid">
+        <div class="container-target flex-column col-xl-4">
+            <qx-title-header title="Lista de roles" />
+            <div class="body-target flex-column">
+                <qx-info
+                    info="La gestión de roles y permisos determina qué acciones puede realizar cada usuario dentro del sistema. Asignarlos correctamente es clave para mantener la seguridad, la organización y el control del acceso.
                 Modifica estos valores con precaución, ya que un error podría otorgar privilegios innecesarios o restringir funciones importantes." />
                 @for(rol of listaRoles; track rol._id){
-                    <div class="rol-target flex-start">
-                        <i class="fas fa-user-shield"></i>
-                        <div class="flex-column">
-                            <label class="text-bold">{{ rol.name }}</label>
-                            <label class="text-light">{{ rol.description }}</label>
-                        </div>
-                        <qx-button type="icon" icon="fas fa-lock" [styleClass]="buttonStyle()" [disabled]="true"/>
+                <div class="rol-target flex-start">
+                    <i class="fas fa-user-shield"></i>
+                    <div class="flex-column">
+                        <label class="text-bold">{{ rol.name }}</label>
+                        <label class="text-light">{{ rol.description }}</label>
                     </div>
+                    <qx-button type="icon" icon="fas fa-lock" [styleClass]="buttonStyle()" [disabled]="true" />
+                </div>
                 }
+            </div>
+        </div>
+        <div class="grid-column flex-column col-8">
+            <div class="grid col-12 col-xl-8">
+                <div class="col-6">
+                    <qx-info-card color="primary" icon="fas fa-circle-plus" title="Crear nuevo usuario" text="Agrega un nuevo usuario al sistema"/>
+                </div>
+                <div class="col-6">
+                    <qx-info-card color="info" icon="fas fa-file" title="Usuarios registrados" text="Consulta los usuarios registrados en el sistema" info="26 usuarios registrados"/>
+                </div>
+            </div>
+            <br>
+            <div class="grid col-12 col-xl-8">
+                <div class="col-6">
+                    <qx-info-card color="success" icon="fas fa-user-shield" title="Usuarios por rol" text="Consulta la cantidad de usuarios por rol asignado" info="Administrador: 2 ...(+2 roles más)"/>
+                </div>
+                <div class="col-6">
+                    <qx-info-card color="warning" icon="fas fa-cube" title="Módulos" text="Habilita o deshabilita módulos completos" info="8 módulos habilitados"/>
+                </div>
+            </div>
         </div>
     </div>
 </div>
