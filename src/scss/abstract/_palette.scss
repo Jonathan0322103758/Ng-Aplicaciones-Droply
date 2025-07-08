@@ -6,7 +6,8 @@ $success:   #26BF94; $bg-success:   #C7FFDA;
 // $success:   #00EE3C; $bg-success:   #C7FFDA;
 $text:      #343434; $bg-text:      #E4E4E4;
 $danger:    #DC3545; $bg-danger:    #FFC4CD;
-$warning:   #FFC107; $bg-warning:   #FFF2CC;
+$warning:   #F5BB49; $bg-warning:   #FFF2CC;
+$info:      #23B7E5; $bg-info:      #A8DDF1;
 $orange:    #FF642B; $bg-orange:    #FFD8CA;
 
 $light:  var(--light); $bg-light:     var(--bg-light);
@@ -177,6 +178,7 @@ $palette: (
     'success':   $success,
     'danger':    $danger,
     'warning':   $warning,
+    'info':      $info,
     'orange':    $orange,
     'light':     $light,
     'dark':      $dark,
@@ -190,6 +192,7 @@ $bg-palette: (
     'success':   $bg-success,
     'danger':    $bg-danger,
     'warning':   $bg-warning,
+    'info':      $bg-info,
     'orange':    $bg-orange,
     'light':     $bg-light,
     'dark':      $bg-dark,
@@ -203,6 +206,7 @@ $clr-palette: (
     'success':   $light,
     'danger':    $light,
     'warning':   $light,
+    'info':      $light,
     'orange':    $light,
     'light':     $dark,
     'dark':      $light,
