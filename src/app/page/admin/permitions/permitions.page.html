@@ -28,8 +28,9 @@
                     <qx-info-card color="success" icon="fas fa-user-shield" title="Usuarios por rol" text="Consulta la cantidad de usuarios por rol asignado" info="Administrador: 2 ...(+2 roles más)"/>
                     <qx-info-card color="warning" icon="fas fa-cube" title="Módulos" text="Habilita o deshabilita módulos completos" info="8 módulos habilitados"/>
             </div>
-            <div class="container-target">
+            <div class="container-target flex-column">
                 <qx-title-header title="Módulos habilitados por rol" icon="fas fa-cube" [subtitle]="true"/>
+                <qx-role-modules-list/>
             </div>
         </div>
     </div>

@@ -1,0 +1,29 @@
+<div class="role-module-table-wrapper">
+    <table class="role-module-table">
+      <thead>
+        <tr>
+          @for (dummy of dummydata; track dummy.rol) {
+          <th>
+            <div class="flex-center">
+              <i class="fas fa-user-shield success"></i>
+              <div class="text-bold">{{ dummy.rol }}</div>
+            </div>
+          </th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          @for (modules of dummydata; track modules.rol) {
+          <td>
+            <div>
+              @for (module of modules.modulos; track module._id) {
+              <qx-module-card [module]="module" [status]="true" />
+              }
+            </div>
+          </td>
+          }
+        </tr>
+      </tbody>
+    </table>
+</div>

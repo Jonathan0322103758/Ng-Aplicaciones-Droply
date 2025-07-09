@@ -2,22 +2,21 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, Signal } from '@angular/core';
 import { PreferenceService } from '@Client/preference/preference.service';
 import { ModuleService } from '@Client/service/module.service';
-import { BadgeComponent, ButtonComponent } from '@Component/UI/standalone';
+import { BadgeComponent, ButtonComponent, InfoComponent } from '@Component/UI/standalone';
 import { Module } from '@Interface/module.interface';
 import { ButtonStyle, ColorType } from '@Types_/ui.types';
 import { Observable } from 'rxjs';
+import { ModuleCardComponent } from '../module-card/module-card.component';
 
 @Component({
   selector: 'qx-module-list',
   standalone: true,
-  imports: [ButtonComponent, BadgeComponent, AsyncPipe],
+  imports: [ModuleCardComponent, InfoComponent, AsyncPipe],
   templateUrl: './module-list.component.html',
   styleUrl: './module-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModuleListComponent implements OnInit {
-  public selector = input<boolean>(true)
-
   private readonly _preferenceService: PreferenceService = inject(PreferenceService);
   private readonly _moduleService: ModuleService = inject(ModuleService);
 

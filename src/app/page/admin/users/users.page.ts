@@ -43,7 +43,10 @@ export class UsersPage {
             label: "Gerente",
             value: "GERENTE_ROLE"
         },
-
+        {
+            label: "Auditor",
+            value: "AUDITOR_ROLE"
+        },
     ]
 
     public userForm: CreateUser = {
@@ -64,7 +67,7 @@ export class UsersPage {
     }
 
     public createUser(): void {
-        // this._userService.post(this.userForm);
+        this._userService.post(this.userForm);
         this.cleanForm();
     }
 
