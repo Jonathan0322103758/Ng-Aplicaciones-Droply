@@ -1,0 +1,34 @@
+@import "@Scss/abstract/_placeholder.scss";
+
+.info-card {
+    width: var(--info-card-width);
+    height: var(--info-card-height);
+    padding: 20px;
+    gap: 20px;
+    border: 1px solid var(--color-muted);
+    border-radius: 5px;
+    background: var(--bg-surface);
+
+    .icon {
+        @extend %background-dynamic;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        font-size: 20px;
+    }
+
+    .text {
+        flex: 1;
+        color: var(--color-text);
+        gap: 10px;
+
+        .text-light {
+            font-size: 12px;
+        }
+
+        .info {
+            @extend %color-dynamic;
+            font-size: 12px;
+        }
+    }
+}
