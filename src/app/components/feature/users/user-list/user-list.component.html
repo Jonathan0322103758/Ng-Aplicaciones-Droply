@@ -7,9 +7,6 @@
     </div>
     <div class="user-list">
         @for(user of filteredUsers(); track user._id) {
-<<<<<<< HEAD
-            <qx-user-card-settings [user]="user"/>
-=======
             <qx-user-card-settings [user]="user" (click)="detailUser(user)"/>
         }
 
@@ -17,7 +14,6 @@
             <div class="user-not-found">
                 <qx-info info="No se ha encontrado ningun usuario, intenta buscar por nombre, correo, matricula o rol de usuario"/>
             </div>
->>>>>>> FEAT-modulo-usuarios
         }
     </div>
 </div>
