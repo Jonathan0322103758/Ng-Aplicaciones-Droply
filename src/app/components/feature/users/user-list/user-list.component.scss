@@ -11,7 +11,11 @@
         gap: 20px;
 
         i {
+<<<<<<< HEAD
             font-size: 20px;
+=======
+            font-size: 14px;
+>>>>>>> FEAT-modulo-usuarios
         }
 
         input {
@@ -19,7 +23,11 @@
             color: var(--color-text);
             width: 100%;
             padding: 10px;
+<<<<<<< HEAD
             font-size: 16px;
+=======
+            font-size: 14px;
+>>>>>>> FEAT-modulo-usuarios
             border: 0;
             outline: 0;
         }
@@ -27,5 +35,16 @@
 
     .user-list {
         @extend %scrollbar;
+<<<<<<< HEAD
     }
+=======
+
+        .user-not-found {
+            font-size: 14px;
+            width: 350px;
+            padding: 20px;
+        }
+    }
+
+>>>>>>> FEAT-modulo-usuarios
 }

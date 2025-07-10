@@ -1,4 +1,4 @@
-import { Component, input, output, signal, effect, inject, computed, Signal } from '@angular/core';
+import { Component, input, output, signal, effect, inject, computed, Signal, ChangeDetectionStrategy } from '@angular/core';
 import { PreferenceService } from '@Client/preference/preference.service';
 import { Dropdown } from '@Interface/ui.interface';
 import { ClassType, ColorType } from '@Types_/ui.types';
@@ -7,7 +7,8 @@ import { ClassType, ColorType } from '@Types_/ui.types';
   selector: 'qx-dropdown',
   standalone: true,
   templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.scss'
+  styleUrl: './dropdown.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent {
   private readonly _preferenceService: PreferenceService = inject(PreferenceService);
@@ -28,17 +29,16 @@ export class DropdownComponent {
   public internalSelected = signal<any>(this.selectedValue());
 
   constructor() {
-    // Efecto para mantener sincronizado el valor externo si cambia desde fuera
     effect(() => {
-      const external = this.selectedValue();
-      const selectedOption = this.options().find(opt => opt.value === external);
-      if (selectedOption && selectedOption !== this.internalSelected()) {
-        this.internalSelected.set(selectedOption);
-      }
+      const externalValue = this.selectedValue();
+      const allOptions = this.options();
+      const match = allOptions.find(opt => opt.value === externalValue || this.selectedValue());
+
+      this.internalSelected.set(match ?? null);
     }, { allowSignalWrites: true });
 
-
   }
+
 
   public toggleDropdown(): void {
     this.open.update((v) => !v);

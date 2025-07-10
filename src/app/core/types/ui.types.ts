@@ -5,13 +5,13 @@ class UI {
 /* B */
     static readonly buttonType = ['icon', 'label', 'label-icon'] as const;
     static readonly buttonColorType = [
-        'primary', 'secondary', 'success', 'danger','orange', 'warning', 'light', 'dark',
-        'primary-light', 'secondary-light', 'success-light', 'danger-light', 'warning-light', 'light-light', 'dark-light',
-        'primary-ghost', 'secondary-ghost', 'success-ghost', 'danger-ghost', 'warning-ghost', 'light-ghost', 'dark-ghost'
+        'primary', 'secondary', 'success', 'danger','orange', 'warning', 'info', 'light', 'dark',
+        'primary-light', 'secondary-light', 'success-light', 'danger-light', 'warning-light', 'info-light', 'light-light', 'dark-light',
+        'primary-ghost', 'secondary-ghost', 'success-ghost', 'danger-ghost', 'warning-ghost', 'info-ghost', 'light-ghost', 'dark-ghost'
     ] as const;
 /* C */
     static readonly shapeType = ['square', 'rounded', 'custom', 'default'] as const;
-    static readonly colorType = ['primary', 'secondary', 'success', 'danger', 'warning', 'orange', 'light', 'dark'] as const;
+    static readonly colorType = ['primary', 'secondary', 'success', 'danger', 'warning', 'orange', 'info', 'light', 'dark'] as const;
 /* L */
     static readonly lenguageType = ['ES'] as const;
 /* S */

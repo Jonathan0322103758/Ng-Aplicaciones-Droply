@@ -16,6 +16,11 @@
         position: relative;
         flex: 1;
 
+        &.scroll {
+            @extend %scrollbar;
+            min-height: 350px;
+        }
+
         .body-content {
             height: calc(100% - 160px);
             padding: 20px;
@@ -74,12 +79,22 @@
             }
         }
     }
-
-    qx-button {
+    
+    .option {
         position: absolute;
         top: 20px;
         right: 20px;
+        qx-button {
+            position: relative;
+        }
 
+        &.none {
+            display: none;
+        }
+    }
+
+    qx-button {
+        position: absolute;
         &.cancel {
             top: auto;
             bottom: 10px;

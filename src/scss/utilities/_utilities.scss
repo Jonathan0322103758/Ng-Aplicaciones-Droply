@@ -45,6 +45,12 @@
     color: #A3AED1;
 }
 
+.single-content {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+}
+
 .text-line {
   color: var(--color-text);
   line-height: 1.4;
