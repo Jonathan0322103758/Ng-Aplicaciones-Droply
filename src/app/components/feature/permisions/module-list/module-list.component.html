@@ -1,17 +1,13 @@
 @if(modules$ | async){
     <div class="flex-column">
     @for(module of modules(); track module._id) {
-        <div class="list-card flex-start" [class.status-false]="!module.status" [class.selected]="module.status">
-            <i class="fas fa-{{ module.icon }} {{ accentColor() }}"></i>
-            <label class="text-light">{{module.module}}</label>
-            @if(selector()) {
-                <qx-button type="label" [styleClass]="buttonStyle()" [label]="module.status === false ? 'Habilitar' : 'Habilitado'" (onClick)="sendModules(module, !module.status)"/>
-            } @else {
-                <qx-badge text="Habilitado" styleClass="rounded success"/>
-            }
-        </div>
-
-        
+        <qx-module-card [module]="module"/>
     }
 </div>
+}
+
+@if(modules().length === 0) {
+    <div class="flex-center">
+        <qx-info info="No hay módulos disponible"/>
+    </div>
 }

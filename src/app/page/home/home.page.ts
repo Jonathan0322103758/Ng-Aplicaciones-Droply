@@ -6,7 +6,7 @@ import { TitleHeaderComponent } from "@Component/shared/title-header/title-heade
 @Component({
     selector: 'page-home',
     standalone: true,
-    imports: [TitleHeaderComponent, PreferenceComponent, InfoCardComponent],
+    imports: [TitleHeaderComponent, PreferenceComponent],
     templateUrl: './home.page.html',
     styleUrl: './home.page.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
