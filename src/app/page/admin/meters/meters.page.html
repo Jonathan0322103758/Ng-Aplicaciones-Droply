@@ -6,101 +6,69 @@
         <div class="list">
             <div class="list-header">
                 <qx-title-header title="Medidores" />
-                <qx-button 
-                    type="icon"
-                    [styleClass]="'rounded primary'"
-                    icon="fas fa-circle-plus"
-                    (onClick)="newMeter()"
-                    class="add-meter-btn"
-                />
+                <qx-button type="icon" [styleClass]="'rounded primary'" icon="fas fa-circle-plus" (onClick)="newMeter()"
+                    class="add-meter-btn" />
             </div>
             <div class="meter-list">
                 @for (meter of meters; track meter; let i = $index) {
-                    <div 
-                        class="meter-item"
-                        (click)="selectMeter(i)">
-                        <i class="fas fa-gauge"></i>
-                        <div class="meter-info">
-                            <div class="meter-name">{{ meter.name }}</div>
-                            <div class="meter-type">{{ meter.type | titlecase }}</div>
-                        </div>
+                <div class="meter-item" (click)="selectMeter(i)">
+                    <i class="fas fa-gauge"></i>
+                    <div class="meter-info">
+                        <div class="meter-name">{{ meter.name }}</div>
+                        <div class="meter-type">{{ meter.type | titlecase }}</div>
                     </div>
+                </div>
                 }
                 @if(meters.length === 0) {
-                    <div class="empty-list">No hay medidores registrados.</div>
+                <div class="empty-list">No hay medidores registrados.</div>
                 }
             </div>
         </div>
 
- 
+
         @if(view === 'detail' && selectedMeter() !== null) {
-            <div class="content scroll">
-                <div class="content-header">
-                    <qx-title-header title="Detalles" />
-                    <qx-button 
-                        type="icon"
-                        styleClass="rounded dark-ghost"
-                        icon="fa-solid fa-xmark"
-                        (onClick)="showList()"
-                        class="back-btn"
-                    />
-                </div>
-                <div class="meter-detail">
-                    <div class="detail-row"><b>Nombre:</b> {{ selectedMeter()!.name }}</div>
-                    <div class="detail-row"><b>Serie:</b> {{ selectedMeter()!.serialNumber }}</div>
-                    <div class="detail-row"><b>Tipo:</b> {{ selectedMeter()!.type | titlecase }}</div>
-                    <div class="detail-row"><b>Ubicación:</b> {{ selectedMeter()!.location }}</div>
-                </div>
-                <div class="content-actions">
-                    <qx-button 
-                        type="icon"
-                        styleClass="rounded success"
-                        icon="fas fa-pen-to-square"
-                        (onClick)="editMeter()"
-                    />
-                    <qx-button 
-                        type="icon"
-                        styleClass="rounded danger"
-                        icon="fas fa-trash"
-                        (onClick)="deleteMeter()"
-                    />
-                </div>
+        <div class="content scroll flex-column">
+                <qx-title-header title="Detalles" />
+                <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-xmark" (onClick)="showList()"/>
+            <div class="meter-detail">
+                <div class="detail-row"><b>Nombre:</b> {{ selectedMeter()!.name }}</div>
+                <div class="detail-row"><b>Serie:</b> {{ selectedMeter()!.serialNumber }}</div>
+                <div class="detail-row"><b>Tipo:</b> {{ selectedMeter()!.type | titlecase }}</div>
+                <div class="detail-row"><b>Ubicación:</b> {{ selectedMeter()!.location }}</div>
             </div>
+            <div class="content-actions">
+                <qx-button type="icon" styleClass="rounded success" icon="fas fa-pen-to-square"
+                    (onClick)="editMeter()" />
+                <qx-button type="icon" styleClass="rounded danger" icon="fas fa-trash" (onClick)="deleteMeter()" />
+            </div>
+        </div>
         } @else if(view === 'form') {
-            <div class="content flex-column">
-                <div class="content-header">
-                    <qx-title-header [title]="selectedIndex === null ? 'Nuevo medidor' : 'Editar medidor'" />
-                    <qx-button 
-                        type="icon"
-                        styleClass="rounded dark-ghost"
-                        icon="fa-solid fa-xmark"
-                        (onClick)="showList()"
-                        class="back-btn"
-                    />
-                </div>
-                <div class="body-content flex-column">
-                    <div class="meter-form flex-column">
-                        <qx-input type="text" styleClass="square" label="Nombre" placeholder="Escribir nombre"
-                            [required]="true" [(value)]="meterForm.name" />
-                        <qx-input type="text" styleClass="square" label="Número de Serie"
-                            placeholder="Escribir número de serie" [required]="true" [(value)]="meterForm.serialNumber" />
-                        <qx-dropdown styleClass="square" label="Tipo de medidor" [options]="meterTypes" [required]="true"
-                            [(selectedValue)]="meterForm.type" />
-                        <qx-input type="text" styleClass="square" label="Ubicación"
-                            placeholder="Escribir ubicación" [(value)]="meterForm.location" />
-                    </div>
-                </div>
-                <div class="content-actions">
-                    <qx-button class="cancel" type="label-icon" styleClass="rounded danger" icon="fas fa-xmark"
-                        label="Cancelar" (onClick)="showList()" />
-                    <qx-button class="save" type="label-icon" styleClass="rounded success" icon="fas fa-floppy-disk"
-                        label="Guardar" [disabled]="!isFormValid()" (onClick)="saveMeter()" />
+        <div class="content flex-column">
+            <qx-title-header [title]="selectedIndex === null ? 'Nuevo medidor' : 'Editar medidor'" />
+            <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-xmark" (onClick)="showList()" />
+            <div class="body-content flex-column">
+                <div class="meter-form flex-column">
+                    <qx-input type="text" styleClass="square" label="Nombre" placeholder="Escribir nombre"
+                        [required]="true" [(value)]="meterForm.name" />
+                    <qx-input type="text" styleClass="square" label="Número de Serie"
+                        placeholder="Escribir número de serie" [required]="true" [(value)]="meterForm.serialNumber" />
+                    <qx-dropdown styleClass="square" label="Tipo de medidor" [options]="meterTypes" [required]="true"
+                        [(selectedValue)]="meterForm.type" />
+                    <qx-input type="text" styleClass="square" label="Ubicación" placeholder="Escribir ubicación"
+                        [(value)]="meterForm.location" />
                 </div>
             </div>
+            <div class="content-actions">
+                <qx-button class="cancel" type="label-icon" styleClass="rounded danger" icon="fas fa-xmark"
+                    label="Cancelar" (onClick)="showList()" />
+                <qx-button class="save" type="label-icon" styleClass="rounded success" icon="fas fa-floppy-disk"
+                    label="Guardar" [disabled]="!isFormValid()" (onClick)="saveMeter()" />
+            </div>
+        </div>
         } @else {
-            <div class="content-empty flex-center">
-                <span>Selecciona un medidor para ver detalles.</span>
-            </div>
+        <div class="content-empty flex-center">
+            <span>Selecciona un medidor para ver detalles.</span>
+        </div>
         }
     </div>
 </div>

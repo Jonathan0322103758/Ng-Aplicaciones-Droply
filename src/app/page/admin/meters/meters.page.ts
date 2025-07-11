@@ -34,9 +34,8 @@ export class MetersPage {
     ];
 
     public meterTypes = [
-        { label: "Agua", value: "agua" },
-        { label: "Luz", value: "luz" },
-        { label: "Gas", value: "gas" }
+        { label: "Manual", value: 1 },
+        { label: "Automático", value: 2 },
     ];
 
     public view: ViewMode = 'list';         
