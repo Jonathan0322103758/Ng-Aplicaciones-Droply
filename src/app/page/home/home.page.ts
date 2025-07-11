@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { PreferenceComponent } from "@Component/feature/preference/preference.component";
-import { InfoCardComponent } from "@Component/shared/info-card/info-card.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 
 @Component({
