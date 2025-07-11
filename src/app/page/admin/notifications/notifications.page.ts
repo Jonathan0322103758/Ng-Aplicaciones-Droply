@@ -12,14 +12,15 @@ import { ButtonComponent } from '@Component/UI/standalone';
 import { PreferenceService } from '@Client/preference/preference.service';
 import { Preference } from '@Interface/ui.interface';
 import { ButtonStyle } from '@Types_/ui.types';
+import { InfoCardComponent } from '@Component/shared/info-card/info-card.component';
 
 @Component({
   selector: 'page-notifications',
   standalone: true,
   imports: [
-    CommonModule,
     TitleHeaderComponent,
-    ButtonComponent
+    ButtonComponent,
+    InfoCardComponent
   ],
   templateUrl: './notifications.page.html',
   styleUrl: './notifications.page.scss',
