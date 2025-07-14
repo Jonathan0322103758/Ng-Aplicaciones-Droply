@@ -30,12 +30,13 @@ export class DropdownComponent {
 
   constructor() {
     effect(() => {
-      const externalValue = this.selectedValue();
-      const allOptions = this.options();
-      const match = allOptions.find(opt => opt.value === externalValue || this.selectedValue());
-
-      this.internalSelected.set(match ?? null);
+      const external = this.selectedValue();
+      const selectedOption = this.options().find(opt => opt.value === external);
+      if (selectedOption && selectedOption !== this.internalSelected()) {
+        this.internalSelected.set(selectedOption);
+      }
     }, { allowSignalWrites: true });
+
 
   }
 

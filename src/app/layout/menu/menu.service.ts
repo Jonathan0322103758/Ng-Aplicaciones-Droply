@@ -4,7 +4,7 @@ import { StatusType } from "@Types_/ui.types";
 
 @Injectable({providedIn: 'root'})
 export class MenuService {
-  private readonly _status: WritableSignal<StatusType> = signal<StatusType>('open');
+  private readonly _status: WritableSignal<StatusType> = signal<StatusType>('closed');
   private readonly _activeSubmenu: WritableSignal<number[]> = signal<number[]>([0,0]);
   private readonly _padlock: WritableSignal<boolean> = signal<boolean>(true);
 

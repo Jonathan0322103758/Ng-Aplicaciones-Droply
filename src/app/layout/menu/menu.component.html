@@ -1,3 +1,4 @@
+<div id="overlay" [class]="status()" (click)="changeStatus()"></div>
 <div id="menu" [class]="'flex-column ' + status()">
     <div class="header flex-center flex-column">
         <label>QubeFlex</label>
@@ -25,5 +26,8 @@
                 }
             }
         }
+    </div>
+    <div class="button-closed flex-end">
+        <qx-button type="label-icon" styleClass="dark" icon="fas fa-multiply" label="Cerrar menú" (onClick)="changeStatus()"/>
     </div>
 </div>
