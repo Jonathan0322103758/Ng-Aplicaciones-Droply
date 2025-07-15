@@ -35,8 +35,9 @@ export class MetersPage {
     ];
 
     public meterTypes = [
-        { label: "Manual", value: 1 },
-        { label: "Automático", value: 2 },
+        { label: "Consumo", value: 1 },
+        { label: "Presión", value: 2 },
+        { label: "PH", value: 2 },
     ];
 
     public view: ViewMode = 'list';         
