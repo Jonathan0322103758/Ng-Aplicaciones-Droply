@@ -15,4 +15,5 @@ export class InfoCardComponent {
   public title = input.required<string>();
   public text = input<string>();
   public info = input<string>();
+  public box = input<boolean>(false);
 }
