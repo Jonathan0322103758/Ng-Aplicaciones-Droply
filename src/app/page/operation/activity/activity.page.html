@@ -2,17 +2,23 @@
     <qx-title-header title="Espacio Personal" />
 
     <div class="single-content flex-row">
-        @for (column of columns; track $index) {
-        <div class="kanban-column flex-column">
+        @for (column of columns; let i = $index; track i) {
+        <div class="kanban-column flex-column" cdkDropList [id]="'column-drop-' + i" [cdkDropListData]="column.tasks"
+            [cdkDropListConnectedTo]="dropListIds" (cdkDropListDropped)="drop($event, column)">
             <div class="title flex-row">
-                <div [class]="'bar ' + getStatusColor(column.status)"></div>
+                <div class="bar" [class]="getStatusColor(column.status)"></div>
                 <label class="text-bold">{{ column.status }}</label>
             </div>
             @for (task of column.tasks; track task) {
-            <qx-activity-card [title]="task.title" [fromTo]="getFromTo(task.from, task.to)" [summary]="task.summary" />
+            <div cdkDrag class="task-wrapper">
+                <div class="task-placeholder" *cdkDragPlaceholder></div>
+
+                <qx-activity-card [title]="task.title" [fromTo]="getFromTo(task.from, task.to)"
+                    [summary]="task.summary" />
+            </div>
+
             }
         </div>
         }
-
     </div>
 </div>

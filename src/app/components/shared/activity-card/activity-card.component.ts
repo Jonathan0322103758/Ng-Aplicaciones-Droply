@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ButtonComponent, InfoComponent } from '@Component/UI/standalone';
 
 @Component({
@@ -6,12 +6,20 @@ import { ButtonComponent, InfoComponent } from '@Component/UI/standalone';
   standalone: true,
   imports: [InfoComponent, ButtonComponent],
   templateUrl: './activity-card.component.html',
-  styleUrl: './activity-card.component.scss'
+  styleUrl: './activity-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActivityCardComponent {
   public title = input.required<string>();
   public fromTo = input.required<string>();
   public summary = input<string>();
   public status = input<string>();
+
+  public lock: boolean = false;
+
+  public unlock(): string {
+    this.lock = !this.lock;
+    return this.lock ? 'fas fa-lock' : 'fas fa-unlock';
+  }
 
 }

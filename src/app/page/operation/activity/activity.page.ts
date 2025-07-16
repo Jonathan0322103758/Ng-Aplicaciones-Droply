@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { ActivityCardComponent } from "@Component/shared/activity-card/activity-card.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
-
+import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CommonModule } from "@angular/common";
 @Component({
   selector: 'page-home',
   standalone: true,
-  imports: [TitleHeaderComponent, ActivityCardComponent,],
+  imports: [TitleHeaderComponent, ActivityCardComponent, CommonModule, DragDropModule],
   templateUrl: './activity.page.html',
   styleUrl: './activity.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -78,7 +79,7 @@ export class ActivityPage {
           _id: 'task-005',
           title: 'Diseño inicial',
           from: '2024-07-01',
-          to: '2024-07-03',
+          to: '2025-07-18T00:00:00.000Z',
           summary: 'Diseño inicial de pantallas en prototipo.',
           assignedTo: 'Laura S.'
         },
@@ -94,28 +95,37 @@ export class ActivityPage {
     }
   ];
 
+  dropListIds = this.columns.map((_, i) => `column-drop-${i}`);
+
+
+  public drop(event: CdkDragDrop<any[]>, column: any) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(column.tasks, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        column.tasks,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
+
   public getFromTo(startDate: string, endDate: string): string {
-    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short' };
+    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit' };
     const start = new Date(startDate).toLocaleDateString('es-MX', options);
     const end = new Date(endDate).toLocaleDateString('es-MX', options);
     return `${start} - ${end}`;
   }
-
-
-
+    
   public getStatusColor(status: string): string {
     switch (status.toLowerCase()) {
-      case 'en pausa':
-        return 'primary';
-      case 'en progreso':
-        return 'info';
-      case 'terminado':
-        return 'success';
-      case 'archivado':
-        return 'warning';
-      default:
-        return 'neutral';
+      case 'archivado': return 'warning';
+      case 'en pausa': return 'info';
+      case 'en progreso': return 'secondary';
+      case 'terminado': return 'success';
     }
+    return 'neutral';
   }
 
 }
