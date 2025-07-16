@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
-import { ButtonComponent, InputComponent, DropdownComponent } from "@Component/UI/standalone";
+import { ButtonComponent, InputComponent, DropdownComponent, InfoComponent } from "@Component/UI/standalone";
 
 interface Meter {
     name: string;
@@ -21,7 +21,8 @@ type ViewMode = 'list' | 'detail' | 'form';
         TitleHeaderComponent,
         ButtonComponent,
         InputComponent,
-        DropdownComponent
+        DropdownComponent,
+        InfoComponent
     ],
     templateUrl: './meters.page.html',
     styleUrl: './meters.page.scss',
@@ -34,8 +35,9 @@ export class MetersPage {
     ];
 
     public meterTypes = [
-        { label: "Manual", value: 1 },
-        { label: "Automático", value: 2 },
+        { label: "Consumo", value: 1 },
+        { label: "Presión", value: 2 },
+        { label: "PH", value: 2 },
     ];
 
     public view: ViewMode = 'list';         

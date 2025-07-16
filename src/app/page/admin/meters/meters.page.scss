@@ -10,7 +10,7 @@
     display: flex;
 
     .list {
-        min-width: 350px;
+        width: 400px;
         max-width: 420px;
         flex-shrink: 0;
         height: 100%;
@@ -19,62 +19,35 @@
         background: var(--bg-surface);
         border-right: 1px solid var(--color-muted);
 
-        .list-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 18px 0 18px;
-            min-height: 64px;
-            box-sizing: border-box;
-            qx-title-header {
-                flex: 1;
-            }
-            .add-meter-btn {
-                margin-left: 18px;
-            }
-        }
         .meter-list {
-            overflow-y: auto;
             @extend %scrollbar;
+            flex: 1;
 
             .meter-item {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding: 14px 16px;
-                cursor: pointer;
-                border-left: 4px solid transparent;
+                height: 60px;
+                gap: 20px;
+                padding: 20px;
                 border-bottom: 1px solid var(--color-muted);
 
-                .meter-info {
-                    .meter-name {
-                        font-weight: bold;
-                        color: var(--color-text);
-                    }
-                    .meter-type {
-                        font-size: 12px;
-                        color: var(--color-muted);
-                    }
+                i {
+                    font-size: 25spx;
                 }
 
-                &:last-child {
-                    border-bottom: none;
+                &:hover {
+                    background: var(--color-muted);
                 }
-            }
-            .empty-list {
-                text-align: center;
-                margin-top: 30px;
-                color: var(--color-muted);
+                
             }
         }
     }
 
     .content {
         position: relative;
-        qx-button {
-                position: absolute;
-                top: 20px;
-                right: 20px;
+
+        .btn-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
     }
 
@@ -91,9 +64,11 @@
     .meter-detail {
         padding: 24px 18px 0 18px;
         flex: 0 0 auto;
+
         .detail-row {
             margin-bottom: 10px;
             font-size: 1.08rem;
+
             b {
                 color: var(--primary);
             }
@@ -102,18 +77,17 @@
 
     .body-content {
         flex: 1;
-        padding: 24px 18px 0 18px;
-        display: flex;
-        flex-direction: column;
+        gap: 20px;
+        padding: 24px 20px 0 20px;
+        
+        i {
+            font-size: 100px;
+        }
+
         .meter-form {
             @extend %scrollbar;
-            width: 60%;
+            flex: 1;
             gap: 20px;
-            padding: 0 20px;
-            qx-input,
-            qx-dropdown {
-                --input-width: calc(100% - 10px);
-            }
         }
     }
 
@@ -124,10 +98,6 @@
         align-items: flex-end;
         gap: 14px;
         padding: 0 18px 20px 18px;
-
-        qx-button {
-            position: relative;
-        }
     }
 
     .content-empty {
@@ -144,12 +114,14 @@
 @media (max-width: 900px) {
     .container {
         flex-direction: column;
+
         .list {
             min-width: 100%;
             max-width: 100%;
             border-right: none;
             border-bottom: 1px solid var(--color-muted);
         }
+
         .content,
         .content-empty {
             min-height: 300px;
