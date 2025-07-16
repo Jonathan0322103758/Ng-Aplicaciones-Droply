@@ -1,47 +1,104 @@
-    @import '@Scss/abstract/_layout.scss';
-    @import '@Scss/abstract/_placeholder.scss';
+@import "@Scss/abstract/_layout.scss";
+@import "@Scss/abstract/_placeholder.scss";
 
-    #menu {
-        @include layout(menu);
-        border-right: 1px solid var(--color-muted);
-        overflow: hidden;
-        
-        .header {
-            flex-shrink: 0;
-            height: var(--height-header);
-            width: 100%;
-            border-bottom: 1px solid var(--color-muted);
-            color: var(--menu-text-primary);
-            font-weight: bold;
-            font-size: 18px;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.250rem;
-            gap: 10px;
-        
-            img {
-                width: 60px;
-                height: 60px
-            }
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-glass);
+    z-index: 900;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 
-            .subtitle {
-                font-size: 10px
-            }
-        }
-
-        .body {
-            @extend %scrollbar;
-
-            flex: 1;
-            width: calc(100% - 20px);
-            padding: 10px;
-            gap: 2px;
-
-            .section {
-                gap: 10px;
-            }
-        }
+    @media (max-width: 1280px) {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1500;
 
         &.open {
-            width: var(--open-menu);
+            opacity: 1;
+            pointer-events: all;
         }
     }
+}
+
+#menu {
+    @include layout(menu);
+    border-right: 1px solid var(--color-muted);
+    overflow: hidden;
+
+    .header {
+        flex-shrink: 0;
+        height: var(--height-header);
+        width: 100%;
+        border-bottom: 1px solid var(--color-muted);
+        color: var(--menu-text-primary);
+        font-weight: bold;
+        font-size: 18px;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: 0.25rem;
+        gap: 10px;
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .subtitle {
+            font-size: 10px;
+        }
+    }
+
+    .body {
+        @extend %scrollbar;
+
+        flex: 1;
+        width: calc(100% - 20px);
+        padding: 10px;
+        gap: 2px;
+
+        .section {
+            gap: 10px;
+        }
+    }
+    .button-closed {
+        display: none;
+    }
+
+    &.open {
+        width: var(--open-menu);
+    }
+
+    @media (max-width: 1280px) {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 2000;
+    }
+
+    @media (max-width: 1024px) {
+        --open-menu: 300px;
+    }
+
+    @media (max-width: 580px) {
+        --open-menu: 100%;
+        width: 100%;
+        height: 100%;
+        top: -100%;
+        left: -100%;
+
+        &.open {
+            left: 0;
+            top: 0;
+        }
+
+        .button-closed {
+            padding: 20px;
+            display: flex;
+        }
+    }
+}

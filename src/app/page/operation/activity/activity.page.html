@@ -1,0 +1,18 @@
+<div class="content-page">
+    <qx-title-header title="Espacio Personal" />
+
+    <div class="single-content flex-row">
+        @for (column of columns; track $index) {
+        <div class="kanban-column flex-column">
+            <div class="title flex-row">
+                <div [class]="'bar ' + getStatusColor(column.status)"></div>
+                <label class="text-bold">{{ column.status }}</label>
+            </div>
+            @for (task of column.tasks; track task) {
+            <qx-activity-card [title]="task.title" [fromTo]="getFromTo(task.from, task.to)" [summary]="task.summary" />
+            }
+        </div>
+        }
+
+    </div>
+</div>

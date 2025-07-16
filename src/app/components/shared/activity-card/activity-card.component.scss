@@ -1,0 +1,30 @@
+@import "@Scss/abstract/_placeholder.scss";
+
+.activity-card {
+    position: relative;
+    border-bottom: 1px solid var(--color-muted);
+    padding: 20px 10px;
+    background: var(--bg-surface);
+
+    .activity-title {
+        gap: 10px;
+        font-size: 16px;
+        color: $danger;
+    }
+
+    .text-light {
+        font-size: 12px;
+        font-weight: 400;
+
+        label {
+            text-align: end;
+            padding: 10px;
+        }
+    }
+
+    qx-button {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}
