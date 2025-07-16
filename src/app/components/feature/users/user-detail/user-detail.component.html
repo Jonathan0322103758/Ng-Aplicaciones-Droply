@@ -1,0 +1,24 @@
+<div class="container flex-column">
+    <div class="flex-row">
+        <i class="fas fa-circle-user"></i>
+
+        <div class="user-info flex-column">
+            <qx-title-header title="Datos Personales" icon="fas fa-user-shield" [subtitle]="true" />
+
+            <div class="user-data-grid">
+                <div><strong>Nombre:</strong> {{ user()?.name }}</div>
+                <div><strong>Estado:</strong> {{ userStatus() }}</div>
+
+                <div><strong>Correo:</strong> {{ user()?.email }}</div>
+                <div><strong>Registrado:</strong> dd/mm/yyyy</div>
+
+                <div><strong>Matrícula:</strong> {{ user()?.number || 'Opcional' }}</div>
+                <div><strong>Rol:</strong> {{ user()?.rol }}</div>
+            </div>
+            <div class="user-modules">
+                <qx-title-header title="Módulos" icon="fas fa-cube" [subtitle]="true"/>
+                <qx-module-list/>
+            </div>
+        </div>
+    </div>
+</div>

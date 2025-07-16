@@ -1,3 +1,46 @@
 <div class="content-page">
-    <qx-title-header title="Notificaciones"/>
+  <qx-title-header title="Notificaciones" />
+
+  <div class="option-message flex-center">
+    <qx-info-card color="primary" icon="fas fa-envelope-open-text" title="Últimos mensajes" text="Ver últimos mensajes" info="3 nuevos mensajes"/>
+    <qx-info-card color="success" icon="fas fa-paper-plane" title="Enviar mensaje" text="Envíar mensaje a usuarios" info="26 usuarios"/>
+    <qx-info-card color="warning" icon="fas fa-clock" title="Recordar más tarde" text="Ver mensajes guardados" info="2 mensajes guardados"/>
+    <qx-info-card color="secondary" icon="fas fa-archive" title="Archivados" text="Ver mensajes archivados" info="3 mensajes archivados"/>
+    <qx-info-card color="danger" icon="fas fa-trash" title="Papelera" text="Ver mensajes en papelera" info="16 mensajes en papelera"/>
+  </div>
+
+  <div class="bottom-section">
+    <div class="list">
+      <qx-title-header title="Últimos mensajes" />
+
+      @for (msg of messages; track $index) {
+      <div class="message-item flex-center" (click)="view(msg)">
+        <div class="msg-icon">
+          <i class="fas fa-message"></i>
+        </div>
+        <div class="info">
+          <h4>{{ msg.title }}</h4>
+          <p>{{ msg.concept }}</p>
+        </div>
+        <div class="flex-center">
+          <!-- <qx-button type="icon" styleClass="rounded primary-ghost" icon="fas fa-eye" (onClick)="view(msg)" /> -->
+          <qx-button type="icon" styleClass="rounded warning-ghost" icon="fas fa-clock" (onClick)="snooze(msg)" />
+          <qx-button type="icon" styleClass="rounded secondary-ghost" icon="fas fa-archive" (onClick)="archive(msg)" />
+          <qx-button type="icon" styleClass="rounded danger-ghost" icon="fas fa-trash" (onClick)="delete(msg)" />
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="message-preview flex-column">
+      <div class="header">
+        <qx-title-header [title]="selectedMessage?.title || 'Nombre Nuevo Mensaje'"/>
+        <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-xmark" (onClick)="closePreview()" />
+      </div>
+      <div class="body">
+        <strong>Concepto:</strong>
+        <p>{{ selectedMessage?.content || 'Selecciona un mensaje para ver su contenido.' }}</p>
+      </div>
+    </div>
+  </div>
 </div>

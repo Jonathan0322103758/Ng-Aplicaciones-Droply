@@ -1,3 +1,5 @@
+@import '@Scss/abstract/_placeholder.scss';
+
 .flex-center {
     display: flex;
     justify-content: center;
@@ -34,6 +36,8 @@
 }
 
 .content-page {
+    @extend %scrollbar;
+
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -43,6 +47,12 @@
     overflow: hidden;
     overflow-y: auto;
     color: #A3AED1;
+}
+
+.single-content {
+    display: flex;
+    flex: 1;
+    gap: 20px;
 }
 
 .text-line {

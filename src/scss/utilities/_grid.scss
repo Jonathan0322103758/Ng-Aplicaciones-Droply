@@ -1,0 +1,51 @@
+$breakpoints: (
+  xs: 479px,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px
+);
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+
+  @media (max-width: map-get($breakpoints, sm)) {
+    gap: 12px;
+  }
+
+  @media (min-width: map-get($breakpoints, md)) {
+    gap: 16px;
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: span #{$i};
+  }
+
+  @media (min-width: map-get($breakpoints, sm)) {
+    .col-sm-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  @media (min-width: map-get($breakpoints, md)) {
+    .col-md-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    .col-lg-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  @media (min-width: map-get($breakpoints, xl)) {
+    .col-xl-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+}

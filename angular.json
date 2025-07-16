@@ -104,6 +104,14 @@
     }
   },
   "cli": {
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "analytics": "33de2856-baca-4980-91f6-661994c84a75"
+=======
     "analytics": "714fcd87-b5f5-46f9-91b0-97ab5e58690a"
+>>>>>>> FEAT-componentes
+=======
+    "analytics": "714fcd87-b5f5-46f9-91b0-97ab5e58690a"
+>>>>>>> FEAT-componentes
   }
 }
