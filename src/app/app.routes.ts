@@ -22,6 +22,10 @@ export const routes: Routes = [
         loadComponent: () => import('./page/admin/meters/meters.page').then((m) => m.MetersPage)
     },
     {
+        path: 'general-operation-activities',
+        loadComponent: () => import('./page/operation/activity/activity.page').then((m) => m.ActivityPage)
+    },
+    {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'

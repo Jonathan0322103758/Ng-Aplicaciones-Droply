@@ -1,0 +1,18 @@
+<div class="content-page">
+    <qx-title-header title="Espacio Personal" />
+
+    <div class="single-content flex-row">
+        @for (column of columns; track column.title) {
+        <div class="kanban-column">
+            <div class="title flex-column">
+                <label class="text-bold">{{ column.title }}</label>
+                <div class="bar" ></div>
+            </div>
+            @for (task of column.tasks; track task) {
+            <qx-activity-card [title]="task.title" [fromTo]="task.fromTo" [summary]="task.summary" />
+            }
+        </div>
+        }
+
+    </div>
+</div>
