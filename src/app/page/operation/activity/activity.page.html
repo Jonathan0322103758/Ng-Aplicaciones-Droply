@@ -4,13 +4,21 @@
         @for (column of columns; let i = $index; track i) {
         <div class="kanban-column flex-column" cdkDropList [id]="'column-drop-' + i" [cdkDropListData]="column.tasks"
             [cdkDropListConnectedTo]="dropListIds" (cdkDropListDropped)="drop($event, column)">
-            <div class="title flex-row">
+            <div class="title flex-column">
+                <label class="text-bold" [class]="getStatusColor(column.status)">{{ column.status }}</label>
                 <div class="bar" [class]="getStatusColor(column.status)"></div>
-                <label class="text-bold">{{ column.status }}</label>
             </div>
             <div class="flex-end">
-                <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-plus" />
+                <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-plus"
+                    (onClick)="toggleForm(column._id)" />
             </div>
+
+            @if (formOpen[column._id]) {
+            <div class="add-task-card">
+                <qx-input type="text" styleClass="square"/>
+                <qx-button type="label" styleClass="square success-ghost" label="Guardar"/>
+            </div>
+            }
             @for (task of column.tasks; track task) {
             <div cdkDrag class="task-wrapper">
                 <div class="task-placeholder" *cdkDragPlaceholder></div>
@@ -18,7 +26,6 @@
                 <qx-activity-card [title]="task.title" [fromTo]="getFromTo(task.from, task.to)"
                     [summary]="task.summary" />
             </div>
-
             }
         </div>
         }
