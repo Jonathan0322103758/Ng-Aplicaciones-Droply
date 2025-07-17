@@ -3,10 +3,11 @@ import { ActivityCardComponent } from "@Component/shared/activity-card/activity-
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { CommonModule } from "@angular/common";
+import { ButtonComponent } from "@Component/UI/standalone";
 @Component({
   selector: 'page-home',
   standalone: true,
-  imports: [TitleHeaderComponent, ActivityCardComponent, CommonModule, DragDropModule],
+  imports: [TitleHeaderComponent, ActivityCardComponent, ButtonComponent, CommonModule, DragDropModule],
   templateUrl: './activity.page.html',
   styleUrl: './activity.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

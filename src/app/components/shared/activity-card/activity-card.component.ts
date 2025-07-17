@@ -15,11 +15,4 @@ export class ActivityCardComponent {
   public summary = input<string>();
   public status = input<string>();
 
-  public lock: boolean = false;
-
-  public unlock(): string {
-    this.lock = !this.lock;
-    return this.lock ? 'fas fa-lock' : 'fas fa-unlock';
-  }
-
 }

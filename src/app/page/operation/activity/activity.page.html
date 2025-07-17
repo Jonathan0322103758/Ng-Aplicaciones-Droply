@@ -1,6 +1,5 @@
 <div class="content-page">
     <qx-title-header title="Espacio Personal" />
-
     <div class="single-content flex-row">
         @for (column of columns; let i = $index; track i) {
         <div class="kanban-column flex-column" cdkDropList [id]="'column-drop-' + i" [cdkDropListData]="column.tasks"
@@ -8,6 +7,9 @@
             <div class="title flex-row">
                 <div class="bar" [class]="getStatusColor(column.status)"></div>
                 <label class="text-bold">{{ column.status }}</label>
+            </div>
+            <div class="flex-end">
+                <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-plus" />
             </div>
             @for (task of column.tasks; track task) {
             <div cdkDrag class="task-wrapper">
