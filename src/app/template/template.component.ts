@@ -28,6 +28,7 @@ export class TemplateComponent {
       effect(() => {
         document.body.className = '';
         document.body.classList.add(`theme-${this.preference().theme}`);
+        document.body.classList.add(`color-${this.preference().color}`);
       });
     }
   }

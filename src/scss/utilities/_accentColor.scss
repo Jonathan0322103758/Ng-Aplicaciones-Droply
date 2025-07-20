@@ -1,0 +1,26 @@
+@import '@Scss/abstract/_palette.scss';
+
+body.color-primary {
+  --accent-color: #{$primary};
+}
+body.color-secondary {
+  --accent-color: #{$secondary};
+}
+body.color-success {
+  --accent-color: #{$success};
+}
+body.color-text {
+  --accent-color: #{$text};
+}
+body.color-danger {
+  --accent-color: #{$danger};
+}
+body.color-warning {
+  --accent-color: #{$warning};
+}
+body.color-info {
+  --accent-color: #{$info};
+}
+body.color-orange {
+  --accent-color: #{$orange};
+}

@@ -4,3 +4,4 @@ export { CheckboxComponent } from "./checkbox/checkbox.component"
 export { DropdownComponent } from "./dropdown/dropdown.component"
 export { InputComponent } from "./input/input.component";
 export { InfoComponent } from "./info/info.component";
+export { SelectDateComponent } from './select-date/select-date.component'

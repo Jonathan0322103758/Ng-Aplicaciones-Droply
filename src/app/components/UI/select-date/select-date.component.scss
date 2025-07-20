@@ -1,0 +1,94 @@
+// Estilo general para el mat-form-field (campo de formulario) con MDC
+::ng-deep .mat-mdc-form-field {
+    background: var(--bg-surface) !important; // Fondo personalizado (por ejemplo blanco, gris, etc.)
+    border-radius: 5px; // Bordes redondeados para suavizar el campo
+}
+
+// Etiqueta flotante (label) dentro del formulario
+::ng-deep .mdc-floating-label {
+    color: var(--color-text) !important; // Color del texto del label (normalmente oscuro)
+}
+
+// Texto de ayuda o hint debajo del input
+::ng-deep .mat-mdc-form-field-hint {
+    color: var(--color-text) !important; // Color del hint (texto explicativo)
+}
+
+// Cabecera del calendario (ejemplo: mes y año)
+::ng-deep .mat-calendar-header {
+    color: var(--color-text) !important; // Color del texto en el header del calendario
+}
+
+// Botón que muestra el periodo actual (mes/año)
+::ng-deep .mat-calendar-period-button {
+    color: var(--color-text) !important; // Color del texto del botón
+    font-weight: bold; // Texto en negrita para destacarlo
+    
+    svg {
+        fill: var(--color-text) !important; // Relleno del ícono flecha
+        stroke: var(--color-text) !important; // Borde del ícono flecha (si aplica)
+    }
+}
+
+// Fondo y texto del contenido desplegable del datepicker
+::ng-deep .mat-datepicker-content {
+    background-color: var(--bg-surface) !important; // Fondo del popup del calendario
+    color: var(--color-text) !important; // Color del texto dentro del popup
+}
+
+// Etiquetas del cuerpo del calendario (días de la semana)
+::ng-deep .mat-calendar-body-label {
+    color: var(--color-text) !important; // Color de los días (Lun, Mar, Mie, etc.)
+}
+
+// Encabezado de la tabla que contiene los días (filas y columnas)
+::ng-deep .mat-calendar-table-header th {
+    color: var(--color-text) !important; // Color del texto en los encabezados de la tabla
+}
+
+// Contenido de cada celda (día del mes)
+::ng-deep .mat-calendar-body-cell-content {
+    color: var(--color-text) !important; // Color del número del día
+}
+
+/* Flechas del calendario para cambiar mes */
+// Iconos SVG de los botones "mes anterior" y "mes siguiente"
+::ng-deep button.mat-calendar-previous-button svg,
+::ng-deep button.mat-calendar-next-button svg {
+    fill: var(--color-text) !important; // Color de relleno de las flechas
+    stroke: var(--color-text) !important; // Color del borde de las flechas
+}
+
+// Botones que contienen las flechas para cambiar mes
+::ng-deep button.mat-calendar-previous-button,
+::ng-deep button.mat-calendar-next-button {
+    color: var(--color-text) !important; // Color del botón (normalmente afecta foco y hover)
+}
+
+// Color general para todos los SVG (iconos)
+::ng-deep svg {
+    color: var(--color-muted) !important; // Color atenuado para iconos secundarios
+}
+
+// Bordes iniciales para el mat-form-field con clase "primary"
+::ng-deep .mat-form-field.primary .mat-mdc-form-field-outline-start,
+::ng-deep .mat-form-field.primary .mat-mdc-form-field-outline-end {
+    border-color: var(--color-muted) !important; // Color de borde inicial atenuado
+}
+
+// Bordes iniciales del outline para todos los mat-form-field
+::ng-deep .mat-mdc-form-field .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field .mdc-notched-outline__notch,
+::ng-deep .mat-mdc-form-field .mdc-notched-outline__trailing {
+    border-color: var(--color-muted) !important; // Borde gris suave como estado por defecto
+}
+
+// Cambia el color del borde en hover y focus al color definido en --accent-color
+::ng-deep .mat-mdc-form-field:hover .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field:hover .mdc-notched-outline__notch,
+::ng-deep .mat-mdc-form-field:hover .mdc-notched-outline__trailing,
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+    border-color: var(--accent-color) !important; // Borde destacado al interactuar con el input
+}
