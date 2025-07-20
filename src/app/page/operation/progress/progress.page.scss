@@ -10,7 +10,11 @@
     .date-options {
         flex: 1;
         gap: 20px;
-        padding: 20px;
+        padding: 0 20px;
+
+        qx-select-date {
+            flex: 1;
+        }
     }
 
     .progress-content {

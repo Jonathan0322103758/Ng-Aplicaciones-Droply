@@ -1,24 +1,42 @@
-import { Component, computed, inject, input, Signal } from '@angular/core';
+import { Component, effect, input, signal, } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatDateFormats, provideNativeDateAdapter, MAT_DATE_FORMATS, DateAdapter } from '@angular/material/core';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { PreferenceService } from '@Client/preference/preference.service';
-import { ColorType } from '@Types_/ui.types';
+
+const CUSTOM_DATE_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'qx-select-date',
   standalone: true,
-  providers: [BrowserAnimationsModule, provideNativeDateAdapter()],
+  providers: [BrowserAnimationsModule, provideNativeDateAdapter(), { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS }],
   imports: [FormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
   templateUrl: './select-date.component.html',
   styleUrl: './select-date.component.scss'
 })
 export class SelectDateComponent {
-  public label = input.required<string>()
+  public label = input.required<string>();
+  public dateInput = input<Date | undefined>();
 
-  private readonly _preferenceService: PreferenceService = inject(PreferenceService);
-  public accentColor: Signal<ColorType> = computed(() => this._preferenceService.getPreference().color)
+  public date = signal<Date | null>(new Date());
+
+  constructor() {
+    effect(() => {
+      if (this.dateInput()) {
+        this.date.set(this.dateInput()!);
+      }
+    }, { allowSignalWrites: true });
+  }
 }

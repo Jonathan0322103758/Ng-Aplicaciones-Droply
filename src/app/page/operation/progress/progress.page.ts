@@ -1,18 +1,23 @@
 // general-operation-pregress
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, signal, Signal } from "@angular/core";
+import { PreferenceService } from "@Client/preference/preference.service";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
-import { SelectDateComponent } from "@Component/UI/standalone";
+import { ButtonComponent, SelectDateComponent } from "@Component/UI/standalone";
+import { ButtonStyle, ColorType } from "@Types_/ui.types";
 
 @Component({
   selector: 'page-home',
   standalone: true,
-  imports: [TitleHeaderComponent, SelectDateComponent],
+  imports: [TitleHeaderComponent, SelectDateComponent, ButtonComponent],
   templateUrl: './progress.page.html',
   styleUrl: './progress.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProgressPage {
-  public dateValue: string = ''
+  private readonly _preferenceService: PreferenceService = inject(PreferenceService);
+  public accentColor: Signal<ColorType> = computed(() => this._preferenceService.getPreference().color)
+  public from = signal(new Date());
+  public to = signal(new Date());
   public progress = {
     total: 15,
     tasks: [
@@ -145,6 +150,11 @@ export class ProgressPage {
     ]
   };
 
+  public sendDate() {
+    const from = this.from().toISOString().split('T')[0];
+    const to = this.to().toISOString().split('T')[0];
+    console.log(from, to)
+  }
 
 
   public getStatusColor(status: string): string {
@@ -155,5 +165,9 @@ export class ProgressPage {
       case 'terminado': return 'success';
     }
     return 'neutral';
+  }
+
+  public buttonStyle(): ButtonStyle {
+    return `square ${this.accentColor()}-ghost` as ButtonStyle;
   }
 }

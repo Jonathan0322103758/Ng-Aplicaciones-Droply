@@ -1,8 +1,9 @@
 <div class="input-date">
-  <mat-form-field appearance="outline" class="custom-date-field" [class]="accentColor()">
+  <mat-form-field appearance="outline" class="custom-date-field">
     <mat-label>{{ label() }}</mat-label>
-    <input matInput [matDatepicker]="picker" class="custom-input"/>
-    <mat-hint class="text-light">MM/DD/YYYY</mat-hint>
+    <input matInput [matDatepicker]="picker" class="custom-input" [value]="date()"
+    (dateChange)="date.set($event.value)"/>
+    <mat-hint class="text-light">DD/MM/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>

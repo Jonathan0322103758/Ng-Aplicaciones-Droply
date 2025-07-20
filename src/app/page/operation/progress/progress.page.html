@@ -3,8 +3,9 @@
   <div class="container flex-column">
     <qx-title-header title="Progreso de actividades" />
     <div class="date-options flex-row">
-      <qx-select-date label="Desde:"/>
-      <qx-select-date label="Hasta:"/>
+      <qx-select-date label="Desde:" [dateInput]="from()"/>
+      <qx-select-date label="Hasta:" [dateInput]="to()"/>
+      <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-calendar" label="Aplicar" (onClick)="sendDate()"/>
     </div>
     <div class="progress-content flex-column">
       @for (task of progress.tasks; track task._id) {

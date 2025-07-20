@@ -1,3 +1,11 @@
+.input-date {
+    width: 100% !important;
+
+    .custom-date-field {
+        width: 100%;
+    }
+}
+
 // Estilo general para el mat-form-field (campo de formulario) con MDC
 ::ng-deep .mat-mdc-form-field {
     background: var(--bg-surface) !important; // Fondo personalizado (por ejemplo blanco, gris, etc.)
