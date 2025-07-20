@@ -31,7 +31,8 @@ export class SelectDateComponent {
   public dateInput = input<Date | undefined>();
 
   public date = signal<Date | null>(new Date());
-
+  public minDate = new Date('2025-01-01');
+  
   constructor() {
     effect(() => {
       if (this.dateInput()) {
