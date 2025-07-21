@@ -18,7 +18,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/admin/notifications/notifications.page').then((m) => m.NotificationsPage)
     },
     {
-        path: 'admin-meters',
+        path: 'manage-meters',
         loadComponent: () => import('./page/admin/meters/meters.page').then((m) => m.MetersPage)
     },
     {

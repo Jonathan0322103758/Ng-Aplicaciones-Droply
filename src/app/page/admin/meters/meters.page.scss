@@ -1,49 +1,38 @@
 @import "@Scss/abstract/_placeholder.scss";
 
-.container {
-    width: 100%;
-    height: calc(100% - 100px);
-    background: var(--bg-surface);
-    border-radius: 5px;
-    border: 1px solid var(--color-muted);
-    overflow: hidden;
-    display: flex;
-
+.single-content {
     .list {
-        width: 400px;
-        max-width: 420px;
-        flex-shrink: 0;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+        flex: 1;
         background: var(--bg-surface);
-        border-right: 1px solid var(--color-muted);
+        border: 1px solid var(--color-muted);
+        border-radius: 5px;
 
         .meter-list {
             @extend %scrollbar;
-            flex: 1;
 
             .meter-item {
-                height: 60px;
+                font-size: 14px;
+                height: 40px;
                 gap: 20px;
                 padding: 20px;
                 border-bottom: 1px solid var(--color-muted);
 
                 i {
-                    font-size: 25spx;
+                    font-size: 25px;
                 }
 
                 &:hover {
                     background: var(--color-muted);
                 }
-                
             }
         }
     }
 
     .content {
+        flex: 1;
+        border: 1px solid var(--color-muted);
+        border-radius: 5px;
         position: relative;
-
         .btn-actions {
             position: absolute;
             top: 20px;
@@ -55,30 +44,36 @@
     .content,
     .content-empty {
         flex: 1;
-        display: flex;
-        flex-direction: column;
         min-height: 350px;
         background: var(--bg-surface);
     }
 
     .meter-detail {
-        padding: 24px 18px 0 18px;
-        flex: 0 0 auto;
+        padding: 20px;
+        gap: 20px;
+        i {
+            font-size: 100px;
+            padding: 20px;
+        }
 
-        .detail-row {
-            margin-bottom: 10px;
-            font-size: 1.08rem;
+        .flex-column {
+            gap: 10px;
+        }        
+    }
+    .from-to {
+        flex: 1;
+        gap: 20px;
+        padding: 20px;
 
-            b {
-                color: var(--primary);
-            }
+        qx-select-date {
+            width: 100%;
         }
     }
-
+    
     .body-content {
         flex: 1;
         gap: 20px;
-        padding: 24px 20px 0 20px;
+        padding: 0 20px;
         
         i {
             font-size: 100px;
@@ -86,33 +81,24 @@
 
         .meter-form {
             @extend %scrollbar;
-            flex: 1;
+            
             gap: 20px;
         }
     }
 
     .content-actions {
-        margin-top: auto;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        gap: 14px;
-        padding: 0 18px 20px 18px;
+        flex: 1;
+        padding: 20px;
     }
 
     .content-empty {
         flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         color: var(--color-muted);
-        font-size: 1.1rem;
-        min-height: 350px;
     }
 }
 
 @media (max-width: 900px) {
-    .container {
+    .single-content {
         flex-direction: column;
 
         .list {
