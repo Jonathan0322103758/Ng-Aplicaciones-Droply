@@ -14,9 +14,14 @@
             </div>
 
             @if (formOpen[column._id]) {
-            <div class="add-task-card">
-                <qx-input type="text" styleClass="square"/>
-                <qx-button type="label" styleClass="square success-ghost" label="Guardar"/>
+            <div class="add-task-card flex-column">
+                <qx-input type="text" styleClass="square" label="Titulo" [required]="true"/>
+                <qx-input type="text" styleClass="square" label="Resumen" [required]="true"/>
+                <div class="flex-end">
+                    <qx-select-date label="Vencimiento"/>
+                    <qx-button type="label" styleClass="square danger-ghost" label="Cancelar" (onClick)="cancelForm()"/>
+                    <qx-button type="label" styleClass="square success-ghost" label="Guardar"/>
+                </div>
             </div>
             }
             @for (task of column.tasks; track task) {

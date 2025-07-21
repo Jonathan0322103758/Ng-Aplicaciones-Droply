@@ -32,6 +32,14 @@
     [cdkDragDragging] {
       opacity: 0.6;
     }
+
+    .add-task-card {
+      gap: 20px;
+
+      qx-select-date {
+        flex: 1;
+      }
+    }
   }
 }
 

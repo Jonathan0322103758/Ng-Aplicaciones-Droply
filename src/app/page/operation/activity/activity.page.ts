@@ -3,11 +3,11 @@ import { ActivityCardComponent } from "@Component/shared/activity-card/activity-
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { CommonModule } from "@angular/common";
-import { ButtonComponent, InputComponent } from "@Component/UI/standalone";
+import { ButtonComponent, InputComponent, SelectDateComponent } from "@Component/UI/standalone";
 @Component({
   selector: 'page-home',
   standalone: true,
-  imports: [TitleHeaderComponent, ActivityCardComponent, ButtonComponent, InputComponent, CommonModule, DragDropModule],
+  imports: [TitleHeaderComponent, ActivityCardComponent, ButtonComponent, InputComponent, CommonModule, DragDropModule, SelectDateComponent],
   templateUrl: './activity.page.html',
   styleUrl: './activity.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -115,9 +115,19 @@ export class ActivityPage {
   }
 
   public toggleForm(columnId: number): void {
-    this.formOpen[columnId] = !this.formOpen[columnId];
+    Object.keys(this.formOpen).forEach(id => {
+      this.formOpen[+id] = false;
+    });
+
+    this.formOpen[columnId] = true;
   }
 
+
+  public cancelForm(): void {
+    Object.keys(this.formOpen).forEach(id => {
+      this.formOpen[+id] = false;
+    });
+  }
 
   public drop(event: CdkDragDrop<any[]>, column: any) {
     if (event.previousContainer === event.container) {
