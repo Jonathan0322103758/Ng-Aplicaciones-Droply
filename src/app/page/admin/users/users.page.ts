@@ -63,7 +63,7 @@ export class UsersPage {
 
     public buttonStyle(): ButtonStyle {
         const color = this.preference().color;
-        return `rounded ${color}-ghost` as ButtonStyle;
+        return `square ${color}-ghost` as ButtonStyle;
     }
 
     public createUser(): void {

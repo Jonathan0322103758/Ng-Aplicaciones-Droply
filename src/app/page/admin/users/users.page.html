@@ -11,9 +11,9 @@
                 <qx-user-detail [user]="userDetail()"/>
                 <div class="option flex-between" [class.none]="userDetail() === null">
                     <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-circle-plus" label="Nuevo usuario" (onClick)="formSelected()"/>
-                    <qx-button type="icon" styleClass="rounded secondary-ghost" icon="fas fa-pen-to-square" (onClick)="editUser()"/>
-                    <qx-button type="icon" styleClass="rounded success-ghost" icon="fas fa-message"/>
-                    <qx-button type="icon" styleClass="rounded danger-ghost" icon="fas fa-ban"/>
+                    <qx-button type="icon" styleClass="square secondary-ghost" icon="fas fa-pen-to-square" (onClick)="editUser()"/>
+                    <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-message"/>
+                    <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban"/>
                 </div>
             </div>
         } @else {
@@ -55,9 +55,9 @@
                 </div>
             </div>
             <div class="flex-end">
-                <qx-button class="cancel" type="label-icon" styleClass="rounded danger" icon="fas fa-xmark"
+                <qx-button class="cancel" type="label-icon" styleClass="square danger-ghost" icon="fas fa-xmark"
                     label="Cancelar" (onClick)="cleanForm()" />
-                <qx-button class="save" type="label-icon" styleClass="rounded success" icon="fas fa-floppy-disk"
+                <qx-button class="save" type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
                     label="Guardar" [disabled]="!isFormValid()" (onClick)="createUser()" />
             </div>
         </div>
