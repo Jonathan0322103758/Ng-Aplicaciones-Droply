@@ -69,7 +69,7 @@ export class MenuService {
             icon: 'screwdriver-wrench',
             label: 'Actividades',
             pages: [
-              { id: 0, label: 'General', path: 'none'},
+              { id: 0, label: 'General', path: 'general-operation-progress'},
               { id: 1, label: 'Espacio Personal', path: 'general-operation-activities'},
               { id: 2, label: 'Bitácoras', path: 'none'}
             ]

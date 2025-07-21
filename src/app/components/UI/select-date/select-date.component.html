@@ -1,0 +1,10 @@
+<div class="input-date">
+  <mat-form-field appearance="outline" class="custom-date-field">
+    <mat-label>{{ label() }}</mat-label>
+    <input matInput [matDatepicker]="picker" class="custom-input" [value]="date()" [min]="minDate"
+    (dateChange)="date.set($event.value)"/>
+    <mat-hint class="text-light">DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>

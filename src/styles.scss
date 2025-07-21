@@ -9,6 +9,7 @@
 @import '@Scss/abstract/_root.scss';
 
 /* * Class Css and Scss * */
+@import '@Scss/utilities/_accentColor.scss';
 @import '@Scss/utilities/_utilities.scss';
 @import '@Scss/utilities/_grid.scss';
 
@@ -17,3 +18,4 @@
 @import '@Scss/theme/_dark.scss';
 @import '@Scss/theme/_light.scss';
 @import '@Scss/theme/_alternative.scss';
+@import '@angular/material/prebuilt-themes/indigo-pink.css'

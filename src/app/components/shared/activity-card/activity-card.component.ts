@@ -1,17 +1,17 @@
-import { Component, input } from '@angular/core';
-import { ButtonComponent, InfoComponent } from '@Component/UI/standalone';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { InfoComponent } from '@Component/UI/standalone';
 
 @Component({
   selector: 'qx-activity-card',
   standalone: true,
-  imports: [InfoComponent, ButtonComponent],
+  imports: [InfoComponent],
   templateUrl: './activity-card.component.html',
-  styleUrl: './activity-card.component.scss'
+  styleUrl: './activity-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActivityCardComponent {
   public title = input.required<string>();
   public fromTo = input.required<string>();
   public summary = input<string>();
   public status = input<string>();
-
 }

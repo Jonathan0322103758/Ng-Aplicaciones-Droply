@@ -1,16 +1,20 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { ActivityCardComponent } from "@Component/shared/activity-card/activity-card.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
-
+import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CommonModule } from "@angular/common";
+import { ButtonComponent, InputComponent, SelectDateComponent } from "@Component/UI/standalone";
 @Component({
   selector: 'page-home',
   standalone: true,
-  imports: [TitleHeaderComponent, ActivityCardComponent,],
+  imports: [TitleHeaderComponent, ActivityCardComponent, ButtonComponent, InputComponent, CommonModule, DragDropModule, SelectDateComponent],
   templateUrl: './activity.page.html',
   styleUrl: './activity.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActivityPage {
+  public formOpen: { [columnId: number]: boolean } = {};
+  public newTasks: { [columnId: number]: { title: string; summary: string } } = {};
   public columns = [
     {
       _id: 0,
@@ -22,7 +26,8 @@ export class ActivityPage {
           from: '2024-06-01',
           to: '2024-06-30',
           summary: 'Versión inicial descartada por cambios en requerimientos.',
-          assignedTo: 'Equipo UX'
+          assignedTo: 'Equipo UX',
+          position: 0,
         }
       ]
     },
@@ -36,7 +41,8 @@ export class ActivityPage {
           from: '2024-07-10',
           to: '2024-07-12',
           summary: 'Explorar documentación de la API externa para futuras integraciones.',
-          assignedTo: 'Jonathan M.'
+          assignedTo: 'Jonathan M.',
+          position: 0,
         },
         {
           _id: 'task-002',
@@ -44,7 +50,8 @@ export class ActivityPage {
           from: '2024-07-13',
           to: '2024-07-14',
           summary: 'Verificar coherencia visual del diseño en Figma.',
-          assignedTo: 'Paola R.'
+          assignedTo: 'Paola R.',
+          position: 1,
         }
       ]
     },
@@ -58,7 +65,8 @@ export class ActivityPage {
           from: '2024-07-14',
           to: '2024-07-17',
           summary: 'Crear componente de vista Kanban para actividades.',
-          assignedTo: 'Carlos H.'
+          assignedTo: 'Carlos H.',
+          position: 0,
         },
         {
           _id: 'task-004',
@@ -66,7 +74,8 @@ export class ActivityPage {
           from: '2024-07-15',
           to: '2024-07-18',
           summary: 'Integrar servicios con Firestore y probar queries.',
-          assignedTo: 'Ana L.'
+          assignedTo: 'Ana L.',
+          position: 1,
         }
       ]
     },
@@ -78,9 +87,10 @@ export class ActivityPage {
           _id: 'task-005',
           title: 'Diseño inicial',
           from: '2024-07-01',
-          to: '2024-07-03',
+          to: '2025-07-18T00:00:00.000Z',
           summary: 'Diseño inicial de pantallas en prototipo.',
-          assignedTo: 'Laura S.'
+          assignedTo: 'Laura S.',
+          position: 0,
         },
         {
           _id: 'task-006',
@@ -88,34 +98,65 @@ export class ActivityPage {
           from: '2024-07-05',
           to: '2024-07-06',
           summary: 'Generar documentación básica de la estructura del proyecto.',
-          assignedTo: 'Marcos F.'
+          assignedTo: 'Marcos F.',
+          position: 1,
         }
       ]
     }
   ];
 
+  public dropListIds = this.columns.map((_, i) => `column-drop-${i}`);
+
+  constructor() {
+    this.columns.forEach(col => {
+      this.formOpen[col._id] = false;
+      this.newTasks[col._id] = { title: '', summary: '' };
+    });
+  }
+
+  public toggleForm(columnId: number): void {
+    Object.keys(this.formOpen).forEach(id => {
+      this.formOpen[+id] = false;
+    });
+
+    this.formOpen[columnId] = true;
+  }
+
+
+  public cancelForm(): void {
+    Object.keys(this.formOpen).forEach(id => {
+      this.formOpen[+id] = false;
+    });
+  }
+
+  public drop(event: CdkDragDrop<any[]>, column: any) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(column.tasks, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        column.tasks,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
+
   public getFromTo(startDate: string, endDate: string): string {
-    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short' };
+    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit' };
     const start = new Date(startDate).toLocaleDateString('es-MX', options);
     const end = new Date(endDate).toLocaleDateString('es-MX', options);
     return `${start} - ${end}`;
   }
 
-
-
   public getStatusColor(status: string): string {
     switch (status.toLowerCase()) {
-      case 'en pausa':
-        return 'primary';
-      case 'en progreso':
-        return 'info';
-      case 'terminado':
-        return 'success';
-      case 'archivado':
-        return 'warning';
-      default:
-        return 'neutral';
+      case 'archivado': return 'warning';
+      case 'en pausa': return 'info';
+      case 'en progreso': return 'secondary';
+      case 'terminado': return 'success';
     }
+    return 'neutral';
   }
 
 }

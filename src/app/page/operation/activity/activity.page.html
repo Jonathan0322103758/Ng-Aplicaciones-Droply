@@ -1,18 +1,38 @@
 <div class="content-page">
     <qx-title-header title="Espacio Personal" />
-
     <div class="single-content flex-row">
-        @for (column of columns; track $index) {
-        <div class="kanban-column flex-column">
-            <div class="title flex-row">
-                <div [class]="'bar ' + getStatusColor(column.status)"></div>
-                <label class="text-bold">{{ column.status }}</label>
+        @for (column of columns; let i = $index; track i) {
+        <div class="kanban-column flex-column" cdkDropList [id]="'column-drop-' + i" [cdkDropListData]="column.tasks"
+            [cdkDropListConnectedTo]="dropListIds" (cdkDropListDropped)="drop($event, column)">
+            <div class="title flex-column">
+                <label class="text-bold" [class]="getStatusColor(column.status)">{{ column.status }}</label>
+                <div class="bar" [class]="getStatusColor(column.status)"></div>
             </div>
+            <div class="flex-end">
+                <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-plus"
+                    (onClick)="toggleForm(column._id)" />
+            </div>
+
+            @if (formOpen[column._id]) {
+            <div class="add-task-card flex-column">
+                <qx-input type="text" styleClass="square" label="Titulo" [required]="true"/>
+                <qx-input type="text" styleClass="square" label="Resumen" [required]="true"/>
+                <div class="date flex-end">
+                    <qx-select-date label="Vencimiento"/>
+                    <qx-button type="label" styleClass="square danger-ghost" label="Cancelar" (onClick)="cancelForm()"/>
+                    <qx-button type="label" styleClass="square success-ghost" label="Guardar"/>
+                </div>
+            </div>
+            }
             @for (task of column.tasks; track task) {
-            <qx-activity-card [title]="task.title" [fromTo]="getFromTo(task.from, task.to)" [summary]="task.summary" />
+            <div cdkDrag class="task-wrapper">
+                <div class="task-placeholder" *cdkDragPlaceholder></div>
+
+                <qx-activity-card [title]="task.title" [fromTo]="getFromTo(task.from, task.to)"
+                    [summary]="task.summary" />
+            </div>
             }
         </div>
         }
-
     </div>
 </div>
