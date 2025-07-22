@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
-import { ButtonComponent, InputComponent, DropdownComponent } from "@Component/UI/standalone";
+import { ButtonComponent, InputComponent, DropdownComponent, InfoComponent, SelectDateComponent } from "@Component/UI/standalone";
 
 interface Meter {
     name: string;
     serialNumber: string;
     type: string;
     location: string;
+    status?: boolean;
 }
 interface MeterForm extends Meter {}
 
@@ -21,7 +22,9 @@ type ViewMode = 'list' | 'detail' | 'form';
         TitleHeaderComponent,
         ButtonComponent,
         InputComponent,
-        DropdownComponent
+        DropdownComponent,
+        InfoComponent,
+        SelectDateComponent
     ],
     templateUrl: './meters.page.html',
     styleUrl: './meters.page.scss',
@@ -29,13 +32,14 @@ type ViewMode = 'list' | 'detail' | 'form';
 })
 export class MetersPage {
     public meters: Meter[] = [
-        { name: "Medidor 1", serialNumber: "SN-123", type: "agua", location: "Planta baja" },
-        { name: "Medidor 2", serialNumber: "SN-456", type: "luz", location: "Oficina 1" },
+        { name: "Medidor 1", serialNumber: "SN-123", type: "agua", location: "Planta baja", status: true},
+        { name: "Medidor 2", serialNumber: "SN-456", type: "luz", location: "Oficina 1", status: true },
     ];
 
     public meterTypes = [
-        { label: "Manual", value: 1 },
-        { label: "Automático", value: 2 },
+        { label: "Consumo", value: 1 },
+        { label: "Presión", value: 2 },
+        { label: "PH", value: 2 },
     ];
 
     public view: ViewMode = 'list';         

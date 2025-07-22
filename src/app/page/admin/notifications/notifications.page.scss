@@ -2,93 +2,161 @@
 
 // ---------- Estructura principal ----------
 .option-message {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+  justify-content: center;
+  transition: var(--transition);
+  max-height: 1000px;
+  opacity: 1;
+  grid-auto-rows: 1fr;
+
+
   qx-info-card {
-    flex: 1;
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
     --info-card-width: calc(100% - 40px);
-    --info-card-height: calc(100% - 40px);
-    min-width: 0;
+    --info-card-height: 100%;
+    box-sizing: border-box;
+
+      display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  }
+
+
+  &.close {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    pointer-events: none;
+  }
+
+  .flex-end {
+    padding: 10px;
   }
 }
 
-  .bottom-section {
+.list-container {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  height: calc(100% - 100px);
+  overflow: hidden;
+
+  .list-notification {
     flex: 1;
-    display: flex;
-    gap: 20px;
-    height: calc(100% - 100px);
-    overflow: hidden;
+    background: var(--bg-surface);
+    border: 1px solid var(--color-muted);
+    border-radius: 5px;
+    @extend %scrollbar;
 
-    .list {
-      flex: 1;
-      background: var(--bg-surface);
-      border: 1px solid var(--color-muted);
-      padding: 10px;
-      @extend %scrollbar;
-
-      // ---------- Mensaje individual ----------
-      .message-item {
-        background: var(--bg-surface);
-        border-bottom: 1px solid var(--color-muted);
-        padding: 20px;
-
-        // Ícono a la izquierda
-        .msg-icon {
-          margin-right: 15px;
-          width: 34px;
-          height: 34px;
-
-          i {
-            font-size: 22px;
-            color: var(--color-muted);
-          }
-        }
-
-        .info {
-          flex: 1;
-          h4 {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 2px;
-          }
-          p {
-            font-size: 13px;
-            color: var(--color-muted-text);
-            margin-bottom: 0;
-          }
-        }
-      }
+    .info {
+      padding: 20px;
     }
 
-    // ---------- Preview del mensaje derecho ----------
-    .message-preview {
-      position: relative;
-      flex: 2;
+    // ---------- Mensaje individual ----------
+    .message-item {
       background: var(--bg-surface);
-      border: 1px solid var(--color-muted);
-      border-radius: 8px;
+      border-bottom: 1px solid var(--color-muted);
       padding: 20px;
-      gap: 15px;
-      @extend %scrollbar;
+      display: flex;
+      align-items: center;
+      position: relative;
 
-      qx-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
+      &:hover {
+        background: var(--color-muted);
       }
 
-      .body {
+      &:has(qx-button:hover),
+      &:has(qx-button:focus) {
+        background: var(--bg-surface);
+      }
+
+      .msg-icon {
+        font-size: 20px;
+        padding: 0 20px 0 0;
+        i {
+          font-size: 22px;
+          color: var(--color-muted);
+        }
+      }
+
+      .info-notification {
         flex: 1;
-        padding: 20px;
+        font-size: 14px;
+        gap: 10px;
+        color: var(--color-text);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        label {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; 
+          max-width: 100%;
+        }
+
+        .read {
+          @extend %color-dynamic;
+          font-size: 12px;
+        }
+      }
+
+    }
+
+  }
+
+  // ---------- Preview del mensaje derecho ----------
+  .message-preview {
+    position: relative;
+    flex: 2;
+    background: var(--bg-surface);
+    border: 1px solid var(--color-muted);
+    border-radius: 8px;
+    gap: 15px;
+    @extend %scrollbar;
+
+    qx-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .body {
+      flex: 1;
+      padding: 20px;
+      gap: 20px;
+      font-size: 16px;
+
+      .content-message {
+        color: var(--color-text);
       }
     }
   }
+}
 
-@media  (max-width: 1400px) {
+@media (max-width: 1400px) {
   .option-message {
     flex-direction: column;
     gap: 20px;
+
     qx-info-card {
       width: 100%;
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .option-message qx-info-card {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 600px) {
+  .option-message qx-info-card {
+    flex: 1 1 100%;
   }
 }

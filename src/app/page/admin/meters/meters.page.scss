@@ -1,80 +1,42 @@
 @import "@Scss/abstract/_placeholder.scss";
 
-.container {
-    width: 100%;
-    height: calc(100% - 100px);
-    background: var(--bg-surface);
-    border-radius: 5px;
-    border: 1px solid var(--color-muted);
-    overflow: hidden;
-    display: flex;
-
+.single-content {
     .list {
-        min-width: 350px;
-        max-width: 420px;
-        flex-shrink: 0;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+        flex: 1;
         background: var(--bg-surface);
-        border-right: 1px solid var(--color-muted);
+        border: 1px solid var(--color-muted);
+        border-radius: 5px;
 
-        .list-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 18px 0 18px;
-            min-height: 64px;
-            box-sizing: border-box;
-            qx-title-header {
-                flex: 1;
-            }
-            .add-meter-btn {
-                margin-left: 18px;
-            }
-        }
         .meter-list {
-            overflow-y: auto;
             @extend %scrollbar;
 
             .meter-item {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding: 14px 16px;
-                cursor: pointer;
-                border-left: 4px solid transparent;
+                font-size: 14px;
+                height: 40px;
+                gap: 20px;
+                padding: 20px;
                 border-bottom: 1px solid var(--color-muted);
 
-                .meter-info {
-                    .meter-name {
-                        font-weight: bold;
-                        color: var(--color-text);
-                    }
-                    .meter-type {
-                        font-size: 12px;
-                        color: var(--color-muted);
-                    }
+                i {
+                    font-size: 25px;
                 }
 
-                &:last-child {
-                    border-bottom: none;
+                &:hover {
+                    background: var(--color-muted);
                 }
-            }
-            .empty-list {
-                text-align: center;
-                margin-top: 30px;
-                color: var(--color-muted);
             }
         }
     }
 
     .content {
+        flex: 1;
+        border: 1px solid var(--color-muted);
+        border-radius: 5px;
         position: relative;
-        qx-button {
-                position: absolute;
-                top: 20px;
-                right: 20px;
+        .btn-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
     }
 
@@ -82,74 +44,70 @@
     .content,
     .content-empty {
         flex: 1;
-        display: flex;
-        flex-direction: column;
         min-height: 350px;
         background: var(--bg-surface);
     }
 
     .meter-detail {
-        padding: 24px 18px 0 18px;
-        flex: 0 0 auto;
-        .detail-row {
-            margin-bottom: 10px;
-            font-size: 1.08rem;
-            b {
-                color: var(--primary);
-            }
+        padding: 20px;
+        gap: 20px;
+        i {
+            font-size: 100px;
+            padding: 20px;
+        }
+
+        .flex-column {
+            gap: 10px;
+        }        
+    }
+    .from-to {
+        flex: 1;
+        gap: 20px;
+        padding: 20px;
+
+        qx-select-date {
+            width: 100%;
         }
     }
-
+    
     .body-content {
         flex: 1;
-        padding: 24px 18px 0 18px;
-        display: flex;
-        flex-direction: column;
+        gap: 20px;
+        padding: 0 20px;
+        
+        i {
+            font-size: 100px;
+        }
+
         .meter-form {
             @extend %scrollbar;
-            width: 60%;
+            
             gap: 20px;
-            padding: 0 20px;
-            qx-input,
-            qx-dropdown {
-                --input-width: calc(100% - 10px);
-            }
         }
     }
 
     .content-actions {
-        margin-top: auto;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        gap: 14px;
-        padding: 0 18px 20px 18px;
-
-        qx-button {
-            position: relative;
-        }
+        flex: 1;
+        padding: 20px;
     }
 
     .content-empty {
         flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         color: var(--color-muted);
-        font-size: 1.1rem;
-        min-height: 350px;
     }
 }
 
 @media (max-width: 900px) {
-    .container {
+    .single-content {
         flex-direction: column;
+
         .list {
             min-width: 100%;
             max-width: 100%;
             border-right: none;
             border-bottom: 1px solid var(--color-muted);
         }
+
         .content,
         .content-empty {
             min-height: 300px;

@@ -1,73 +1,70 @@
 <div class="content-page">
     <qx-title-header title="Medidores" />
 
-    <div class="container flex-row">
-
+    <div class="single-content flex-row">
         <div class="list">
-            <div class="list-header">
-                <qx-title-header title="Medidores" />
-                <qx-button type="icon" [styleClass]="'rounded primary'" icon="fas fa-circle-plus" (onClick)="newMeter()"
-                    class="add-meter-btn" />
-            </div>
+            <qx-title-header title="Medidores" />
             <div class="meter-list">
                 @for (meter of meters; track meter; let i = $index) {
-                <div class="meter-item" (click)="selectMeter(i)">
+                <div class="meter-item flex-start" (click)="selectMeter(i)">
                     <i class="fas fa-gauge"></i>
-                    <div class="meter-info">
-                        <div class="meter-name">{{ meter.name }}</div>
-                        <div class="meter-type">{{ meter.type | titlecase }}</div>
+                    <div class="meter-info flex-column">
+                        <div class="text-bold">{{ meter.name }}</div>
+                        <div class="text-light">{{ meter.type | titlecase }}</div>
                     </div>
                 </div>
                 }
                 @if(meters.length === 0) {
-                <div class="empty-list">No hay medidores registrados.</div>
+                <qx-info info="No se encontraron medidores disponibles" />
                 }
             </div>
         </div>
-
-
         @if(view === 'detail' && selectedMeter() !== null) {
         <div class="content scroll flex-column">
-                <qx-title-header title="Detalles" />
-                <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-xmark" (onClick)="showList()"/>
-            <div class="meter-detail">
-                <div class="detail-row"><b>Nombre:</b> {{ selectedMeter()!.name }}</div>
-                <div class="detail-row"><b>Serie:</b> {{ selectedMeter()!.serialNumber }}</div>
-                <div class="detail-row"><b>Tipo:</b> {{ selectedMeter()!.type | titlecase }}</div>
-                <div class="detail-row"><b>Ubicación:</b> {{ selectedMeter()!.location }}</div>
-            </div>
-            <div class="content-actions">
-                <qx-button type="icon" styleClass="rounded success" icon="fas fa-pen-to-square"
+            <qx-title-header title="Detalle" />
+            <div class="btn-actions flex-row">
+                <qx-button type="label-icon" styleClass="square primary-ghost" icon="fas fa-plus" label="Nuevo"
+                    (onClick)="newMeter()" />
+                <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-pen-to-square"
                     (onClick)="editMeter()" />
-                <qx-button type="icon" styleClass="rounded danger" icon="fas fa-trash" (onClick)="deleteMeter()" />
+                <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban" (onClick)="deleteMeter()" />
+            </div>
+            <div class="meter-detail flex-row">
+                <i class="fas fa-gauge"></i>
+                <div class="flex-column">
+                    <label class="text-light"><span class="text-bold">Nombre:</span> {{ selectedMeter()!.name }}</label>
+                    <label class="text-light"><span class="text-bold">Serie:</span> {{ selectedMeter()!.serialNumber }}</label>
+                    <label class="text-light"><span class="text-bold">Tipo:</span> {{ selectedMeter()!.type | titlecase }}</label>
+                    <label class="text-light"><span class="text-bold">Ubicación:</span> {{ selectedMeter()!.location }}</label>
+                </div>
+            </div>
+            <div class="from-to flex-row">
+                <qx-select-date label="Desde:"/>
+                <qx-select-date label="Hasta:"/>
             </div>
         </div>
-        } @else if(view === 'form') {
+        } @else {
         <div class="content flex-column">
             <qx-title-header [title]="selectedIndex === null ? 'Nuevo medidor' : 'Editar medidor'" />
-            <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-xmark" (onClick)="showList()" />
-            <div class="body-content flex-column">
-                <div class="meter-form flex-column">
+            <div class="body-content flex-center flex-column">
+                <i class="fas fa-gauge"></i>
+                <div class="meter-form flex-center flex-column">
                     <qx-input type="text" styleClass="square" label="Nombre" placeholder="Escribir nombre"
                         [required]="true" [(value)]="meterForm.name" />
                     <qx-input type="text" styleClass="square" label="Número de Serie"
                         placeholder="Escribir número de serie" [required]="true" [(value)]="meterForm.serialNumber" />
                     <qx-dropdown styleClass="square" label="Tipo de medidor" [options]="meterTypes" [required]="true"
                         [(selectedValue)]="meterForm.type" />
-                    <qx-input type="text" styleClass="square" label="Ubicación" placeholder="Escribir ubicación"
-                        [(value)]="meterForm.location" />
+                    <qx-dropdown styleClass="square" label="Área" [options]="meterTypes" [required]="true" />
+                    <qx-dropdown styleClass="square" label="Línea de agua" [options]="meterTypes" [required]="true" />
                 </div>
             </div>
-            <div class="content-actions">
-                <qx-button class="cancel" type="label-icon" styleClass="rounded danger" icon="fas fa-xmark"
-                    label="Cancelar" (onClick)="showList()" />
-                <qx-button class="save" type="label-icon" styleClass="rounded success" icon="fas fa-floppy-disk"
+            <div class="content-actions flex-row flex-end">
+                <qx-button class="cancel" type="label-icon" styleClass="square danger-ghost" icon="fas fa-xmark"
+                    label="Cancelar" (onClick)="resetForm()" />
+                <qx-button class="save" type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
                     label="Guardar" [disabled]="!isFormValid()" (onClick)="saveMeter()" />
             </div>
-        </div>
-        } @else {
-        <div class="content-empty flex-center">
-            <span>Selecciona un medidor para ver detalles.</span>
         </div>
         }
     </div>

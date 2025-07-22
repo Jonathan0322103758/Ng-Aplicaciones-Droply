@@ -32,7 +32,6 @@ export class MenuService {
         ],
         pages: [
           { id: 0, label: 'Notificaciones', path: 'admin-notifications', icon: 'bell' },
-          { id: 1, label: 'Medidores', path: 'admin-meters', icon: 'stopwatch' },
         ]
       },
       {
@@ -46,7 +45,7 @@ export class MenuService {
             pages: [
               { id: 0, label: 'Monitores', path: 'none' },
               { id: 1, label: 'Lecturas', path: 'none' },
-              { id: 2, label: 'Medidores', path: 'none' },
+              { id: 2, label: 'Medidores', path: 'manage-meters'},
             ]
           },
           {
