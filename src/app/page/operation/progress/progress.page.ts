@@ -6,7 +6,7 @@ import { ButtonComponent, SelectDateComponent } from "@Component/UI/standalone";
 import { ButtonStyle, ColorType } from "@Types_/ui.types";
 
 @Component({
-  selector: 'page-home',
+  selector: 'page-progress',
   standalone: true,
   imports: [TitleHeaderComponent, SelectDateComponent, ButtonComponent],
   templateUrl: './progress.page.html',

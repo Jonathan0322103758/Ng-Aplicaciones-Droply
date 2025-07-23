@@ -5,7 +5,7 @@ import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from 
 import { CommonModule } from "@angular/common";
 import { ButtonComponent, InputComponent, SelectDateComponent } from "@Component/UI/standalone";
 @Component({
-  selector: 'page-home',
+  selector: 'page-activity',
   standalone: true,
   imports: [TitleHeaderComponent, ActivityCardComponent, ButtonComponent, InputComponent, CommonModule, DragDropModule, SelectDateComponent],
   templateUrl: './activity.page.html',

@@ -1,0 +1,50 @@
+<div class="content-page">
+    <qx-title-header title="Áreas y líneas de agua" />
+    <div class="single-content">
+        <div class="form flex-column">
+            <qx-title-header title="Registrar nueva área" />
+            <div class="form-input flex-column">
+                <qx-info info="Registra nuevas áreas que requieran de gestión en líneas de agua o en su consumo." />
+                <qx-input type="text" styleClass="square" label="Nombre de la nueva área" [required]="true" />
+                <qx-input type="text" styleClass="square" label="Descripción del área" [required]="true" />
+                <div class="btn-options flex-end">
+                    <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
+                        label="Cancelar" />
+                    <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
+                        label="Guardar" />
+                </div>
+            </div>
+        </div>
+        <div class="form flex-column">
+            <qx-title-header title="Registrar nueva línea de agua" />
+            <div class="form-input flex-column">
+                <qx-info info="Registra nuevas líneas de agua en algun área previamente registrada." />
+                <qx-input type="text" styleClass="square" label="Código o nombre" [required]="true" />
+                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas" />
+                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas" />
+                <div class="btn-options flex-end">
+                    <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
+                        label="Cancelar" />
+                    <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
+                        label="Guardar" />
+                </div>
+            </div>
+        </div>
+        <div class="table flex-column">
+            <qx-title-header title="Áreas registradas" />
+            <div class="tbody flex-column">
+                @for(area of dummyAreas; track area._id) {
+                    <div class="area-target flex-row flex-center">
+                        <i class="fas fa-screwdriver-wrench"></i>
+                        <label class="text-bold">{{ area.name }}</label>
+                        <div class="btn flex-row">
+                            <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-gauge"/>
+                            <qx-button type="icon" styleClass="square info-ghost" icon="fas fa-pen"/>
+                            <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban"/>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

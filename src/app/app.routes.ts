@@ -19,7 +19,11 @@ export const routes: Routes = [
     },
     {
         path: 'manage-meters',
-        loadComponent: () => import('./page/admin/meters/meters.page').then((m) => m.MetersPage)
+        loadComponent: () => import('./page/operation/meters/meters.page').then((m) => m.MetersPage)
+    },    
+    {
+        path: 'manage-areas',
+        loadComponent: () => import('./page/operation/areas/areas.page').then((m) => m.AreasPage)
     },
     {
         path: 'general-operation-progress',

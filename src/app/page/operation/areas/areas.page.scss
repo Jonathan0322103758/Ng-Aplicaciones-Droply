@@ -1,0 +1,50 @@
+@import '@Scss/abstract/_placeholder.scss';
+
+.single-content {
+    overflow: hidden;
+    .form {
+        @extend %scrollbar;
+        max-width: 410px;
+        background: var(--bg-surface);
+        border-radius: 5px;
+        border: 1px solid var(--color-muted);
+
+        .form-input {
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+
+            qx-dropdown {
+                width: 100%;
+                --input-width: calc(100% - 20px);
+            }
+            
+            .btn-options {
+                margin-top: auto;
+                background: var(--bg-surface);
+            }
+        }
+    }
+
+    .table {
+        flex: 1;
+        background: var(--bg-surface);
+        border-radius: 5px;
+        border: 1px solid var(--color-muted);
+
+        .tbody {
+            flex: 1;
+            padding: 20px;
+
+            .area-target {
+                height: 60px;
+                gap: 20px;
+                font-size: 14px;
+                border-bottom: 1px solid var(--color-muted);
+                .btn {
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}
