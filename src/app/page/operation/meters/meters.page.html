@@ -33,15 +33,22 @@
                 <i class="fas fa-gauge"></i>
                 <div class="flex-column">
                     <label class="text-light"><span class="text-bold">Nombre:</span> {{ selectedMeter()!.name }}</label>
-                    <label class="text-light"><span class="text-bold">Serie:</span> {{ selectedMeter()!.serialNumber }}</label>
-                    <label class="text-light"><span class="text-bold">Tipo:</span> {{ selectedMeter()!.type | titlecase }}</label>
-                    <label class="text-light"><span class="text-bold">Ubicación:</span> {{ selectedMeter()!.location }}</label>
+                    <label class="text-light"><span class="text-bold">Serie:</span> {{ selectedMeter()!.serialNumber
+                        }}</label>
+                    <label class="text-light"><span class="text-bold">Tipo:</span> {{ selectedMeter()!.type | titlecase
+                        }}</label>
+                    <label class="text-light"><span class="text-bold">Ubicación:</span> {{ selectedMeter()!.location
+                        }}</label>
                 </div>
             </div>
             <div class="from-to flex-row">
-                <qx-select-date label="Desde:"/>
-                <qx-select-date label="Hasta:"/>
+                <qx-select-date label="Desde:" />
+                <qx-select-date label="Hasta:" />
             </div>
+            <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType">
+            </canvas>
+
+
         </div>
         } @else {
         <div class="content flex-column">
