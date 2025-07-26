@@ -1,17 +1,11 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
-import { ButtonComponent, InputComponent, DropdownComponent, InfoComponent, SelectDateComponent } from "@Component/UI/standalone";
+import { ButtonComponent, InputComponent, DropdownComponent, InfoComponent, SelectDateComponent, BadgeComponent } from "@Component/UI/standalone";
 import { NgChartsModule } from 'ng2-charts';
 import { ChartConfiguration, ChartType } from "chart.js";
+import { Meter } from "@Interface/meter.interface";
 
-interface Meter {
-  name: string;
-  serialNumber: string;
-  type: string;
-  location: string;
-  status?: boolean;
-}
 interface MeterForm extends Meter { }
 
 type ViewMode = 'list' | 'detail' | 'form';
@@ -27,6 +21,7 @@ type ViewMode = 'list' | 'detail' | 'form';
     DropdownComponent,
     InfoComponent,
     SelectDateComponent,
+    BadgeComponent,
     NgChartsModule
   ],
   templateUrl: './meters.page.html',
@@ -36,7 +31,7 @@ type ViewMode = 'list' | 'detail' | 'form';
 export class MetersPage {
   public meters: Meter[] = [
     { name: "Medidor 1", serialNumber: "SN-123", type: "agua", location: "Planta baja", status: true },
-    { name: "Medidor 2", serialNumber: "SN-456", type: "luz", location: "Oficina 1", status: true },
+    { name: "Medidor 2", serialNumber: "SN-456", type: "luz", location: "Oficina 1", status: false },
   ];
 
   public meterTypes = [
@@ -54,10 +49,6 @@ export class MetersPage {
     type: "",
     location: ""
   };
-
-  public buttonStyle() {
-    return "rounded primary-ghost";
-  }
 
   public selectedMeter(): Meter | null {
     return this.selectedIndex !== null ? this.meters[this.selectedIndex] : null;
@@ -126,7 +117,7 @@ export class MetersPage {
     labels: ['01 Jul', '02 Jul', '03 Jul', '04 Jul', '05 Jul', '06 Jul', '07 Jul'],
     datasets: [
       {
-        data: [120, 135, 150, 145, 160, 155, 170], // litros por día
+        data: [120, 135, 150, 145, 160, 155, 170],
         label: 'Litros consumidos',
         borderColor: '#2196f3',
         backgroundColor: 'rgba(33, 150, 243, 0.3)',

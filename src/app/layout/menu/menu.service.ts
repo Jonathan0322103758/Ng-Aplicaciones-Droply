@@ -43,8 +43,8 @@ export class MenuService {
             icon: 'droplet',
             label: 'Líneas de Agua',
             pages: [
-              { id: 0, label: 'Monitores', path: 'none' },
-              { id: 1, label: 'Lecturas', path: 'none' },
+              // { id: 0, label: 'Monitores', path: 'none' },
+              // { id: 1, label: 'Lecturas', path: 'none' },
               { id: 2, label: 'Medidores', path: 'manage-meters'},
               { id: 2, label: 'Áreas y líneas de agua', path: 'manage-areas'},
             ]

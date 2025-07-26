@@ -4,14 +4,22 @@
     <div class="single-content flex-row">
         <div class="list">
             <qx-title-header title="Medidores" />
+            <qx-info
+                info="Cada medidor almacena lecturas provenientes de las líneas de agua asignadas a su área. Es fundamental ingresar los valores de forma precisa para garantizar la integridad de los datos." />
             <div class="meter-list">
                 @for (meter of meters; track meter; let i = $index) {
-                <div class="meter-item flex-start" (click)="selectMeter(i)">
+                <div class="meter-item flex-start {{ meter.status }}" (click)="selectMeter(i)">
                     <i class="fas fa-gauge"></i>
                     <div class="meter-info flex-column">
                         <div class="text-bold">{{ meter.name }}</div>
-                        <div class="text-light">{{ meter.type | titlecase }}</div>
+                        <div class="text-light">{{ meter.serialNumber}}</div>
+                        <div class="text-light">{{ meter.type }}</div>
                     </div>
+                    @if(meter.status) {
+                    <qx-badge styleClass="rounded success" text="Habilitado" />
+                    } @else {
+                    <qx-badge styleClass="rounded danger" text="Deshabilitado" />
+                    }
                 </div>
                 }
                 @if(meters.length === 0) {
@@ -25,6 +33,7 @@
             <div class="btn-actions flex-row">
                 <qx-button type="label-icon" styleClass="square primary-ghost" icon="fas fa-plus" label="Nuevo"
                     (onClick)="newMeter()" />
+                <qx-button type="icon" styleClass="square info-ghost" icon="fas fa-gauge" />
                 <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-pen-to-square"
                     (onClick)="editMeter()" />
                 <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban" (onClick)="deleteMeter()" />
@@ -39,6 +48,11 @@
                         }}</label>
                     <label class="text-light"><span class="text-bold">Ubicación:</span> {{ selectedMeter()!.location
                         }}</label>
+                    @if(selectedMeter()?.status) {
+                    <qx-badge styleClass="rounded success" text="Habilitado" />
+                    } @else {
+                    <qx-badge styleClass="rounded danger" text="Deshabilitado" />
+                    }
                 </div>
             </div>
             <div class="from-to flex-row">
@@ -47,8 +61,6 @@
             </div>
             <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType">
             </canvas>
-
-
         </div>
         } @else {
         <div class="content flex-column">
