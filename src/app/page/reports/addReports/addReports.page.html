@@ -1,0 +1,28 @@
+<div class="content-page">
+  <qx-title-header title="Subir reporte" />
+
+  <div class="upload-container">
+    <label for="fileInput" class="upload-box">
+      <i class="fas fa-file-upload"></i>
+      <span>{{ file()?.name || 'Selecciona un archivo PDF, CSV o Excel' }}</span>
+    </label>
+    <input
+      type="file"
+      id="fileInput"
+      accept=".pdf,.csv,.xls,.xlsx"
+      (change)="handleFile($event)"
+      hidden
+    />
+
+    <div class="flex-center">
+      <qx-button
+        type="label-icon"
+        styleClass="rounded success"
+        icon="fas fa-cloud-upload-alt"
+        label="Subir"
+        (onClick)="subirArchivo()"
+        [disabled]="!file()"
+      />
+    </div>
+  </div>
+</div>

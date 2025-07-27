@@ -33,6 +33,10 @@ export const routes: Routes = [
   path: 'general-operation-logs',
   loadComponent: () => import('./page/admin/activities/log/log.page').then((m) => m.LogPage)
 },
+{
+ path: 'reports-addReports',
+  loadComponent: () => import('./page/reports/addReports/addReports.page').then((m) => m.AddReportsPage)
+},
     {
         path: '',
         redirectTo: 'home',

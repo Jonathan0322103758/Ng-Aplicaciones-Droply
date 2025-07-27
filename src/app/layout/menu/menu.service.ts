@@ -79,7 +79,7 @@ export class MenuService {
             icon: 'folder',
             label: 'Reportes',
             pages: [
-              { id: 0, label: 'Subir Reporte', path: 'none'},
+              { id: 0, label: 'Subir Reporte', path: 'reports-addReports'},
               { id: 1, label: 'Histórico', path: 'none'},
             ]
           }
