@@ -71,7 +71,7 @@ export class MenuService {
             pages: [
               { id: 0, label: 'General', path: 'general-operation-progress'},
               { id: 1, label: 'Espacio Personal', path: 'general-operation-activities'},
-              { id: 2, label: 'Bitácoras', path: 'none'}
+              { id: 2, label: 'Bitácoras', path: 'general-operation-logs'}
             ]
           },
           {

@@ -30,6 +30,10 @@ export const routes: Routes = [
         loadComponent: () => import('./page/operation/activity/activity.page').then((m) => m.ActivityPage)
     },
     {
+  path: 'general-operation-logs',
+  loadComponent: () => import('./page/admin/activities/log/log.page').then((m) => m.LogPage)
+},
+    {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
