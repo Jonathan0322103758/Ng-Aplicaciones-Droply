@@ -1,6 +1,6 @@
 @if(modules$ | async){
     <div class="flex-column">
-    @for(module of modules(); track module._id) {
+    @for(module of modules(); track module.Id) {
         <qx-module-card [module]="module"/>
     }
 </div>

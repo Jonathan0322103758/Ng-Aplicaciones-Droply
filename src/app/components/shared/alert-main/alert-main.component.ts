@@ -37,7 +37,7 @@ export class AlertMainComponent {
     if (status === 400) return `${route}Error.png`;
     return ''
   }
-  
+
   public isText(): string {
     return this.alert().message;
   }
@@ -48,5 +48,18 @@ export class AlertMainComponent {
 
   public changeStatus(): void {
     this.alertService.setAlert(0, 'Empty');
+    this.alertService.confirmCallback = null;
+    window.location.reload();
+
   }
+
+  public onConfirm(): void {
+    if (this.alertService.confirmCallback) {
+      this.alertService.confirmCallback();
+    }
+    this.changeStatus();
+  }
+
+
+
 }

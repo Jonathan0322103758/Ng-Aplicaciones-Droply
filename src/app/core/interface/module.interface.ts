@@ -1,6 +1,6 @@
 export interface Module {
-    _id: string;
-    module: string;
-    icon: string;
-    status: boolean;
+    Id: string;
+    Nombre: string;
+    icon?: string;
+    Status: boolean;
 }

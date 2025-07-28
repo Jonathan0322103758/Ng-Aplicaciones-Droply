@@ -75,3 +75,11 @@
     font-weight: 300;
     font-size: 14px;
 }
+
+.effect {
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+    border: 1px solid rgba(0, 150, 255, 0.6);
+  }
+}

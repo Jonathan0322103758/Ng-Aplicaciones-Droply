@@ -6,19 +6,19 @@
             <qx-title-header title="Datos Personales" icon="fas fa-user-shield" [subtitle]="true" />
 
             <div class="user-data-grid">
-                <div><strong>Nombre:</strong> {{ user()?.name }}</div>
-                <div><strong>Estado:</strong> {{ userStatus() }}</div>
+                <div><strong>Nombre:</strong> {{ concatUsername(user()!) }}</div>
+                <!-- <div><strong>Estado:</strong> {{ userStatus() }}</div> -->
 
-                <div><strong>Correo:</strong> {{ user()?.email }}</div>
+                <div><strong>Correo:</strong> {{ user()?.Correo }}</div>
                 <div><strong>Registrado:</strong> dd/mm/yyyy</div>
 
-                <div><strong>Matrícula:</strong> {{ user()?.number || 'Opcional' }}</div>
-                <div><strong>Rol:</strong> {{ user()?.rol }}</div>
+                <div><strong>Matrícula:</strong> {{ user()?.Matricula }}</div>
+                <div><strong>Rol:</strong> {{ user()?.Rol }}</div>
             </div>
-            <div class="user-modules">
+            <!-- <div class="user-modules">
                 <qx-title-header title="Módulos" icon="fas fa-cube" [subtitle]="true"/>
                 <qx-module-list/>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

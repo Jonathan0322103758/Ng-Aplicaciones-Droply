@@ -6,7 +6,7 @@
         <input class="text-light" type="text" placeholder="Buscar usuario..." (input)="filteredUsers()" [(ngModel)]="searchTerm">
     </div>
     <div class="user-list">
-        @for(user of filteredUsers(); track user._id) {
+        @for(user of filteredUsers(); track user.ID) {
             <qx-user-card-settings [user]="user" (click)="detailUser(user)"/>
         }
 

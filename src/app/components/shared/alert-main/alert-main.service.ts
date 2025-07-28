@@ -10,6 +10,7 @@ interface Alert {
 })
 export class AlertMainService {
   private _alert = signal<Alert>({ status: 0, message: 'Empty'});
+  public confirmCallback: (() => void) | null = null;
 
   public setAlert(status: number, message: string): void {
     const alert: Alert = {
