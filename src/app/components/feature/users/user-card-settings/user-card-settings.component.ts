@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
 import { PreferenceService } from '@Client/preference/preference.service';
-import { User } from '@Interface/user.interface';
+import { User, Usuario } from '@Interface/user.interface';
 import { ButtonStyle, ColorType } from '@Types_/ui.types';
 
 @Component({
@@ -15,9 +15,20 @@ export class UserCardSettingsComponent {
   private readonly _preferenceService: PreferenceService = inject(PreferenceService);
 
   public accentColor: Signal<ColorType> = computed(() => this._preferenceService.getPreference().color);
-  public user = input.required<User>();
+  public user = input.required<Usuario>();
 
   public buttonStyle(): ButtonStyle {
     return `square ${this.accentColor()}-ghost` as ButtonStyle;
+  }
+
+  public concatUsername(user: Usuario): string {
+    return [
+      user.PrimerNombre,
+      user.SegundoNombre,
+      user.PrimerApellido,
+      user.SegundoApellido
+    ]
+      .filter(Boolean)
+      .join(' ');
   }
 }

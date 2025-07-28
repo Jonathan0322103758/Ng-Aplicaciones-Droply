@@ -10,13 +10,26 @@ export interface User {
 }
 
 export interface CreateUser {
-    firstName: string;
-    middleName: string;
-    lastName: string;
-    secondLastName: string;
-    email: string;
-    employeeId: string;
-    password: string;
-    rol: string;
-    modules: Module[]
+    ID: number; 
+    PrimerNombre: string;
+    SegundoNombre?: string;
+    PrimerApellido: string;
+    SegundoApellido?: string;
+    Matricula: string;
+    Correo: string;
+    Contrasena?: string;
+    Role: string;
+}
+
+export interface Usuario {
+    ID: number; 
+    PrimerNombre: string;
+    SegundoNombre?: string;
+    PrimerApellido: string;
+    SegundoApellido?: string;
+    Matricula: string;
+    Correo: string;
+    Contrasena?: string;
+    Rol: string;
+    Modulos?: []
 }

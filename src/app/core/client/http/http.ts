@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
-  private readonly _URL = 'http://localhost:9000';
+  private readonly _URL = 'http://192.168.1.207:8080';
   private readonly _http = inject(HttpClient);
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTM2ODAyODAsImlkIjoxLCJyb2xlIjoyLCJ1c2VybmFtZSI6IkEwMDEifQ.Ml75tSRT1L3TvkZuBqF8dY4uusFVBe3OGl5Uf1CiwfZr6Js4RCL6hqA0AD9yNdQN30GeYOL6Bl9SdM6knDAdL82LsDoGweaLaZtgatVqQaZqSlCp2elAs_LWRnvGQwT9Mpuq3hNqsBI9jhVZaClWwzFGy_EIYVjd8koMNieRrsSU3DKYzh-mOWIurBtjdhJj2A0kqCD2Xk8CnWyj_ujkrdJe7-Gcm5hZ8-b1oCLx8LIK_Y8KI78tOnFNarka7xKAZpvSTeMcvqtqwwfU2VTZEnkJVWCf9Zx5iJg-4c0R5NFVblhLPCxNB02-DtuNWKptPxVcu1EUw_f_hLrgEC3mOw'
     });
   }
 

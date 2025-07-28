@@ -1,14 +1,14 @@
-<div class="module-card flex-start" [class.des]="module().status !== true">
+<div class="module-card flex-start" [class.des]="module().Status !== true">
     <i class="fas fa-{{ module().icon }} {{ accentColor() }}"></i>
-    <label class="text-light">{{module().module}}</label>
-    @if(module().status === true && status() === false) {
+    <label class="text-light">{{module().Nombre}}</label>
+    @if(module().Status === true && status() === false) {
     <qx-badge text="Habilitado" styleClass="rounded success" />
-    } @else if(module().status === false && status() === false) {
+    } @else if(module().Status === false && status() === false) {
     <qx-badge text="Deshabilitado" styleClass="rounded danger" />
     }
-    @if(module().status === true && status() === true) {
+    @if(module().Status === true && status() === true) {
     <i class="fas fa-circle success"></i>
-    } @else if(module().status === false && status() === true) {
+    } @else if(module().Status === false && status() === true) {
     <i class="fas fa-circle danger"></i>
     }
 </div>

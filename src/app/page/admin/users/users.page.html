@@ -13,7 +13,7 @@
                     <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-circle-plus" label="Nuevo usuario" (onClick)="formSelected()"/>
                     <qx-button type="icon" styleClass="square secondary-ghost" icon="fas fa-pen-to-square" (onClick)="editUser()"/>
                     <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-message"/>
-                    <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban"/>
+                    <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban" (onClick)="deleteUser()"/>
                 </div>
             </div>
         } @else {
@@ -28,17 +28,17 @@
                         </div>
                     </div>
                     <qx-input type="text" styleClass="square" label="Primer nombre" placeholder="Escribir primer nombre"
-                        [required]="true" [(value)]="userForm.firstName" />
+                        [required]="true" [(value)]="userForm.PrimerNombre" />
                     <qx-input type="text" styleClass="square" label="Segundo nombre"
-                        placeholder="Escribir segundo nombre" [(value)]="userForm.middleName" />
+                        placeholder="Escribir segundo nombre" [(value)]="userForm.SegundoNombre!" />
                     <qx-input type="text" styleClass="square" label="Primer apellido"
-                        placeholder="Escribir primer apellido" [required]="true" [(value)]="userForm.lastName" />
+                        placeholder="Escribir primer apellido" [required]="true" [(value)]="userForm.PrimerApellido" />
                     <qx-input type="text" styleClass="square" label="Segundo apellido"
-                        placeholder="Escribir segundo nombre" [(value)]="userForm.secondLastName" />
+                        placeholder="Escribir segundo nombre" [(value)]="userForm.SegundoApellido!" />
                     <qx-input type="text" styleClass="square" label="Correo" placeholder="Escribir correo"
-                        [required]="true" [(value)]="userForm.email" />
+                        [required]="true" [(value)]="userForm.Correo" />
                     <qx-input type="text" styleClass="square" label="Matricula" placeholder="Escribir matrícula"
-                        [(value)]="userForm.employeeId" />
+                        [(value)]="userForm.Matricula" />
                 </div>
                 <div class="user-form flex-column">
                     <qx-title-header icon="fas fa-unlock" title="Asignar permisos" [subtitle]="true" />
@@ -49,9 +49,9 @@
                             Modifica estos valores con precaución, ya que un error podría otorgar privilegios
                             innecesarios o restringir funciones importantes." />
                     <qx-dropdown styleClass="square" label="Rol de usuario" [options]="roles" [required]="true"
-                        [(selectedValue)]="userForm.rol" />
-                    <qx-title-header icon="fas fa-cube" title="Módulos" [subtitle]="true" />
-                    <qx-module-list />
+                        [(selectedValue)]="userForm.Role" />
+                    <!-- <qx-title-header icon="fas fa-cube" title="Módulos" [subtitle]="true" /> -->
+                    <!-- <qx-module-list /> -->
                 </div>
             </div>
             <div class="flex-end">
