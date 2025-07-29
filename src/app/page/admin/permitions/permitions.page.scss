@@ -34,11 +34,46 @@
     width: 100%;
     padding-bottom: 10px;
     gap: 10px;
-    
+
     &.flex-center {
         qx-info-card {
             width: 100%;
-            --info-card-width: calc(100% - 40px)
+            --info-card-width: calc(100% - 40px);
         }
+    }
+}
+
+.content-page {
+    position: relative;
+    z-index: 500;
+}
+
+.content-glass {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-glass);
+    z-index: 900;
+}
+
+.content-query {
+    min-width: 400px;
+    min-height: 600px;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: var(--bg-surface);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--color-muted);
+
+    qx-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
 }
