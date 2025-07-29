@@ -4,13 +4,13 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
-  private readonly _URL = 'http://192.168.1.207:8080';
+  private readonly _URL = 'http://192.168.1.118:8080';
   private readonly _http = inject(HttpClient);
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTM2ODAyODAsImlkIjoxLCJyb2xlIjoyLCJ1c2VybmFtZSI6IkEwMDEifQ.Ml75tSRT1L3TvkZuBqF8dY4uusFVBe3OGl5Uf1CiwfZr6Js4RCL6hqA0AD9yNdQN30GeYOL6Bl9SdM6knDAdL82LsDoGweaLaZtgatVqQaZqSlCp2elAs_LWRnvGQwT9Mpuq3hNqsBI9jhVZaClWwzFGy_EIYVjd8koMNieRrsSU3DKYzh-mOWIurBtjdhJj2A0kqCD2Xk8CnWyj_ujkrdJe7-Gcm5hZ8-b1oCLx8LIK_Y8KI78tOnFNarka7xKAZpvSTeMcvqtqwwfU2VTZEnkJVWCf9Zx5iJg-4c0R5NFVblhLPCxNB02-DtuNWKptPxVcu1EUw_f_hLrgEC3mOw'
+      'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTM3NjE5OTUsImlkIjoxLCJyb2xlIjoyLCJ1c2VybmFtZSI6IkEwMDEifQ.P2UDWo4dtrNKFle0A8Camdds1QRVoB6_WCd-D1FYUAsMVQDw11F7AbRaNl4sYqfUi_DN_u8amsKkKaYtTT7oM8-r2N7ZjTyl7wH9iP_fPmaXZ1iR_wYWYCJ-uwHEi_MUwwdWrOmIj-ih9VKGc8NbRwHLVCeR2LmwxJYAWS9qLSS11NPvu3n1mGRkCvNj7jSyrEJPqUNSqNEyPNht5crwT4cPg7CMfq84ZUvCs0kAzou8Md7YGwUvPL_8HK0dkVZmiwSiaUSyzFFZ9eevmadoBavC4Wrse2m3AtH5LM3f3ZsV4a29J5tXquLTD3WFceQ3CkUhXg8paPOCPK7KLGlAHQ'
     });
   }
 
