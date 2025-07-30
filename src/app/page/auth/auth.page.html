@@ -1,26 +1,15 @@
 <div class="auth-container flex-row">
     <div class="form flex-column">
-        <div class="title">
-            <h1>QubeFlex</h1>
-            <h4 class="subtitle">Droply</h4>
-        </div>
+        <img src="../../../assets/images/cubo.png">
         <div class="form-body flex-column">
             <h1 class="text-bold">Iniciar sesión</h1>
             <qx-input
                 type="text"
                 styleClass="square"
-                label="Usuario"
+                label="Matricula"
                 placeholder="Ingresa tu usuario"
                 [required]="true"
                 [(value)]="username"
-            />
-            <qx-input
-                type="text"
-                styleClass="square"
-                label="Correo"
-                placeholder="Ingresa tu correo"
-                [required]="true"
-                [(value)]="email"
             />
             <qx-input
                 type="password"
@@ -34,11 +23,16 @@
                 <qx-button
                     type="label"
                     label="Iniciar sesión"
-                    styleClass="square primary"
+                    styleClass="square primary-ghost"
                     (onClick)="login()"
                 />
             </div>
         </div>
     </div>
-    <div class="cube-blue"></div>
+    <div class="cube-blue flex-center flex-column">
+        <div class="title">
+            <h1>QubeFlex</h1>
+            <h4 class="subtitle">Droply</h4>
+        </div>
+    </div>
 </div>

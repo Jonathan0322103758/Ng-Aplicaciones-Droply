@@ -1,23 +1,50 @@
-@import '@Scss/abstract/_placeholder.scss';
+@import "@Scss/abstract/_placeholder.scss";
 
 .single-content {
     position: relative;
 }
 
 .container-target {
+    height: 900px;
     border-radius: 5px;
     border: 1px solid var(--color-muted);
     background: var(--bg-surface);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .body-target {
+    @extend %scrollbar;
     flex: 1;
     min-width: 300px;
     padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .table-list {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 10px 20px;
+        border-radius: 4px;
+
+        i {
+            color: var(--accent-color);
+        }
+
+        label {
+            color: var(--color-text);
+        }
+
+        input {
+            margin-left: auto;
+        }
+
+    }
 }
 
 .content-actions {
-
     flex: 1;
     gap: 20px;
     .body-actions {
@@ -40,7 +67,6 @@
     height: 100%;
     background: var(--bg-glass);
     z-index: 500;
-
 }
 
 .form {
@@ -62,5 +88,5 @@
     }
     .form-footer {
         padding: 20px;
-    }   
+    }
 }

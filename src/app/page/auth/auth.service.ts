@@ -11,7 +11,8 @@ export class AuthService {
     private readonly router = inject(Router);
 
     public login(username: string, email: string, password: string): void {
-        this._http.post(`${this._URI}/sign-in`, { username, email, password }).subscribe({
+        this._alert.loader()
+        this._http.post(`${this._URI}/sign-in`, { username: username, email: "", password: password }).subscribe({
             next: (response: any) => {
                 if (response?.data) {
                     localStorage.setItem('token', response.data);
@@ -26,4 +27,10 @@ export class AuthService {
             }
         });
     }
+
+    public logout(): void {
+        localStorage.removeItem('token');
+        this.router.navigate(['/auth']);
+    }
+
 }

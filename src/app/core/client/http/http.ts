@@ -8,9 +8,10 @@ export class ClientService {
   private readonly _http = inject(HttpClient);
 
   private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTM4MzMxOTcsImlkIjoxLCJyb2xlIjoyLCJ1c2VybmFtZSI6IkEwMDEifQ.UeB1odceMURsXw8jIikYP2xmxKjewXuDWycFxdhis1drWiVZZni8ENU41wltNAjzXJ4VvAyFunV5gpi-kt5tIxBEAMclxZL5AJpqG1g_xYM9bNryUsdvtGdyy4L8Iahit1ia-eiYR_qipWa-H4BCFvXy6QYi22pBz1PEyV_na2YoRH7_XHUCnwP38o6joJLmqx0td8-XqsM88WJeeBbIo9wWU0VvmGODYPOaPZpKGk6Q_f4-QrIyLGP88gS5VAnJpxDAKqFQyLfydv2xS9iVnkz8oBAsAwNhgUhHOLQUDzatpyc8bowhiOoAd7bOivvJaOxEz8roHV2lGLtchrM83Q'
+      'Authorization': `Bearer ${token}`
     });
   }
 
