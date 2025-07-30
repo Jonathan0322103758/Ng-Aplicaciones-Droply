@@ -20,7 +20,7 @@ export class PermitionsPage {
   private readonly preference: PreferenceService = inject(PreferenceService)
   private readonly router: Router = inject(Router);
   public accentColor: Signal<ColorType> = computed(() => this.preference.getPreference().color)
-  public query: boolean = false;
+  public activeQuery: string | null = null;
 
   public listaRoles = [
     { _id: 0, name: 'Administrador', description: 'Control total del sistema' },
@@ -37,8 +37,11 @@ export class PermitionsPage {
     this.router.navigate(['/admin-users']);
   }
 
-  public callQuery(): void {
-    this.query = !this.query;
+  public callQuery(queryType: string): void {
+    this.activeQuery = queryType;
   }
 
+  public closeQuery(): void {
+    this.activeQuery = null;
+  }
 }

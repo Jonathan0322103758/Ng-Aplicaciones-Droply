@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
+        path: 'auth',
+        loadComponent: () => import('./page/auth/auth.page').then((m) => m.AuthPage)
+    },
+    {
         path: 'home',
         loadComponent: () => import('./page/home/home.page').then((m) => m.HomePage)
     },
@@ -12,6 +16,10 @@ export const routes: Routes = [
     {
         path: 'admin-permitions',
         loadComponent: () => import('./page/admin/permitions/permitions.page').then((m) => m.PermitionsPage)
+    },
+    {
+        path: 'admin-database',
+        loadComponent: () => import('./page/admin/database/database.page').then((m) => m.DatabasePage)
     },
     {
         path: 'admin-notifications',
@@ -35,7 +43,7 @@ export const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'auth',
         pathMatch: 'full'
     }
 ];

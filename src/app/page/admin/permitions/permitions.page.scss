@@ -1,3 +1,5 @@
+@import '@Scss/abstract/_placeholder.scss';
+
 .container-target {
     width: 100%;
     flex: 1;
@@ -59,8 +61,10 @@
 }
 
 .content-query {
+    @extend %scrollbar;
+    color: var(--color-muted);
     min-width: 400px;
-    min-height: 600px;
+    max-height: 600px;
     position: fixed;
     top: 200px;
     left: 50%;
@@ -70,6 +74,7 @@
     padding: 20px;
     border-radius: 5px;
     border: 1px solid var(--color-muted);
+    
 
     qx-button {
         position: absolute;

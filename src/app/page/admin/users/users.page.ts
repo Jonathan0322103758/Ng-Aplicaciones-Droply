@@ -21,7 +21,6 @@ import { ButtonStyle } from "@Types_/ui.types";
         InfoComponent,
         UserListComponent,
         UserDetailComponent,
-        ModuleListComponent
     ],
     templateUrl: './users.page.html',
     styleUrl: './users.page.scss',

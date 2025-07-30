@@ -22,11 +22,11 @@
         <div class="flex-column col-xl-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
             <div class="content-info-card flex-center">
                     <qx-info-card color="primary" icon="fas fa-circle-plus" title="Crear nuevo usuario" text="Agrega un nuevo usuario al sistema" [box]="true" (click)="goToCreateUser()"/>
-                    <qx-info-card color="info" icon="fas fa-file" title="Usuarios registrados" text="Consulta los usuarios registrados en el sistema" info="26 usuarios registrados" [box]="true" (click)="callQuery()"/>
+                    <qx-info-card color="info" icon="fas fa-file" title="Usuarios registrados" text="Consulta los usuarios registrados en el sistema" info="26 usuarios registrados" [box]="true" (click)="callQuery('usuarios-registrados')"/>
             </div>
             <div class="content-info-card flex-center">
-                    <qx-info-card color="success" icon="fas fa-user-shield" title="Usuarios por rol" text="Consulta la cantidad de usuarios por rol asignado" info="Administrador: 2 ...(+2 roles más)" [box]="true" (click)="callQuery()"/>
-                    <qx-info-card color="warning" icon="fas fa-cube" title="Módulos" text="Habilita o deshabilita módulos completos" info="8 módulos habilitados" [box]="true" (click)="callQuery()"/>
+                    <qx-info-card color="success" icon="fas fa-user-shield" title="Usuarios por rol" text="Consulta la cantidad de usuarios por rol asignado" info="Administrador: 2 ...(+2 roles más)" [box]="true" (click)="callQuery('usuarios-por-rol')"/>
+                    <qx-info-card color="warning" icon="fas fa-cube" title="Módulos" text="Habilita o deshabilita módulos completos" info="8 módulos habilitados" [box]="true" (click)="callQuery('modulos')"/>
             </div>
             <div class="container-target flex-column">
                 <qx-title-header title="Módulos habilitados por rol" icon="fas fa-cube" [subtitle]="true"/>
@@ -36,10 +36,18 @@
     </div>
 </div>
 
-@if(query) {
+@if(activeQuery) {
     <div class="content-glass"></div>
     <div class="content-query">
-        <qx-user-rol-list/>
-        <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-multiply" (onClick)="callQuery()"/>
+        @if(activeQuery === 'usuarios-por-rol') {
+            <qx-user-rol-list/>
+        }
+        @if(activeQuery === 'usuarios-registrados') {
+            <div>Componente de usuarios registrados</div>
+        }
+        @if(activeQuery === 'modulos') {
+            <div>Componente de módulos</div>
+        }
+        <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-multiply" (onClick)="closeQuery()"/>
     </div>
 }

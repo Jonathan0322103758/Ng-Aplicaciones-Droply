@@ -1,5 +1,16 @@
 @if(roles$ | async) {
-    <div class="list">
-        
+    <div class="user-rol-tabs">
+        <div class="tabs flex-row text-bold">
+            @for(role of roles(); track role._id) {
+                <div class="tab-btn flex-row" [class.active]="selectedRole() === role.Role" (click)="selectRole(role.Role)">
+                    {{role.Role}}
+                </div>
+            }
+        </div>
+        <div class="list">
+            @for(user of usersByRole(); track user.ID) {
+                <qx-user-card-settings [user]="user"/>
+            }
+        </div>
     </div>
 }

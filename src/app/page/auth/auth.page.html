@@ -1,0 +1,44 @@
+<div class="auth-container flex-row">
+    <div class="form flex-column">
+        <div class="title">
+            <h1>QubeFlex</h1>
+            <h4 class="subtitle">Droply</h4>
+        </div>
+        <div class="form-body flex-column">
+            <h1 class="text-bold">Iniciar sesión</h1>
+            <qx-input
+                type="text"
+                styleClass="square"
+                label="Usuario"
+                placeholder="Ingresa tu usuario"
+                [required]="true"
+                [(value)]="username"
+            />
+            <qx-input
+                type="text"
+                styleClass="square"
+                label="Correo"
+                placeholder="Ingresa tu correo"
+                [required]="true"
+                [(value)]="email"
+            />
+            <qx-input
+                type="password"
+                styleClass="square"
+                label="Contraseña"
+                placeholder="Ingresa tu contraseña"
+                [required]="true"
+                [(value)]="password"
+            />
+            <div class="flex-end">
+                <qx-button
+                    type="label"
+                    label="Iniciar sesión"
+                    styleClass="square primary"
+                    (onClick)="login()"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="cube-blue"></div>
+</div>

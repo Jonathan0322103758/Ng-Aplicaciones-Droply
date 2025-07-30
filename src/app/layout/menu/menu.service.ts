@@ -31,7 +31,8 @@ export class MenuService {
           },
         ],
         pages: [
-          { id: 0, label: 'Notificaciones', path: 'admin-notifications', icon: 'bell' },
+          { id: 0, label: 'Base de datos', path: 'admin-database', icon: 'database' },
+          { id: 1, label: 'Notificaciones', path: 'admin-notifications', icon: 'bell' },
         ]
       },
       {
