@@ -35,6 +35,7 @@ export class DatabasePage implements OnInit {
     public username: string = '';
     public password: string = '';
     public selectedTables: string[] = [];
+    public selectedTable: string = '';
 
     public formStatus: boolean = false;
     public formType: string = '';
@@ -46,6 +47,16 @@ export class DatabasePage implements OnInit {
 
     public changeFormStatus(): void {
         this.formStatus = !this.formStatus;
+    }
+
+    public selectSingleTable(event: Event, table: string): void {
+        const input = event.target as HTMLInputElement;
+        const checked = input?.checked ?? false;
+        if (checked) {
+            this.selectedTable = table;
+        } else {
+            this.selectedTable = '';
+        }
     }
 
     /**
@@ -69,6 +80,7 @@ export class DatabasePage implements OnInit {
         this.username = '';
         this.password = '';
         this.selectedTables = [];
+        this.selectedTable = '';
         this.formStatus = false;
     }
 
@@ -77,9 +89,21 @@ export class DatabasePage implements OnInit {
      * Services
      */
 
+    backupFull() {
+        this._database.backupFull({ username: this.username, password: this.password });
+    }
+
     backupByTables() {
         this._database.backupByTables({ username: this.username, password: this.password }, this.selectedTables)
     }
+
+    formatDatabase() {
+        this._database.formatDatabase({ username: this.username, password: this.password });
+    }
+
+    exportCSV() {
+        this._database.exportCSV({ username: this.username, password: this.password }, this.selectedTable);
+    }   
 
     ngOnInit(): void {
         this.tables$ = this._database.fetchTables();

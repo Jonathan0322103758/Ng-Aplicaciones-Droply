@@ -41,11 +41,21 @@
         Estatus: {{ alert().status }}
       </div>
 
-      @if (status() === 100) {
+      @if (status() === 100 || status() === 300) {
         <qx-button
           text="Confirmar"
           type="label"
-          styleClass="rounded info"
+          styleClass="square danger-ghost"
+          label="Cancelar"
+          (onClick)="changeStatus()"
+        />
+      }
+
+      @if (status() === 100 || status() === 300) {
+        <qx-button
+          text="Confirmar"
+          type="label"
+          styleClass="square success-ghost"
           label="Confirmar"
           (onClick)="onConfirm()"
         />

@@ -22,9 +22,9 @@ export class ClientService {
     });
   }
 
-  post<T>(uri: string, body: any): Observable<T> {
+  post<T>(uri: string, body: any, options?: { [key: string]: any }): Observable<T> {
     console.log('POST:', `${this._URL}${uri}`, body);
-    return this._http.post<T>(`${this._URL}${uri}`, body, { headers: this.getHeaders() });
+    return this._http.post<T>(`${this._URL}${uri}`, body, { headers: this.getHeaders(), ...options });
   }
 
   put<T>(uri: string, data: any): Observable<T> {

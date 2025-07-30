@@ -17,7 +17,8 @@
 .body-target {
     @extend %scrollbar;
     flex: 1;
-    min-width: 300px;
+    width: 300px;
+    max-width: 300px;
     padding: 20px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -35,6 +36,7 @@
 
         label {
             color: var(--color-text);
+            word-break: break-word;
         }
 
         input {
@@ -83,10 +85,16 @@
     border: 1px solid var(--color-muted);
 
     .form-body {
+        width: calc(100% - 40px);
         gap: 10px;
         padding: 20px;
     }
     .form-footer {
         padding: 20px;
+    }
+
+    .body-target {
+        width: calc(100% - 40px);
+        max-width: calc(100% - 40px);
     }
 }
