@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject } from "@angular/core";
+import { AreasService } from "@Client/service/areas.service";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 import { ButtonComponent, DropdownComponent, InfoComponent, InputComponent } from "@Component/UI/standalone";
 import { Dropdown } from "@Interface/ui.interface";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'page-areas',
@@ -18,6 +20,10 @@ import { Dropdown } from "@Interface/ui.interface";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AreasPage {
+    private readonly _areasService = inject(AreasService);
+    public areas$!: Observable<any>
+    public areas = computed(() => this._areasService.get());
+
     public optionsAreas: Dropdown[] = [
         { label: "Almacén", value: 0 },
         { label: "Producción", value: 1 },

@@ -21,8 +21,18 @@ export class AlertMainService {
     this._alert.set(alert);
   }
 
+  public delayedLoader(): NodeJS.Timeout {
+    return setTimeout(() => {
+      this.setAlert(999, "");
+    }, 500);
+  }
+
   public loader(): void {
     this.setAlert(999, "");
+  }
+
+  public clean(): void {
+    this._alert.set({ status: 0, message: 'Empty' });
   }
 
   public getAlert(): Alert {

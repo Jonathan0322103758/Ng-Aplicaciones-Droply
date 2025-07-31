@@ -14,14 +14,17 @@ export class UserService {
 
 
     public fetch(): Observable<Usuario[]> {
+        const loaderTimeout = this._alert.delayedLoader();
         return this._http.get<{ status: number; message: string; data: Usuario[] }>(this._URI).pipe(
             map(response => response.data),
             tap(users => {
-                console.log('Response:', users);
+                clearTimeout(loaderTimeout);
                 this._userService.set(users);
+                this._alert.clean();
             }),
             catchError(error => {
-                console.error('Error fetching users:', error);
+                clearTimeout(loaderTimeout);
+                this._alert.setAlert(400, "Error al obtener los usuarios");
                 return of([]);
             })
         );
