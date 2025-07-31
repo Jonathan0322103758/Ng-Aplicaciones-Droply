@@ -1,4 +1,4 @@
-@import '@Scss/abstract/_placeholder.scss';
+@import "@Scss/abstract/_placeholder.scss";
 
 .single-content {
     overflow: hidden;
@@ -18,19 +18,29 @@
                 width: 100%;
                 --input-width: calc(100% - 20px);
             }
-            
+
             .btn-options {
                 margin-top: auto;
                 background: var(--bg-surface);
             }
         }
+
+        &.form-update {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
     }
 
     .table {
+        @extend %scrollbar;
         flex: 1;
         background: var(--bg-surface);
         border-radius: 5px;
         border: 1px solid var(--color-muted);
+        position: relative;
 
         .tbody {
             flex: 1;
@@ -44,7 +54,30 @@
                 .btn {
                     margin-left: auto;
                 }
+
+                .text-content {
+                    flex: 1;
+                    gap: 10px;
+                }
             }
+        }
+
+        .change-content-btn {
+            position: absolute;
+            top: 60px;
+            right: 20px;
         }
     }
 }
+
+    .glass {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        background: var(--bg-glass);
+        z-index: 900;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }

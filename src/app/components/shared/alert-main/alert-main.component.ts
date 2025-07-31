@@ -57,7 +57,6 @@ export class AlertMainComponent {
     if (this.alertService.confirmCallback) {
       this.alertService.confirmCallback();
     }
-    this.changeStatus();
   }
 
 

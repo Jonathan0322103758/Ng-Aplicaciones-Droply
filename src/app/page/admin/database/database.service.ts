@@ -88,30 +88,31 @@ export class DatabaseService {
         }
     }
 
-public exportCSV(credentials: { username: string, password: string }, table: string): void {
-    this._alert.loader();
-    this._http.post(`${this._URI}/export/csv`, { credentials, table }, { responseType: 'blob', observe: 'response' }).subscribe({
-        next: (response: any) => {
-            const contentDisposition = response.headers?.get('Content-Disposition');
-            let filename = 'archivo.csv';
-            if (contentDisposition) {
-                const match = contentDisposition.match(/filename="?([^"]+)"?/);
-                if (match) filename = match[1];
+    public exportCSV(credentials: { username: string, password: string }, table: string): void {
+        this._alert.loader();
+        this._http.post(`${this._URI}/export/csv`, { credentials, table }, { responseType: 'blob', observe: 'response' }).subscribe({
+            next: (response: any) => {
+                const contentDisposition = response.headers?.get('Content-Disposition');
+                const timestamp = Date.now();
+                let filename = `archivo_${table}_${timestamp}.csv`;
+                if (contentDisposition) {
+                    const match = contentDisposition.match(/filename="?([^"]+)"?/);
+                    if (match) filename = match[1];
+                }
+                const blob = new Blob([response.body], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                this._alert.setAlert(200, `Archivo CSV exportado con éxito`);
+            },
+            error: () => {
+                this._alert.setAlert(400, "Error al exportar el archivo CSV, credenciales incorrectas");
             }
-            const blob = new Blob([response.body], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-            this._alert.setAlert(200, `Archivo CSV exportado con éxito`);
-        },
-        error: () => {
-            this._alert.setAlert(400, "Error al exportar el archivo CSV, credenciales incorrectas");
-        }
-    });
-}
+        });
+    }
 }

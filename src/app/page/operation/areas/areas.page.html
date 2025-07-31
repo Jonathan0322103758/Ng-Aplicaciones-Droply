@@ -1,3 +1,4 @@
+@if(areas$ | async) {
 <div class="content-page">
     <qx-title-header title="Áreas y líneas de agua" />
     <div class="single-content">
@@ -5,13 +6,15 @@
             <qx-title-header title="Registrar nueva área" />
             <div class="form-input flex-column">
                 <qx-info info="Registra nuevas áreas que requieran de gestión en líneas de agua o en su consumo." />
-                <qx-input type="text" styleClass="square" label="Nombre de la nueva área" [required]="true" />
-                <qx-input type="text" styleClass="square" label="Descripción del área" [required]="true" />
+                <qx-input type="text" styleClass="square" label="Nombre de la nueva área" [required]="true"
+                    [(value)]="areaForm.Nombre" />
+                <qx-input type="text" styleClass="square" label="Descripción del área" [required]="true"
+                    [(value)]="areaForm.Descripcion" />
                 <div class="btn-options flex-end">
                     <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
-                        label="Cancelar" />
+                        label="Cancelar" (onClick)="cancelAreasForm()" />
                     <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
-                        label="Guardar" />
+                        label="Guardar" (onClick)="postAreas()" [disabled]="isValidAreas()" />
                 </div>
             </div>
         </div>
@@ -20,8 +23,8 @@
             <div class="form-input flex-column">
                 <qx-info info="Registra nuevas líneas de agua en algun área previamente registrada." />
                 <qx-input type="text" styleClass="square" label="Código o nombre" [required]="true" />
-                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas" />
-                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas" />
+                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas()" />
+                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas()" />
                 <div class="btn-options flex-end">
                     <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
                         label="Cancelar" />
@@ -31,20 +34,74 @@
             </div>
         </div>
         <div class="table flex-column">
+            <div class="change-content-btn flex-row">
+                <qx-button type="label" styleClass="square warning-ghost" label="Ver áreas"
+                    (onClick)="changeView('areas')" />
+                <qx-button type="label" styleClass="square secondary-ghost" label="Ver líneas de agua"
+                    (onClick)="changeView('lineas')" />
+            </div>
+            @if(content === 'areas') {
             <qx-title-header title="Áreas registradas" />
             <div class="tbody flex-column">
-                @for(area of dummyAreas; track area._id) {
-                    <div class="area-target flex-row flex-center">
-                        <i class="fas fa-screwdriver-wrench"></i>
-                        <label class="text-bold">{{ area.name }}</label>
-                        <div class="btn flex-row">
-                            <qx-button type="icon" styleClass="square info-ghost" icon="fas fa-gauge"/>
-                            <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-pen"/>
-                            <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban"/>
-                        </div>
+                @for(area of areas(); track area.Id) {
+                <div class="area-target flex-row flex-center">
+                    <i class="fas fa-screwdriver-wrench"></i>
+                    <div class="text-content flex-column">
+                        <label class="text-bold">{{ area.Nombre }}</label>
+                        <label class="text-light">{{ area.Descripcion }}</label>
                     </div>
+                    <div class="btn flex-row">
+                        <qx-button type="icon" styleClass="square info-ghost" icon="fas fa-gauge" />
+                        <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-pen" 
+                            (onClick)="setFormToUpdateArea(area)"/>
+                        <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban"
+                            (onClick)="deleteArea(area.Id)" />
+                    </div>
+                </div>
                 }
             </div>
+            }
+            @if(content === 'lineas') {
+            <qx-title-header title="Líneas de agua registradas" />
+            <div class="tbody flex-column">
+                @for(area of areas(); track area.Id) {
+                <div class="area-target flex-row flex-center">
+                    <i class="fas fa-screwdriver-wrench"></i>
+                    <div class="text-content flex-column">
+                        <label class="text-bold">{{ area.Nombre }}</label>
+                        <label class="text-light">{{ area.Descripcion }}</label>
+                    </div>
+                    <div class="btn flex-row">
+                        <qx-button type="icon" styleClass="square info-ghost" icon="fas fa-gauge" />
+                        <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-pen" />
+                        <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban"
+                            (onClick)="deleteArea(area.Id)" />
+                    </div>
+                </div>
+                }
+            </div>
+            }
         </div>
+
+        @if(updateForm === true) {
+        <div class="glass"></div>
+        <div class="form form-update flex-column">
+            <qx-title-header title="Registrar nueva área" />
+            <div class="form-input flex-column">
+                <qx-info info="Registra nuevas áreas que requieran de gestión en líneas de agua o en su consumo." />
+                <qx-input type="text" styleClass="square" label="Nombre de la nueva área" [required]="true"
+                    [(value)]="areaFormUpdate.Nombre" />
+                <qx-input type="text" styleClass="square" label="Descripción del área" [required]="true"
+                    [(value)]="areaFormUpdate.Descripcion" />
+                <div class="btn-options flex-end">
+                    <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
+                        label="Cancelar" (onClick)="cancelAreasForm()" />
+                    <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
+                        label="Guardar" (onClick)="put()" />
+                </div>
+            </div>
+        </div>
+        }
     </div>
 </div>
+}
