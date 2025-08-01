@@ -12,7 +12,7 @@
                     [(value)]="areaForm.Descripcion" />
                 <div class="btn-options flex-end">
                     <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
-                        label="Cancelar" (onClick)="cancelAreasForm()" />
+                        label="Cancelar" (onClick)="cancelForm()" />
                     <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
                         label="Guardar" (onClick)="postAreas()" [disabled]="isValidAreas()" />
                 </div>
@@ -52,8 +52,8 @@
                     </div>
                     <div class="btn flex-row">
                         <qx-button type="icon" styleClass="square info-ghost" icon="fas fa-gauge" />
-                        <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-pen" 
-                            (onClick)="setFormToUpdateArea(area)"/>
+                        <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-pen"
+                            (onClick)="setFormToUpdateArea(area)" />
                         <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban"
                             (onClick)="deleteArea(area.Id)" />
                     </div>
@@ -63,28 +63,29 @@
             }
             @if(content === 'lineas') {
             <qx-title-header title="Líneas de agua registradas" />
+            @if(lines$ | async) {
             <div class="tbody flex-column">
-                @for(area of areas(); track area.Id) {
+                @for(line of lines(); track line.Id) {
                 <div class="area-target flex-row flex-center">
                     <i class="fas fa-screwdriver-wrench"></i>
                     <div class="text-content flex-column">
-                        <label class="text-bold">{{ area.Nombre }}</label>
-                        <label class="text-light">{{ area.Descripcion }}</label>
+                        <label class="text-bold">{{ line.Codigo }}</label>
                     </div>
                     <div class="btn flex-row">
-                        <qx-button type="icon" styleClass="square info-ghost" icon="fas fa-gauge" />
-                        <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-pen" />
+                        <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-pen" 
+                         (onClick)="setFormToUpdateLine(line)"/>
                         <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban"
-                            (onClick)="deleteArea(area.Id)" />
+                            (onClick)="deleteLine(line.Id)" />
                     </div>
                 </div>
                 }
             </div>
             }
+            }
         </div>
 
-        @if(updateForm === true) {
-        <div class="glass"></div>
+        @if(updateForm === true && content === 'areas') {
+        <div class="overlay"></div>
         <div class="form form-update flex-column">
             <qx-title-header title="Registrar nueva área" />
             <div class="form-input flex-column">
@@ -95,9 +96,9 @@
                     [(value)]="areaFormUpdate.Descripcion" />
                 <div class="btn-options flex-end">
                     <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
-                        label="Cancelar" (onClick)="cancelAreasForm()" />
+                        label="Cancelar" (onClick)="cancelForm()" />
                     <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
-                        label="Guardar" (onClick)="put()" />
+                        label="Guardar" (onClick)="putLine()" />
                 </div>
             </div>
         </div>
