@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
-  private readonly _URL = 'http://raspberrypi2.local';
+  private readonly _URL = 'https://complaints-rx-dark-warnings.trycloudflare.com';
   private readonly _http = inject(HttpClient);
 
   private getHeaders(): HttpHeaders {

@@ -18,9 +18,12 @@ export class DatabaseService {
 
 
     public fetchTables(): Observable<{ tables: string[] }> {
+        const loaderTimeout = this._alert.delayedLoader();
         return this._http.post<{ tables: string[] }>(`${this._URI}/tables`, this._CREDENTIALS).pipe(
             tap((response: { tables: string[] }) => {
+                clearTimeout(loaderTimeout);
                 this._tablesSignal.set(response.tables)
+                this._alert.clean();
             }),
             catchError(error => {
                 console.error('Error fetching modules:', error);

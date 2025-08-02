@@ -24,7 +24,7 @@ export class AlertMainService {
   public delayedLoader(): NodeJS.Timeout {
     return setTimeout(() => {
       this.setAlert(999, "");
-    }, 500);
+    }, 200);
   }
 
   public loader(): void {

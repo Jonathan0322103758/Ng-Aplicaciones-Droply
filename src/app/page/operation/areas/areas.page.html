@@ -22,14 +22,14 @@
             <qx-title-header title="Registrar nueva línea de agua" />
             <div class="form-input flex-column">
                 <qx-info info="Registra nuevas líneas de agua en algun área previamente registrada." />
-                <qx-input type="text" styleClass="square" label="Código o nombre" [required]="true" />
-                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas()" />
-                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas()" />
+                <qx-input type="text" styleClass="square" label="Código o nombre" [required]="true" [(value)]="lineForm.Codigo"/>
+                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas()" [(selectedValue)]="lineForm.Area"/>
+                <qx-dropdown styleClass="square" label="Medidores" [options]="optionsAreas()" [(selectedValue)]="lineForm.Medidor"/>
                 <div class="btn-options flex-end">
                     <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
-                        label="Cancelar" />
+                        label="Cancelar" (onClick)="cancelForm()"/>
                     <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
-                        label="Guardar" />
+                        label="Guardar" (onClick)="postLine()"/>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
             <div class="tbody flex-column">
                 @for(line of lines(); track line.Id) {
                 <div class="area-target flex-row flex-center">
-                    <i class="fas fa-screwdriver-wrench"></i>
+                    <i class="fas fa-faucet"></i>
                     <div class="text-content flex-column">
                         <label class="text-bold">{{ line.Codigo }}</label>
                     </div>
@@ -87,13 +87,30 @@
         @if(updateForm === true && content === 'areas') {
         <div class="overlay"></div>
         <div class="form form-update flex-column">
-            <qx-title-header title="Registrar nueva área" />
+            <qx-title-header title="Actualizar área" />
             <div class="form-input flex-column">
-                <qx-info info="Registra nuevas áreas que requieran de gestión en líneas de agua o en su consumo." />
                 <qx-input type="text" styleClass="square" label="Nombre de la nueva área" [required]="true"
                     [(value)]="areaFormUpdate.Nombre" />
                 <qx-input type="text" styleClass="square" label="Descripción del área" [required]="true"
                     [(value)]="areaFormUpdate.Descripcion" />
+                <div class="btn-options flex-end">
+                    <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
+                        label="Cancelar" (onClick)="cancelForm()" />
+                    <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-floppy-disk"
+                        label="Guardar" (onClick)="putArea()" />
+                </div>
+            </div>
+        </div>
+        }
+
+        @if(updateForm === true && content === 'lineas') {
+        <div class="overlay"></div>
+        <div class="form form-update flex-column">
+            <qx-title-header title="Actualizar línea de agua" />
+            <div class="form-input flex-column">
+                <qx-input type="text" styleClass="square" label="Código o nombre" [required]="true" [(value)]="lineFormUpdate.Codigo"/>
+                <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas()" [(selectedValue)]="lineFormUpdate.Area"/>
+                <qx-dropdown styleClass="square" label="Medidores" [options]="optionsAreas()" [(selectedValue)]="lineFormUpdate.Medidor"/>
                 <div class="btn-options flex-end">
                     <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
                         label="Cancelar" (onClick)="cancelForm()" />

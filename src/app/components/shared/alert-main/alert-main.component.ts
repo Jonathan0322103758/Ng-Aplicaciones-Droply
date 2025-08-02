@@ -21,9 +21,10 @@ export class AlertMainComponent {
   public isType(): string {
     const status = this.status();
     if (status === 100) return 'Favor de confirmar respuesta';
-    if (status === 200) return 'Tarea realizada con éxito';
+    if (status === 200) return 'Éxito';
     if (status === 300) return '¡Advertencia!';
-    if (status === 400) return 'Error al realizar la tarea';
+    if (status === 400) return 'Error';
+    if (status === 403) return 'Acceso denegado. El usuario no esta autorizado';
     if (status === 999) return 'Cargando...';
     return 'Empty';
   }
@@ -35,6 +36,7 @@ export class AlertMainComponent {
     if (status === 200) return `${route}Success.png`
     if (status === 300) return `${route}Warning.png`;
     if (status === 400) return `${route}Error.png`;
+    if (status === 403) return `${route}Forbidden.png`;
     return ''
   }
 

@@ -26,8 +26,6 @@ export class ActivityPage {
           from: '2024-06-01',
           to: '2024-06-30',
           summary: 'Versión inicial descartada por cambios en requerimientos.',
-          assignedTo: 'Equipo UX',
-          position: 0,
         }
       ]
     },
@@ -41,8 +39,6 @@ export class ActivityPage {
           from: '2024-07-10',
           to: '2024-07-12',
           summary: 'Explorar documentación de la API externa para futuras integraciones.',
-          assignedTo: 'Jonathan M.',
-          position: 0,
         },
         {
           _id: 'task-002',
@@ -50,8 +46,6 @@ export class ActivityPage {
           from: '2024-07-13',
           to: '2024-07-14',
           summary: 'Verificar coherencia visual del diseño en Figma.',
-          assignedTo: 'Paola R.',
-          position: 1,
         }
       ]
     },
@@ -65,8 +59,6 @@ export class ActivityPage {
           from: '2024-07-14',
           to: '2024-07-17',
           summary: 'Crear componente de vista Kanban para actividades.',
-          assignedTo: 'Carlos H.',
-          position: 0,
         },
         {
           _id: 'task-004',
@@ -74,8 +66,6 @@ export class ActivityPage {
           from: '2024-07-15',
           to: '2024-07-18',
           summary: 'Integrar servicios con Firestore y probar queries.',
-          assignedTo: 'Ana L.',
-          position: 1,
         }
       ]
     },
@@ -89,8 +79,6 @@ export class ActivityPage {
           from: '2024-07-01',
           to: '2025-07-18T00:00:00.000Z',
           summary: 'Diseño inicial de pantallas en prototipo.',
-          assignedTo: 'Laura S.',
-          position: 0,
         },
         {
           _id: 'task-006',
@@ -98,8 +86,6 @@ export class ActivityPage {
           from: '2024-07-05',
           to: '2024-07-06',
           summary: 'Generar documentación básica de la estructura del proyecto.',
-          assignedTo: 'Marcos F.',
-          position: 1,
         }
       ]
     }

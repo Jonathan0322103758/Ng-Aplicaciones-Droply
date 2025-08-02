@@ -91,6 +91,11 @@
             color: $danger;
         }
 
+        .unauthorized {
+            background: $orange;
+            color: $orange;
+        }
+
         .load {
             background: var(--bg-surface);
             color: var(--bg-surface);
