@@ -1,12 +1,13 @@
-<!-- <div class="role-module-table-wrapper">
+@if(modules$ | async) {
+  <div class="role-module-table-wrapper">
     <table class="role-module-table">
       <thead>
         <tr>
-          @for (dummy of modules; track dummy.rol) {
+          @for (array of modules(); track array.Role) {
           <th>
             <div class="flex-center">
               <i class="fas fa-user-shield success"></i>
-              <div class="text-bold">{{ dummy.rol }}</div>
+              <div class="text-bold">{{ array.Role }}</div>
             </div>
           </th>
           }
@@ -14,10 +15,10 @@
       </thead>
       <tbody>
         <tr>
-          @for (modules of modules; track modules.rol) {
+          @for (modules of modules(); track modules.Role) {
           <td>
             <div>
-              @for (module of modules.modulos; track module._id) {
+              @for (module of modules.Modulos; track module.Id) {
               <qx-module-card [module]="module" [status]="true" />
               }
             </div>
@@ -26,4 +27,5 @@
         </tr>
       </tbody>
     </table>
-</div> -->
+</div>
+}

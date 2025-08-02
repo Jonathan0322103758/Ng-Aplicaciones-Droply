@@ -27,7 +27,7 @@
 
     .user-list {
         @extend %scrollbar;
-
+        
         .user-not-found {
             font-size: 14px;
             width: 350px;

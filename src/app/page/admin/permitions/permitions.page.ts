@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Signal } from "@angular/core";
 import { Router } from "@angular/router";
 import { PreferenceService } from "@Client/preference/preference.service";
+import { ModuleListComponent } from "@Component/feature/permisions/module-list/module-list.component";
 import { RoleModulesListComponent } from "@Component/feature/permisions/role-modules-list/role-modules-list.component";
+import { UserListComponent } from "@Component/feature/users/user-list/user-list.component";
 import { UserRolListComponent } from "@Component/feature/users/user-rol-list/user-rol-list.component";
 import { InfoCardComponent } from "@Component/shared/info-card/info-card.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
@@ -11,7 +13,16 @@ import { ButtonStyle, ColorType } from "@Types_/ui.types";
 @Component({
   selector: 'page-permitions',
   standalone: true,
-  imports: [TitleHeaderComponent, InfoComponent, ButtonComponent, InfoCardComponent, RoleModulesListComponent, UserRolListComponent],
+  imports: [
+    TitleHeaderComponent,
+    InfoComponent, 
+    ButtonComponent, 
+    InfoCardComponent, 
+    RoleModulesListComponent, 
+    UserRolListComponent, 
+    ModuleListComponent,
+    UserListComponent
+  ],
   templateUrl: './permitions.page.html',
   styleUrl: './permitions.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

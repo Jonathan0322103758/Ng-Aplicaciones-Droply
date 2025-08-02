@@ -97,6 +97,14 @@ export class AreasPage implements OnInit {
         return nombre.trim() !== "" && descripcion.trim() !== "" ? false : true;
     }
 
+    public isValidLines(): boolean {
+        const codigo = this.lineForm.Codigo ?? "";
+        const area = this.lineForm.Area ?? "";
+        const medidor = this.lineForm.Medidor ?? "";
+
+        return codigo.trim() !== "" && area.trim() !== "" && medidor.trim() !== "" ? false : true;
+    }
+
     public changeView(view: string): void {
         this.updateForm = false;
         this.content = view;

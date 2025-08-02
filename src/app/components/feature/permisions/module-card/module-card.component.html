@@ -1,5 +1,6 @@
 <div class="module-card flex-start" [class.des]="module().Status !== true">
-    <i class="fas fa-{{ module().icon }} {{ accentColor() }}"></i>
+    <!-- <i class="fas fa-{{ module().Icon }} {{ accentColor() }}"></i> -->
+    <i class="fas fa-cube {{ accentColor() }}"></i>
     <label class="text-light">{{module().Nombre}}</label>
     @if(module().Status === true && status() === false) {
     <qx-badge text="Habilitado" styleClass="rounded success" />

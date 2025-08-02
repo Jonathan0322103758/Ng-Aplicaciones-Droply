@@ -3,18 +3,18 @@
 
   <div class="flex-column">
     <div class="option-message flex-center" [class.close]="options">
-      <qx-info-card color="primary" icon="fas fa-inbox" title="Nuevos mensajes" text="Ver últimos mensajes"
-        info="3 nuevos mensajes" (click)="changeFilter('Nuevos Mensajes')" />
-      <qx-info-card color="success" icon="fas fa-envelope-open-text" title="Enviados" text="Mensajes enviado"
-        info="4 mensajes envíados" (click)="changeFilter('Enviados')" />
-      <qx-info-card color="info" icon="fas fa-archive" title="Archivados" text="Ver mensajes archivados"
-        info="3 mensajes archivados" (click)="changeFilter('Archivados')" />
-      <qx-info-card color="warning" icon="fas fa-clock" title="Recordar más tarde" text="Ver mensajes guardados"
-        info="2 mensajes guardados" (click)="changeFilter('Recordar más tarde')" />
-      <qx-info-card color="orange" icon="fas fa-envelope-open" title="Leídos" text="Mensajes leídos"
-        info="3 mensajes leídos" (click)="changeFilter('Leídos')" />
-      <qx-info-card color="danger" icon="fas fa-trash" title="Papelera" text="Ver mensajes en papelera"
-        info="16 mensajes en papelera" (click)="changeFilter('Papelera')" />
+      <qx-info-card color="primary" icon="fas fa-inbox" title="Nuevos mensajes" info="Ver últimos mensajes"
+        [box]="true" (click)="changeFilter('Nuevos Mensajes')" />
+      <qx-info-card color="success" icon="fas fa-envelope-open-text" title="Enviados" info="Mensajes enviado"
+        [box]="true" (click)="changeFilter('Enviados')" />
+      <qx-info-card color="info" icon="fas fa-archive" title="Archivados" info="Ver mensajes archivados"
+        [box]="true" (click)="changeFilter('Archivados')" />
+      <qx-info-card color="warning" icon="fas fa-clock" title="Recordar más tarde" info="Ver mensajes guardados"
+        [box]="true" (click)="changeFilter('Recordar más tarde')" />
+      <qx-info-card color="orange" icon="fas fa-envelope-open" title="Leídos" info="Mensajes leídos"
+        [box]="true" (click)="changeFilter('Leídos')" />
+      <qx-info-card color="danger" icon="fas fa-trash" title="Papelera" info="Ver mensajes en papelera"
+        [box]="true" (click)="changeFilter('Papelera')" />
     </div>
     <div class="flex-end">
       <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-list" [label]="optionsClose()"
@@ -40,11 +40,11 @@
           <label class="read text-bold {{ preference().color }}"
             [textContent]="!notification.status ? 'Nuevo mensaje' : 'Leído'"></label>
         </div>
-        <div class="flex-center">
+        <!-- <div class="flex-center">
           <qx-button type="icon" styleClass="square warning-ghost" icon="fas fa-clock" />
           <qx-button type="icon" styleClass="square info-ghost" icon="fas fa-archive" />
           <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-trash" />
-        </div>
+        </div> -->
       </div>
       }
     </div>
@@ -56,7 +56,7 @@
       <div class="body flex-column">
         <div class="flex-between">
           <label class="text-bold">Concepto: <span class="text-light">{{message?.concept}}</span></label>
-         <label class="datetime">{{ message?.date | date:'dd/MM/yyyy, hh:mm:ss a' }}</label>
+          <label class="datetime">{{ message?.date | date:'dd/MM/yyyy, hh:mm:ss a' }}</label>
         </div>
         <div class="flex-column content-message text-light">
           <label class="text-bold">Mensaje:</label>

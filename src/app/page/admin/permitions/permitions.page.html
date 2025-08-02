@@ -26,7 +26,7 @@
             </div>
             <div class="content-info-card flex-center">
                     <qx-info-card color="success" icon="fas fa-user-shield" title="Usuarios por rol" text="Consulta la cantidad de usuarios por rol asignado" info="Administrador, Gerente ...(+1 rol más)" [box]="true" (click)="callQuery('usuarios-por-rol')"/>
-                    <qx-info-card color="warning" icon="fas fa-cube" title="Módulos" text="Habilita o deshabilita módulos completos" info="8 módulos habilitados" [box]="true" (click)="callQuery('modulos')"/>
+                    <qx-info-card color="warning" icon="fas fa-cube" title="Módulos" text="Módulos completos" info="8 módulos habilitados" [box]="true" (click)="callQuery('modulos')"/>
             </div>
             <div class="container-target flex-column">
                 <qx-title-header title="Módulos habilitados por rol" icon="fas fa-cube" [subtitle]="true"/>
@@ -43,11 +43,15 @@
             <qx-user-rol-list/>
         }
         @if(activeQuery === 'usuarios-registrados') {
-            <div>Componente de usuarios registrados</div>
+            <qx-user-list/>
         }
         @if(activeQuery === 'modulos') {
-            <div>Componente de módulos</div>
+            <qx-title-header title="Módulos"/>
+            <qx-module-list/>
         }
         <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-multiply" (onClick)="closeQuery()"/>
+    </div>
+    <div class="info-message flex-center text-light">
+        <qx-info info="Solo para consultar datos."/>
     </div>
 }

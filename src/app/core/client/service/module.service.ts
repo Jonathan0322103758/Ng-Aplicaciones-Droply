@@ -1,5 +1,6 @@
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { ClientService } from "@Client/http/http";
+import { AlertMainService } from "@Component/shared/alert-main/alert-main.service";
 import { Module } from "@Interface/module.interface";
 import { catchError, map, Observable, of, tap } from "rxjs";
 
@@ -7,68 +8,48 @@ import { catchError, map, Observable, of, tap } from "rxjs";
 export class ModuleService {
     private readonly _URI: string = '/modulos';
     private readonly _http: ClientService = inject(ClientService);
-    private readonly _moduleService: WritableSignal<Module[]> = signal<Module[]>([]);
-    private readonly _dummyService: WritableSignal<{ rol: string, modulos: Module[] }[]> = signal<{ rol: string, modulos: Module[] }[]>([]);
+    private readonly _alert: AlertMainService = inject(AlertMainService);
+    private readonly _moduleRolSignal: WritableSignal<Module[]> = signal<Module[]>([]);
+    private readonly _moduleSignal: WritableSignal<Module[]> = signal<Module[]>([]);
 
-    public fetch(userId?: string): Observable<Module[]> {
-        const params = userId ? { params: { userId } } : {};
-
-        return this._http.get<{ status: number; message: string; data: Module[] }>(this._URI, params).pipe(
+    public fetch(): Observable<any[]> {
+        const loaderTimeout = this._alert.delayedLoader();
+        return this._http.get<{ status: number; message: string; data: any[] }>(`${this._URI}/`).pipe(
             map(response => response.data),
             tap(modules => {
-                this._moduleService.set(modules);   
+                clearTimeout(loaderTimeout);
+                this._moduleSignal.set(modules);
+                this._alert.clean()
             }),
             catchError(error => {
-                console.error('Error fetching modules:', error);
+                this._alert.setAlert(400, "Error al obtener los modulos habilitados en el sistema")
+                return of([]);
+            })
+        );
+    }
+
+    public fetchModulesByRole(): Observable<any[]> {
+        const loaderTimeout = this._alert.delayedLoader();
+        return this._http.get<{ status: number; message: string; data: any[] }>(`${this._URI}Rol/`).pipe(
+            map(response => response.data),
+            tap(modules => {
+                clearTimeout(loaderTimeout);
+                this._moduleRolSignal.set(modules);
+                this._alert.clean()
+            }),
+            catchError(error => {
+                this._alert.setAlert(400, "Error al obtener los modulos habilitados en el sistema")
                 return of([]);
             })
         );
     }
 
 
-    public get(): Module[] {
-        return this._moduleService()
+    public getModulesByRole(): any[] {
+        return this._moduleRolSignal()
     }
 
-    // public dummydata(): { rol: string, modulos: Module[] }[] {
-    //     const data = [
-    //         {
-    //             rol: 'Administrador',
-    //             modulos: [
-    //                 { _id: '0', module: "Usuarios", icon: "user", status: true },
-    //                 { _id: '0', module: "Notificaciones", icon: "bell", status: true },
-    //                 { _id: '0', module: "Lineas de Agua", icon: "droplet", status: true },
-    //                 { _id: '0', module: "Costos y Tarifas", icon: "chart-column", status: true },
-    //                 { _id: '0', module: "Actividades", icon: "screwdriver-wrench", status: true },
-    //                 { _id: '0', module: "Reportes", icon: "folder", status: true },
-    //             ]
-    //         },
-    //         {
-    //             rol: 'Gerente',
-    //             modulos: [
-    //                 { _id: '0', module: "Notificaciones", icon: "bell", status: true },
-    //                 { _id: '0', module: "Lineas de Agua", icon: "droplet", status: true },
-    //                 { _id: '0', module: "Costos y Tarifas", icon: "chart-column", status: true },
-    //                 { _id: '0', module: "Actividades", icon: "screwdriver-wrench", status: true },
-    //                 { _id: '0', module: "Reportes", icon: "folder", status: true },
-    //                 { _id: '0', module: "Usuarios", icon: "user", status: false },
-    //             ]
-    //         },
-    //         {
-    //             rol: 'Auditor',
-    //             modulos: [
-    //                 { _id: '0', module: "Notificaciones", icon: "bell", status: true },
-    //                 { _id: '0', module: "Lineas de Agua", icon: "droplet", status: true },
-    //                 { _id: '0', module: "Costos y Tarifas", icon: "chart-column", status: true },
-    //                 { _id: '0', module: "Actividades", icon: "screwdriver-wrench", status: false },
-    //                 { _id: '0', module: "Reportes", icon: "folder", status: false },
-    //                 { _id: '0', module: "Usuarios", icon: "user", status: false },
-
-    //             ]
-    //         },
-    //     ]
-    //     // this._dummyService.set(data)
-    //     return this._dummyService()
-    // }
-
+    public get(): any[] {
+        return this._moduleSignal()
+    }
 }

@@ -55,6 +55,10 @@ export class AlertMainComponent {
 
   }
 
+  public cancel(): void {
+    this.alertService.setAlert(0, 'Empty');
+  }
+
   public onConfirm(): void {
     if (this.alertService.confirmCallback) {
       this.alertService.confirmCallback();

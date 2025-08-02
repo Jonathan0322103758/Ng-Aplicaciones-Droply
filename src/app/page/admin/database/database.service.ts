@@ -26,7 +26,7 @@ export class DatabaseService {
                 this._alert.clean();
             }),
             catchError(error => {
-                console.error('Error fetching modules:', error);
+                this._alert.setAlert(400, "Error al obtener tablas. Vuelve a intentarlo");
                 return of({ tables: [] });
             })
         );
@@ -37,12 +37,17 @@ export class DatabaseService {
     }
 
     public fetchBackups(): Observable<{ backups: string[] }> {
+        const loaderTimeout = this._alert.delayedLoader();
+
         return this._http.post<{ backups: string[] }>(`${this._URI}/backup/list`, null).pipe(
             tap((response: { backups: string[] }) => {
+                clearTimeout(loaderTimeout);
                 this._backupsSignal.set(response.backups)
+                this._alert.clean();
+
             }),
             catchError(error => {
-                console.error('Error fetching modules:', error);
+                this._alert.setAlert(400, "Error al obtener respaldos. Vuelve a intentarlo");
                 return of({ backups: [] });
             })
         );
