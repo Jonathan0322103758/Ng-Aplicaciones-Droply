@@ -23,7 +23,7 @@ export class AuthService {
                 console.log('Login successful:', response);
             },
             error: (error) => {
-                this._alert.setAlert(400, "Error en el inicio de sesión");
+                this._alert.setAlert(400, "Error al iniciar sesión, credenciales inválidas.");
             }
         });
     }

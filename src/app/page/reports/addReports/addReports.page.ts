@@ -5,7 +5,7 @@ import { TitleHeaderComponent } from "@Component/shared/title-header/title-heade
 @Component({
   selector: 'page-add-reports',
   standalone: true,
-  imports: [TitleHeaderComponent,ButtonComponent], // ✅ Asegúrate de incluirlo aquí
+  imports: [TitleHeaderComponent,ButtonComponent],
   templateUrl: './addReports.page.html',
   styleUrl: './addReports.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -38,7 +38,6 @@ export class AddReportsPage {
   public subirArchivo() {
     if (this.file()) {
       console.log('Subiendo archivo:', this.file()?.name);
-      // Aquí iría lógica real de subida
     } else {
       alert('Primero selecciona un archivo válido.');
     }

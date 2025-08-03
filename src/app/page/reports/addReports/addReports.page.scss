@@ -1,15 +1,23 @@
-.upload-container {
-
+.reports-container {
+  flex: 1;
   background: var(--bg-surface);
-  border-radius: 10px;
-  padding: 40px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 2%;
+  gap: 40px;
+  border: 1px solid var(--color-muted);
+}
 
- 
+.upload-container {
+  max-width: 300px;
+  height: max-content;
+  background: var(--bg-surface);
+  border-radius: 5px;
+  padding: 20px;
+  gap: 20px;
+  border: 1px solid var(--color-muted);
 
   .upload-box {
-    display: block;
-   
+    flex: 1;
     padding: 40px;
     border: 2px dashed var(--color-muted);
     border-radius: 10px;
@@ -17,19 +25,23 @@
     background-color: var(--bg-secondary);
     color: var(--text-muted);
     cursor: pointer;
-    margin-bottom: 20px;
-    transition: border-color 0.3s ease;
+
+    gap: 20px;
+
+    &:hover {
+      border-color: var(--accent-color);
+    }
 
     input {
       display: none;
     }
 
-    &:hover {
-      border-color: var(--primary);
+    span {
+      font-size: 12px;
     }
 
-    span {
-      font-size: 16px;
+    i {
+      font-size: 40px;
     }
   }
 

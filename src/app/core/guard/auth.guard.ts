@@ -7,11 +7,7 @@ export function authGuard(): boolean | import("@angular/router").UrlTree {
   const router = inject(Router);
   const alert = inject(AlertMainService);
 
-  let token = ""
-
-  if (typeof window !== 'undefined' && window.localStorage) {
-    token = localStorage.getItem('token') ?? "";
-  }
+  const token = typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('token') : null
 
   if (token) {
     return true;
