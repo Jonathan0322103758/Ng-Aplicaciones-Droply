@@ -1,0 +1,137 @@
+@import "@Scss/abstract/_placeholder.scss";
+
+.container {
+  width: 100%;
+  height: calc(100% - 100px);
+  background: var(--bg-surface);
+  border-radius: 5px;
+  border: 1px solid var(--color-muted);
+  overflow: hidden;
+  display: flex;
+
+  .list {
+    min-width: 350px;
+    max-width: 420px;
+    flex-shrink: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--color-muted);
+  }
+
+  .log-scroll {
+    flex: 1;
+    overflow-y: auto;
+    @extend %scrollbar;
+
+    .log-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .text {
+        flex: 1;
+        cursor: pointer;
+
+        b {
+          font-size: 14px;
+        }
+
+        p {
+          font-size: 13px;
+          color: var(--color-text-muted);
+        }
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+
+    .no-data {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+  }
+
+  .content {
+    flex: 1;
+    position: relative;
+
+    &.scroll {
+      @extend %scrollbar;
+      padding: 20px;
+    }
+
+    .log-detail {
+      padding: 20px;
+      font-size: 14px;
+
+      p {
+        margin-bottom: 8px;
+      }
+    }
+
+    .body-content {
+      display: flex;
+      height: calc(100% - 160px);
+      padding: 20px;
+
+      .user-form {
+        @extend %scrollbar;
+        width: 50%;
+        gap: 20px;
+        padding: 0 20px;
+
+        qx-input,
+        qx-dropdown {
+          --input-width: 100%;
+        }
+      }
+    }
+
+    .title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+  }
+
+  .option {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+
+    &.none {
+      display: none;
+    }
+
+    qx-button {
+      position: relative;
+    }
+  }
+
+  .flex-end {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 20px;
+  }
+}
+
+.volver-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
