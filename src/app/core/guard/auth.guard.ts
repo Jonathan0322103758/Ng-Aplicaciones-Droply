@@ -13,20 +13,6 @@ export function authGuard(): boolean | import("@angular/router").UrlTree {
     token = localStorage.getItem('token') ?? "";
   }
 
-  //   const currentRoute = window.location.pathname;
-
-  //   const allowedRoutesWithToken = [
-  //     '/home',
-  //     '/admin-users',
-  //     '/admin-permitions',
-  //     '/admin-database',
-  //     '/admin-notifications',
-  //     '/manage-meters',
-  //     '/manage-areas',
-  //     '/general-operation-progress',
-  //     '/general-operation-activities'
-  //   ];
-
   if (token) {
     return true;
   } else {

@@ -24,7 +24,7 @@ export class AlertMainComponent {
     if (status === 200) return 'Éxito';
     if (status === 300) return '¡Advertencia!';
     if (status === 400) return 'Error';
-    if (status === 403) return 'Acceso denegado. El usuario no esta autorizado';
+    if (status === 403) return 'Acceso denegado por el servidor';
     if (status === 999) return 'Cargando...';
     return 'Empty';
   }
@@ -64,7 +64,4 @@ export class AlertMainComponent {
       this.alertService.confirmCallback();
     }
   }
-
-
-
 }

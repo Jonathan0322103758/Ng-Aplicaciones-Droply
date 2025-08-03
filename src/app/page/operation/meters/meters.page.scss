@@ -2,15 +2,16 @@
 @import "@Scss/abstract/_palette.scss";
 
 .single-content {
+    overflow: hidden;
     .list {
         flex: 1;
         background: var(--bg-surface);
         border: 1px solid var(--color-muted);
         border-radius: 5px;
 
-        .meter-list {
-            @extend %scrollbar;
+        @extend %scrollbar;
 
+        .meter-list {
             .meter-item {
                 font-size: 14px;
                 height: 40px;

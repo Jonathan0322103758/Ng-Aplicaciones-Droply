@@ -3,7 +3,7 @@
 
     <div class="alert-header flex-center">
       <label class="text-bold">{{ isType() }}</label>
-      @if(status() !== 999) {
+      @if(status() !== 999 && status() !== 403) {
         <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-close" (onClick)="changeStatus()" />
       }
     </div>
@@ -25,7 +25,7 @@
           <label>Cargando, espere por favor</label>
         </div>
       } @else {
-        <label>{{ isText() }}</label>
+        <label class="text-light">{{ isText() }}</label>
         <div class="image">
           <img [src]="image()" />
         </div>
@@ -45,9 +45,17 @@
         Estatus: {{ alert().status }}
       </div>
 
+      @if (status() === 403) {
+        <qx-button
+          type="label"
+          styleClass="square orange-ghost"
+          label="cerrar"
+          (onClick)="cancel()"
+        />
+      }
+
       @if (status() === 100 || status() === 300) {
         <qx-button
-          text="Confirmar"
           type="label"
           styleClass="square danger-ghost"
           label="Cancelar"
@@ -57,7 +65,6 @@
 
       @if (status() === 100 || status() === 300) {
         <qx-button
-          text="Confirmar"
           type="label"
           styleClass="square success-ghost"
           label="Confirmar"
@@ -65,6 +72,5 @@
         />
       }
     </div>
-    
   </div>
 </div>

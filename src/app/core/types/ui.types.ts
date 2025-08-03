@@ -6,8 +6,8 @@ class UI {
     static readonly buttonType = ['icon', 'label', 'label-icon'] as const;
     static readonly buttonColorType = [
         'primary', 'secondary', 'success', 'danger','orange', 'warning', 'info', 'light', 'dark',
-        'primary-light', 'secondary-light', 'success-light', 'danger-light', 'warning-light', 'info-light', 'light-light', 'dark-light',
-        'primary-ghost', 'secondary-ghost', 'success-ghost', 'danger-ghost', 'warning-ghost', 'info-ghost', 'light-ghost', 'dark-ghost'
+        'primary-light', 'secondary-light', 'success-light', 'danger-light', 'orange-light', 'warning-light', 'info-light', 'light-light', 'dark-light',
+        'primary-ghost', 'secondary-ghost', 'success-ghost', 'danger-ghost', 'orange-ghost', 'warning-ghost', 'info-ghost', 'light-ghost', 'dark-ghost'
     ] as const;
 /* C */
     static readonly shapeType = ['square', 'rounded', 'custom', 'default'] as const;

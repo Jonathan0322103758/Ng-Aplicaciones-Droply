@@ -17,7 +17,7 @@ import { AsyncPipe } from "@angular/common";
 @Component({
     selector: 'page-users',
     standalone: true,
-    imports: [AsyncPipe, TitleHeaderComponent, ButtonComponent, InputComponent, CheckboxComponent, InfoComponent, InfoCardComponent],
+    imports: [AsyncPipe, TitleHeaderComponent, ButtonComponent, InputComponent, InfoCardComponent],
     templateUrl: './database.page.html',
     styleUrl: './database.page.scss',
     changeDetection: ChangeDetectionStrategy.OnPush

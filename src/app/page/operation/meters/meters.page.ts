@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 import { ButtonComponent, InputComponent, DropdownComponent, InfoComponent, SelectDateComponent, BadgeComponent } from "@Component/UI/standalone";
 import { NgChartsModule } from 'ng2-charts';
 import { ChartConfiguration, ChartType } from "chart.js";
 import { Meter } from "@Interface/meter.interface";
+import { MetersService } from "@Client/service/meters.service";
+import { Observable } from "rxjs";
 
 interface MeterForm extends Meter { }
 
@@ -28,11 +30,24 @@ type ViewMode = 'list' | 'detail' | 'form';
   styleUrl: './meters.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MetersPage {
-  public meters: Meter[] = [
-    { name: "Medidor 1", serialNumber: "SN-123", type: "agua", location: "Planta baja", status: true },
-    { name: "Medidor 2", serialNumber: "SN-456", type: "luz", location: "Oficina 1", status: false },
-  ];
+export class MetersPage implements OnInit {
+  private readonly _metersService: MetersService = inject(MetersService);
+  public meters$!: Observable<any>;
+  public meters = computed(() => this._metersService.get());
+
+  public fromInit = new Date(2025, 0, 1);
+  public toInit = new Date();
+
+  from: Date | null = null;
+  to: Date | null = null;
+
+  onFromChange(date: Date | null) {
+    this.from = date;
+  }
+
+  onToChange(date: Date | null) {
+    this.to = date;
+  }
 
   public meterTypes = [
     { label: "Consumo", value: 1 },
@@ -44,6 +59,8 @@ export class MetersPage {
   public selectedIndex: number | null = null;
 
   public meterForm: MeterForm = {
+    Id: "",
+    Codigo: "",
     name: "",
     serialNumber: "",
     type: "",
@@ -51,7 +68,7 @@ export class MetersPage {
   };
 
   public selectedMeter(): Meter | null {
-    return this.selectedIndex !== null ? this.meters[this.selectedIndex] : null;
+    return this.selectedIndex !== null ? this.meters()[this.selectedIndex] : null;
   }
 
   public showList() {
@@ -72,24 +89,21 @@ export class MetersPage {
 
   public editMeter() {
     if (this.selectedIndex !== null) {
-      this.meterForm = { ...this.meters[this.selectedIndex] };
+      this.meterForm = { ...this.meters()[this.selectedIndex] };
       this.view = 'form';
     }
   }
 
   public deleteMeter() {
-    if (this.selectedIndex !== null) {
-      this.meters.splice(this.selectedIndex, 1);
-      this.showList();
-    }
+
   }
 
   public saveMeter() {
     if (this.isFormValid()) {
       if (this.selectedIndex === null) {
-        this.meters.push({ ...this.meterForm });
+        //post
       } else {
-        this.meters[this.selectedIndex] = { ...this.meterForm };
+        //put
       }
       this.showList();
     }
@@ -101,6 +115,8 @@ export class MetersPage {
 
   public resetForm() {
     this.meterForm = {
+      Id: "",
+      Codigo: "",
       name: "",
       serialNumber: "",
       type: "",
@@ -108,8 +124,9 @@ export class MetersPage {
     };
   }
 
-
-
+  public ngOnInit(): void {
+    this.meters$ = this._metersService.fetch()
+  }
 
   chartType: ChartType = 'line'
 

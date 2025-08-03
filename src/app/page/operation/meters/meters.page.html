@@ -1,19 +1,20 @@
+@if(meters$ | async) {
 <div class="content-page">
     <qx-title-header title="Medidores" />
 
     <div class="single-content flex-row">
         <div class="list">
-            <qx-title-header title="Medidores" />
+            <qx-title-header title="Lista de Medidores" />
             <qx-info
                 info="Cada medidor almacena lecturas provenientes de las líneas de agua asignadas a su área. Es fundamental ingresar los valores de forma precisa para garantizar la integridad de los datos." />
             <div class="meter-list">
-                @for (meter of meters; track meter; let i = $index) {
+                @for (meter of meters(); track meter; let i = $index) {
                 <div class="meter-item flex-start {{ meter.status }}" (click)="selectMeter(i)">
                     <i class="fas fa-gauge"></i>
                     <div class="meter-info flex-column">
-                        <div class="text-bold">{{ meter.name }}</div>
-                        <div class="text-light">{{ meter.serialNumber}}</div>
-                        <div class="text-light">{{ meter.type }}</div>
+                        <div class="text-bold">{{ meter.Codigo }}</div>
+                        <div class="text-light">{{ meter.Codigo}}</div>
+                        <div class="text-light">{{ meter.Tipo }}</div>
                     </div>
                     @if(meter.status) {
                     <qx-badge styleClass="rounded success" text="Habilitado" />
@@ -22,7 +23,7 @@
                     }
                 </div>
                 }
-                @if(meters.length === 0) {
+                @if(meters().length === 0) {
                 <qx-info info="No se encontraron medidores disponibles" />
                 }
             </div>
@@ -41,7 +42,8 @@
             <div class="meter-detail flex-row">
                 <i class="fas fa-gauge"></i>
                 <div class="flex-column">
-                    <label class="text-light"><span class="text-bold">Nombre:</span> {{ selectedMeter()!.name }}</label>
+                    <label class="text-light"><span class="text-bold">Código:</span> {{ selectedMeter()!.Codigo
+                        }}</label>
                     <label class="text-light"><span class="text-bold">Serie:</span> {{ selectedMeter()!.serialNumber
                         }}</label>
                     <label class="text-light"><span class="text-bold">Tipo:</span> {{ selectedMeter()!.type | titlecase
@@ -56,9 +58,12 @@
                 </div>
             </div>
             <div class="from-to flex-row">
-                <qx-select-date label="Desde:" />
-                <qx-select-date label="Hasta:" />
+                <qx-select-date label="Desde:" [dateInput]="fromInit"
+                    (dateChange)="onFromChange($event)"></qx-select-date>
+
+                <qx-select-date label="Hasta:" [dateInput]="toInit" (dateChange)="onToChange($event)"></qx-select-date>
             </div>
+
             <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType">
             </canvas>
         </div>
@@ -88,3 +93,4 @@
         }
     </div>
 </div>
+}

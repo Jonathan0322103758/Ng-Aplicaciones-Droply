@@ -24,7 +24,7 @@ export class UserService {
             }),
             catchError(error => {
                 clearTimeout(loaderTimeout);
-                this._alert.setAlert(400, "Error al obtener los usuarios");
+                error.status !== 403 ? this._alert.setAlert(400, "Error al obtener los usuarios"): null;
                 return of([]);
             })
         );
@@ -46,8 +46,7 @@ export class UserService {
                 console.log(response)
             },
             error: (error) => {
-                this._alert.setAlert(400, "Error al registrar el usuario")
-                console.error(error)
+                error.status !== 403 ? this._alert.setAlert(400, "Error al registrar el usuario") : false;
             }
         })
     }
@@ -60,8 +59,7 @@ export class UserService {
                 console.log(response)
             },
             error: (error) => {
-                this._alert.setAlert(400, "Error al actualizar el usuario")
-                console.error(error)
+                error.status !== 403 ? this._alert.setAlert(400, "Error al actualizar el usuario") : false
             }
         })
     }
@@ -72,11 +70,9 @@ export class UserService {
             this._http.delete(`${this._URI}${data.ID}`).subscribe({
                 next: (response) => {
                     this._alert.setAlert(200, "¡Usuario eliminado exitosamente!");
-                    console.log(response);
                 },
                 error: (error) => {
-                    this._alert.setAlert(400, "Error al eliminar el usuario");
-                    console.error(error);
+                    error.status !== 403 ? this._alert.setAlert(400, "Error al eliminar el usuario") : false
                 }
             });
         };
