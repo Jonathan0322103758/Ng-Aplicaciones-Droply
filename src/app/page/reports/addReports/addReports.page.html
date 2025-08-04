@@ -1,8 +1,43 @@
 <div class="content-page">
   <qx-title-header title="Subir reporte" />
   <div class="single-content">
-    <div class="reports-container">
-
+    <div class="reports-container flex-column">
+      @if(reports.length > 0) {
+      <qx-title-header title="Archivos" />
+      <div class="search flex-start">
+        <i class="fas fa-magnifying-glass"></i>
+        <input class="text-light" type="text" placeholder="Buscar usuario..." (input)="filteredDocs()"
+          [(ngModel)]="searchTerm">
+      </div>
+      <div class="report-list flex-column">
+        @for (report of filteredDocs(); track report.id) {
+        <div class="report-item flex-start flex-row">
+          @if(report.type === 'pdf') {
+          <img src="../../../../assets/png/PDF.png">
+          } @else if(report.type === 'xlsx') {
+          <img src="../../../../assets/png/XLS.webp">
+          }
+          <div class="text-info flex-between">
+            <label class="text-bold">{{ report.name }}</label>
+            <label class="info text-light">
+              {{ report.createdAt | date: 'dd/MM/yyyy, hh:mm:ss a' }} <span class="text-bold">{{ report.size }}</span>
+            </label>
+          </div>
+          <div class="btn-container flex-row">
+            <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-eye" />
+            <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-download" />
+            <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-trash" />
+          </div>
+        </div>
+        }
+      </div>
+      } @else {
+      <img src="../../../../assets/png/Doc.png" class="img-active">
+      <h1 class="message-title">Sin archivos disponibles</h1>
+      <p class="message-text">
+        Actualmente no hay archivos almacenados en esta sección.
+      </p>
+      }
     </div>
     <div class="upload-container flex-column">
       <label for="fileInput" class="upload-box flex-center flex-column">

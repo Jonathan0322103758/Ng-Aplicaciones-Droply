@@ -1,0 +1,68 @@
+@if(logs$ | async) {
+  <div class="content-page">
+    <qx-title-header title="Bitácoras"/>
+    <div class="single-content">
+      <div class="log-list flex-column">
+        <qx-title-header title="Lista de bitácoras"/>
+        <div class="options flex-end">
+          <qx-button type="label-icon" styleClass="square primary-ghost" icon="fas fa-plus" label="Nueva bitácora" (onClick)="logFormStatus()"/>
+          <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-file-pdf" label="Exportar PDF"/>
+        </div>
+        <div class="body-list">
+            @for(log of logs(); track log.Id) {
+              <div class="log-card flex-row" (click)="detail(log)">
+                <i class="fas fa-file"></i>
+                <div class="info-card flex-between">
+                  <div class="flex-column">
+                  <label class="text-bold">{{ log.Titulo }}</label>
+                </div>
+                <div class="date flex-column">
+                  <label class="text-light"><span class="text-bold">Creado: </span>{{ log.Creado | date: 'dd/MM/yyyy, hh:mm:ss a'}}</label>
+                  <label class="text-light"><span class="text-bold">Actualizado: </span>{{ log.Actualizado | date: 'dd/MM/yyyy, hh:mm:ss a'}}</label> 
+                </div>
+                </div>
+              </div>
+            }
+        </div>
+      </div>
+    </div>
+    @if(logForm === true) {
+      <div class="overlay"></div>
+      <div class="form flex-column">
+        <qx-title-header title="Nueva bitácora"/>
+        <div class="form-body flex-column">
+          <qx-input type="text" styleClass="square" label="Título" placeholder="Ingresar título" [required]="true" [(value)]="form.Titulo"/>
+          <textarea  placeholder="Escribir..." [(ngModel)]="form.Descripcion"></textarea>
+          <qx-dropdown [options]="typelog" styleClass="square" label="Tipo de bitácora" [required]="true" [(selectedValue)]="form.Tipo"/>
+          <div class="flex-end">
+            <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-close" label="Cancelar" (onClick)="logFormStatus()"/>
+            <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-fas fa-floppy-disk" label="Guardar" (onClick)="post()"/>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if(logStatus === true) {
+      <div class="overlay"></div>
+      <div class="form flex-column">
+        <qx-title-header title="Detalle de bitácora"/>
+        <div class="close">
+          <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-close"(onClick)="logDetailStatus()"/>
+        </div>
+        <div class="form-body flex-column">
+          <label class="text-bold">{{ logDetail().Titulo }}</label>
+          <label class="text-light"><span class="text-bold">Tipo: </span>{{ logDetail().Tipo }}</label>
+          <label class="text-light"><span class="text-bold">Responsable: </span>{{ logDetail().Usuario }}</label>
+          <label class="text-bold">Descripción:</label>
+          <p class="text-light">{{ logDetail().Descripcion }}</p>
+          <label class="text-light"><span class="text-bold">Creado: </span>{{ logDetail().Creado }}</label>
+          <label class="text-light"><span class="text-bold">Actualizado: </span>{{ logDetail().Actualizado }}</label>
+          <div class="flex-end">
+            <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-close" label="Eliminar" (onClick)="deleteLog()"/>
+            <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-fas fa-pen" label="Editar" />
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+}

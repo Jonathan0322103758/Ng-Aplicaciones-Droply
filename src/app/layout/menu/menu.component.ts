@@ -21,9 +21,13 @@ export class MenuComponent {
   private readonly _menuService: MenuService = inject(MenuService);
   public status: Signal<StatusType> = computed(() => this._menuService.getStatus());
   public template: Signal<TemplateType> = computed(() => this._preferenceService.getPreference().template);
-  public sections: Menu[] = this._menuService.menu;
+  public sections!: Menu[];
 
   public changeStatus(): void {
     this._menuService.changeStatus();
+  }
+
+  public ngOnInit(): void {
+    this.sections = this._menuService.filterMenuByRole();
   }
 }

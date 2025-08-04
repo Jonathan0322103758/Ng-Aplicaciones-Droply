@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
 import { ButtonComponent } from '@Component/UI/button/button.component';
 import { MenuService } from '@Layout/menu/menu.service';
 import { AuthService } from '@Page/auth/auth.service';

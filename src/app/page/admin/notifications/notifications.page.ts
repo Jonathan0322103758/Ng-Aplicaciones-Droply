@@ -25,7 +25,7 @@ import { DatePipe } from '@angular/common';
     TitleHeaderComponent,
     ButtonComponent,
     InfoComponent,
-    InfoCardComponent,
+    // InfoCardComponent,
     DatePipe
   ],
   templateUrl: './notifications.page.html',

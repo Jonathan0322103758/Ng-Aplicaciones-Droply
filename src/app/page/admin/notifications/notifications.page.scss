@@ -2,39 +2,62 @@
 
 // ---------- Estructura principal ----------
 .option-message {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  justify-content: center;
-  transition: var(--transition);
-  max-height: 1000px;
-  opacity: 1;
-  grid-auto-rows: 1fr;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  // gap: 20px;
+  // justify-content: center;
+  // transition: var(--transition);
+  // max-height: 1000px;
+  // opacity: 1;
+  // grid-auto-rows: 1fr;
+
+  // qx-info-card {
+  //   width: 100%;
+  //   height: 100%;
+  //   max-width: 400px;
+  //   --info-card-width: calc(100% - 40px);
+  //   --info-card-height: 100%;
+  //   box-sizing: border-box;
+
+  //     display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // }
 
 
-  qx-info-card {
-    width: 100%;
-    height: 100%;
-    max-width: 400px;
-    --info-card-width: calc(100% - 40px);
-    --info-card-height: 100%;
-    box-sizing: border-box;
+  // &.close {
+  //   opacity: 0;
+  //   max-height: 0;
+  //   padding: 0;
+  //   pointer-events: none;
+  // }
 
-      display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  }
+  // .flex-end {
+  //   padding: 10px;
+  // }
 
+  flex: 1;
+  min-width: 300px;
+  max-width: 300px;
+  background: var(--bg-surface);
+  border: 1px solid var(--color-muted);
+  border-radius: 5px;
+  
+  .option {
+    align-items: center;
+    padding: 20px;
+    font-size: 12px;
+    gap: 10px;
 
-  &.close {
-    opacity: 0;
-    max-height: 0;
-    padding: 0;
-    pointer-events: none;
-  }
+    &:hover {
+      background: var(--color-muted)
+    }
 
-  .flex-end {
-    padding: 10px;
+    i {
+      @extend %background-dynamic;
+      padding: 10px;
+      border-radius: 5px;
+    }
   }
 }
 
@@ -112,7 +135,7 @@
   // ---------- Preview del mensaje derecho ----------
   .message-preview {
     position: relative;
-    flex: 2;
+    flex: 1;
     background: var(--bg-surface);
     border: 1px solid var(--color-muted);
     border-radius: 8px;
@@ -129,7 +152,7 @@
       flex: 1;
       padding: 20px;
       gap: 20px;
-      font-size: 16px;
+      font-size: 14px;
 
       .content-message {
         color: var(--color-text);

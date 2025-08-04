@@ -3,7 +3,7 @@
 
     <div class="alert-header flex-center">
       <label class="text-bold">{{ isType() }}</label>
-      @if(status() !== 999 && status() !== 403) {
+      @if(status() !== 999) {
         <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-close" (onClick)="changeStatus()" />
       }
     </div>
@@ -13,7 +13,7 @@
       [class.question]="status() === 100"
       [class.success]="status() === 200"
       [class.warning]="status() === 300"
-      [class.error]="status() === 400"
+      [class.error]="status() === 400"  
       [class.unauthorized]="status() === 403"
     >
     </div>
@@ -45,14 +45,14 @@
         Estatus: {{ alert().status }}
       </div>
 
-      @if (status() === 403) {
+      <!-- @if (status() === 403) {
         <qx-button
           type="label"
           styleClass="square orange-ghost"
           label="cerrar"
           (onClick)="cancel()"
         />
-      }
+      } -->
 
       @if (status() === 100 || status() === 300) {
         <qx-button

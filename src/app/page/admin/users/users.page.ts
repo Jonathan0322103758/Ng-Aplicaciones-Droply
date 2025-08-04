@@ -156,8 +156,6 @@ export class UsersPage {
 
     public deleteUser(): void {
         this._userService.delete(this.userDetail());
-        this.userDetail.set(null)
         this.cleanForm();
-
     }
 }

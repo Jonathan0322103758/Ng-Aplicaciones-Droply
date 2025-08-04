@@ -1,8 +1,8 @@
 <div class="content-page">
   <qx-title-header title="Notificaciones" />
 
-  <div class="flex-column">
-    <div class="option-message flex-center" [class.close]="options">
+  <div class="single-content flex-column">
+    <!-- <div class="option-message flex-center" [class.close]="options">
       <qx-info-card color="primary" icon="fas fa-inbox" title="Nuevos mensajes" info="Ver últimos mensajes"
         [box]="true" (click)="changeFilter('Nuevos Mensajes')" />
       <qx-info-card color="success" icon="fas fa-envelope-open-text" title="Enviados" info="Mensajes enviado"
@@ -21,48 +21,74 @@
         (onClick)="toggleOptions()" />
       <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-paper-plane" label="Enviar mensaje" />
     </div>
-  </div>
-
-  <div class="list-container">
-    <div class="list-notification">
-      <qx-title-header title="Últimos mensajes" />
-      <div class="info flex-center">
-        <qx-info info="Revisa tus notificaciones a diario para estar al pendiente de nuevas instrucciones." />
+  </div> -->
+    <div class="list-container">
+      <div class="option-message flex-column">
+        <qx-title-header title="Gestión"/>
+        <div class="option flex-row" (click)="changeFilter('Nuevos Mensajes')">
+          <i class="fas fa-inbox primary"></i>
+          <label class="text-light">Nuevos mensajes</label>
+        </div>
+        <div class="option flex-row" (click)="changeFilter('Enviados')">
+          <i class="fas fa-envelope-open-text success"></i>
+          <label class="text-light">Enviados</label>
+        </div>
+        <div class="option flex-row" (click)="changeFilter('Archivados')">
+          <i class="fas fa-archive info"></i>
+          <label class="text-light">Archivados</label>
+        </div>
+        <div class="option flex-row" (click)="changeFilter('Recordar más tarde')">
+          <i class="fas fa-clock warning"></i>
+          <label class="text-light">Recordar más tarde</label>
+        </div>
+        <div class="option flex-row" (click)="changeFilter('Leídos')">
+          <i class="fas fa-envelope-open orange"></i>
+          <label class="text-light">Leídos</label>
+        </div>
+        <div class="option flex-row" (click)="changeFilter('Papelera')">
+          <i class="fas fa-trash danger"></i>
+          <label class="text-light">Papelera</label>
+        </div>
       </div>
-      @for (notification of filteredNotifications(); track notification._id) {
-      <div class="message-item flex-center" (click)="viewMessage(notification)">
-        <div class="msg-icon">
-          <i class="fas fa-message"></i>
+      <div class="list-notification">
+        <qx-title-header title="Últimos mensajes" />
+        <div class="info flex-center">
+          <qx-info info="Revisa tus notificaciones a diario para estar al pendiente de nuevas instrucciones." />
         </div>
-        <div class="info-notification flex-column">
-          <label class="text-bold">{{ notification.description }}</label>
-          <label class="text-light">{{ notification.concept }}</label>
-          <label class="read text-bold {{ preference().color }}"
-            [textContent]="!notification.status ? 'Nuevo mensaje' : 'Leído'"></label>
-        </div>
-        <!-- <div class="flex-center">
+        @for (notification of filteredNotifications(); track notification._id) {
+        <div class="message-item flex-center" (click)="viewMessage(notification)">
+          <div class="msg-icon">
+            <i class="fas fa-message"></i>
+          </div>
+          <div class="info-notification flex-column">
+            <label class="text-bold">{{ notification.description }}</label>
+            <label class="text-light">{{ notification.concept }}</label>
+            <label class="read text-bold {{ preference().color }}"
+              [textContent]="!notification.status ? 'Nuevo mensaje' : 'Leído'"></label>
+          </div>
+          <!-- <div class="flex-center">
           <qx-button type="icon" styleClass="square warning-ghost" icon="fas fa-clock" />
           <qx-button type="icon" styleClass="square info-ghost" icon="fas fa-archive" />
           <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-trash" />
         </div> -->
-      </div>
-      }
-    </div>
-    <div class="message-preview flex-column">
-      <div class="header">
-        <qx-title-header title="Mensaje" />
-        <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-xmark" (onClick)="closePreview()" />
-      </div>
-      <div class="body flex-column">
-        <div class="flex-between">
-          <label class="text-bold">Concepto: <span class="text-light">{{message?.concept}}</span></label>
-          <label class="datetime">{{ message?.date | date:'dd/MM/yyyy, hh:mm:ss a' }}</label>
         </div>
-        <div class="flex-column content-message text-light">
-          <label class="text-bold">Mensaje:</label>
-          <p>{{ message?.description || 'Selecciona un mensaje para ver su contenido.' }}</p>
+        }
+      </div>
+      <div class="message-preview flex-column">
+        <div class="header">
+          <qx-title-header title="Mensaje" />
+          <qx-button type="icon" styleClass="rounded dark-ghost" icon="fas fa-xmark" (onClick)="closePreview()" />
+        </div>
+        <div class="body flex-column">
+          <div class="flex-between">
+            <label class="text-bold">Concepto: <span class="text-light">{{message?.concept}}</span></label>
+            <label class="datetime">{{ message?.date | date:'dd/MM/yyyy, hh:mm:ss a' }}</label>
+          </div>
+          <div class="flex-column content-message text-light">
+            <label class="text-bold">Mensaje:</label>
+            <p>{{ message?.description || 'Selecciona un mensaje para ver su contenido.' }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

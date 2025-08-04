@@ -12,6 +12,7 @@ export interface Page {
     label: string;
     path:  string;
     icon?: string;
+    roles?: number[];
 }
   
 export interface Submenu {

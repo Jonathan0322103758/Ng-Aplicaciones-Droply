@@ -1,0 +1,106 @@
+@import "@Scss/abstract/_placeholder.scss";
+
+.single-content {
+    overflow: hidden;
+}
+
+.log-list {
+    background: var(--bg-surface);
+    flex: 1;
+    border: 1px solid var(--color-muted);
+    border-radius: 5px;
+
+    .options {
+        padding: 0 20px;
+    }
+
+    .body-list {
+        @extend %scrollbar;
+        padding: 29px;
+        .log-card {
+            font-size: 14px;
+            border-bottom: 1px solid var(--color-muted);
+            height: 60px;
+            align-items: center;
+
+            i {
+                padding: 20px;
+            }
+
+            .info-card {
+                flex: 1;
+                gap: 10px;
+                .date {
+                    font-size: 12px;
+                    gap: 10px;
+                }
+            }
+
+            &:hover {
+                background: var(--color-muted);
+            }
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background: var(--bg-glass);
+    z-index: 900;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.form {
+    position: fixed;
+    background: var(--bg-surface);
+    border: 1px solid var(--color-muted);
+    border-radius: 5px;
+    max-width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+
+    .close {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+    }
+
+    .form-body {
+        padding: 20px;
+        gap: 20px;
+
+        textarea {
+            font-size: 14px;
+            height: 300px;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow: auto;
+            resize: none;
+
+            border: 1px solid var(--color-muted);
+            border-radius: 5px;
+            caret-color: var(--accent-color);
+            outline: none;
+
+            &:focus {
+                border-color: var(--accent-color);
+                outline: 1px solid var(--accent-color);
+            }
+
+            &:hover:not(:focus) {
+                border-color: var(--accent-color);
+            }
+
+            &::placeholder {
+                font-family: "Montserrat", sans-serif;
+            }
+        }
+    }
+}

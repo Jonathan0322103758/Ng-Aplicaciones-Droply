@@ -2,9 +2,54 @@
   flex: 1;
   background: var(--bg-surface);
   border-radius: 5px;
-  padding: 2%;
-  gap: 40px;
   border: 1px solid var(--color-muted);
+}
+
+.search {
+  color: var(--accent-color);
+  width: calc(100% - 40px);
+  padding: 20px;
+  gap: 20px;
+
+  i {
+    font-size: 14px;
+  }
+
+  input {
+    background: var(--bg-surface);
+    color: var(--color-text);
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 0;
+    outline: 0;
+  }
+}
+
+.report-list {
+  flex: 1;
+  padding: 20px;
+
+  .report-item {
+    flex: 1;
+    font-size: 14px;
+    max-height: 40px;
+    padding: 10px;
+    gap: 20px;
+    border-bottom: 1px solid var(--color-muted);
+    img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .text-info {
+      flex: 1;
+
+      .info {
+        font-size: 12px;
+      }
+    }
+  }
 }
 
 .upload-container {

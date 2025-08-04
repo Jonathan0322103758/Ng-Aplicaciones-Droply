@@ -29,8 +29,10 @@ export class AuthService {
     }
 
     public logout(): void {
+        this._alert.setAlert(200, "Has cerrado sesión correctamente.");
         localStorage.removeItem('token');
         this.router.navigate(['/auth']);
     }
+
 
 }

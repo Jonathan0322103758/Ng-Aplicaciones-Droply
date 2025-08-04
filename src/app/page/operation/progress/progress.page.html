@@ -1,4 +1,5 @@
-<div class="content-page">
+@if(progress$ | async) {
+  <div class="content-page">
   <qx-title-header title="General" />
   <div class="container flex-column">
     <qx-title-header title="Progreso de actividades" />
@@ -8,18 +9,19 @@
       <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-calendar" label="Aplicar" (onClick)="sendDate()"/>
     </div>
     <div class="progress-content flex-column">
-      @for (task of progress.tasks; track task._id) {
+      @for (task of progress(); track task._id) {
       <div class="progress-target flex-column">
         <div class="title flex-row">
           <i class="fas fa-chart-line"></i>
-          <label class="text-bold">{{task.status}}</label>
+          <label class="text-bold">{{task.Estado}}</label>
         </div>
         <div class="progress-bar flex-row">
-          <progress [class]="getStatusColor(task.status)" [value]="task.tasks.length" [max]="progress.total"></progress>
-          <small class="text-light">{{task.tasks.length}} en total</small>
+          <progress [class]="getStatusColor(task.Estado)" [value]="task.Actividades.length" [max]="totalProgress()"></progress>
+          <small class="text-light">{{task.Actividades.length}} en total</small>
         </div>
       </div>
       }
     </div>
   </div>
 </div>
+}
