@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
-  private readonly _URL = ' https://tickets-karen-winning-vitamins.trycloudflare.com';
+  private readonly _URL = ' https://tall-roland-sheffield-calling.trycloudflare.com';
   private readonly _http = inject(HttpClient);
 
   private getHeaders(): HttpHeaders {
@@ -18,7 +18,7 @@ export class ClientService {
   get<T>(uri: string, params?: { [key: string]: any }): Observable<T> {
     return this._http.get<T>(`${this._URL}${uri}`, {
       headers: this.getHeaders(),
-      params: params,
+      params: params ? params : {},
     });
   }
 

@@ -4,14 +4,14 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal, Signal } 
 import { PreferenceService } from "@Client/preference/preference.service";
 import { ActivityService } from "@Client/service/activity.service";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
-import { ButtonComponent, SelectDateComponent } from "@Component/UI/standalone";
+import { ButtonComponent, InfoComponent, SelectDateComponent } from "@Component/UI/standalone";
 import { ButtonStyle, ColorType } from "@Types_/ui.types";
 import { Observable } from "rxjs";
 
 @Component({
   selector: 'page-progress',
   standalone: true,
-  imports: [AsyncPipe, TitleHeaderComponent, SelectDateComponent, ButtonComponent],
+  imports: [AsyncPipe, TitleHeaderComponent, SelectDateComponent, ButtonComponent, InfoComponent],
   templateUrl: './progress.page.html',
   styleUrl: './progress.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -31,7 +31,7 @@ export class ProgressPage {
     const from = this.from().toISOString().split('T')[0];
     const to = this.to().toISOString().split('T')[0];
 
-    const body: {
+    const params: {
       FechaInicio: [string, string];
       FechaFin: [string, string];
     } = {
@@ -40,7 +40,7 @@ export class ProgressPage {
     };
 
 
-    this.progress$ = this._progressService.fetchProgres(body);
+    this.progress$ = this._progressService.fetchProgres(params);
   }
 
 

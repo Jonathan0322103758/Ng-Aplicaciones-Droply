@@ -24,7 +24,6 @@
                 <qx-info info="Registra nuevas líneas de agua en algun área previamente registrada." />
                 <qx-input type="text" styleClass="square" label="Código o nombre" [required]="true" [(value)]="lineForm.Codigo"/>
                 <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas()" [(selectedValue)]="lineForm.Area"/>
-                <qx-dropdown styleClass="square" label="Medidores" [options]="optionsAreas()" [(selectedValue)]="lineForm.Medidor"/>
                 <div class="btn-options flex-end">
                     <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
                         label="Cancelar" (onClick)="cancelForm()"/>
@@ -110,7 +109,6 @@
             <div class="form-input flex-column">
                 <qx-input type="text" styleClass="square" label="Código o nombre" [required]="true" [(value)]="lineFormUpdate.Codigo"/>
                 <qx-dropdown styleClass="square" label="Área" [options]="optionsAreas()" [(selectedValue)]="lineFormUpdate.Area"/>
-                <qx-dropdown styleClass="square" label="Medidores" [options]="optionsAreas()" [(selectedValue)]="lineFormUpdate.Medidor"/>
                 <div class="btn-options flex-end">
                     <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-multiply"
                         label="Cancelar" (onClick)="cancelForm()" />

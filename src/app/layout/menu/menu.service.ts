@@ -9,10 +9,10 @@ export class MenuService {
   private readonly _padlock: WritableSignal<boolean> = signal<boolean>(true);
 
   private readonly _allowedPathsByRole: Record<number, string[]> = {
+    // 1: ['home', 'admin-users', 'admin-permitions', 'admin-database', 'admin-notifications', 'manage-meters', 'manage-areas', 'general-operation-progress', 'general-operation-activities', 'general-operation-logs', 'reports-add-reports'],
     1: ['home', 'admin-users', 'admin-permitions', 'admin-database', 'admin-notifications', 'manage-meters', 'manage-areas', 'general-operation-progress', 'general-operation-activities', 'general-operation-logs', 'reports-add-reports'],
-    2: ['home', 'admin-users', 'admin-permitions', 'admin-database', 'admin-notifications', 'manage-meters', 'manage-areas', 'general-operation-progress', 'general-operation-activities', 'general-operation-logs', 'reports-add-reports'],
-    3: ['home', 'admin-notifications', 'manage-meters', 'manage-areas', 'general-operation-progress', 'general-operation-activities', 'general-operation-logs', 'reports-add-reports'],
-    4: ['home', 'admin-notifications', 'manage-meters', 'general-operation-progress', 'general-operation-activities', 'reports-add-reports'],
+    2: ['home', 'admin-notifications', 'manage-meters', 'manage-areas', 'general-operation-progress', 'general-operation-activities', 'general-operation-logs', 'reports-add-reports'],
+    3: ['home', 'admin-notifications', 'manage-meters', 'general-operation-progress', 'general-operation-activities', 'reports-add-reports'],
   };
 
   private getUserRole(): number | null {

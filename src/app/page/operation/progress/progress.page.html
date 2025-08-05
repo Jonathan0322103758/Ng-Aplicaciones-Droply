@@ -1,26 +1,37 @@
 @if(progress$ | async) {
-  <div class="content-page">
+<div class="content-page">
   <qx-title-header title="General" />
   <div class="container flex-column">
     <qx-title-header title="Progreso de actividades" />
     <div class="date-options flex-row">
-      <qx-select-date label="Desde:" [dateInput]="from()"/>
-      <qx-select-date label="Hasta:" [dateInput]="to()"/>
-      <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-calendar" label="Aplicar" (onClick)="sendDate()"/>
+      <qx-select-date label="Desde:" [dateInput]="from()" />
+      <qx-select-date label="Hasta:" [dateInput]="to()" />
+      <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-calendar" label="Aplicar"
+        (onClick)="sendDate()" />
     </div>
     <div class="progress-content flex-column">
-      @for (task of progress(); track task._id) {
+      @for (task of progress(); track task.Estado) {
       <div class="progress-target flex-column">
         <div class="title flex-row">
           <i class="fas fa-chart-line"></i>
           <label class="text-bold">{{task.Estado}}</label>
         </div>
         <div class="progress-bar flex-row">
-          <progress [class]="getStatusColor(task.Estado)" [value]="task.Actividades.length" [max]="totalProgress()"></progress>
+          <progress [class]="getStatusColor(task.Estado)" [value]="task.Actividades.length"
+            [max]="totalProgress()"></progress>
           <small class="text-light">{{task.Actividades.length}} en total</small>
         </div>
       </div>
       }
+      <qx-info
+        info="Esta sección presenta un resumen del progreso de actividades registradas en el sistema, agrupadas por estado. 
+              Cada barra de progreso indica la cantidad de actividades que se encuentran en un determinado estado, en relación al total de actividades activas. 
+
+              Puedes seleccionar un rango de fechas para filtrar las actividades mostradas usando las opciones 'Desde' y 'Hasta'. 
+              Una vez elegidas las fechas, haz clic en 'Aplicar' para actualizar los datos.
+
+              Esta vista es útil para supervisores, responsables de área o personal administrativo que necesita una visión general rápida del avance de las tareas y el cumplimiento de los objetivos programados." 
+      />
     </div>
   </div>
 </div>

@@ -15,6 +15,7 @@ export const roleGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
   try {
     const payload = decodePayload(token);
     const userRole = payload.role;
+    console.log(userRole)
 
     const allowedRoles: number[] = route.data['allowedRoles'] || [];
 

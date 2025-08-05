@@ -48,17 +48,22 @@ export class ActivityService {
     }
 
 
-    public fetchProgres(body?: { [key: string]: [string, string] }): Observable<any[]> {
+    public fetchProgres(params?: { FechaInicio: [string, string]; FechaFin: [string, string] }): Observable<any[]> {
         const loaderTimeout = this._alert.delayedLoader();
-
+        // Construir la query string como arrays JSON sin codificar y sin espacios
+        let query = '';
+        if (params) {
+            query = `FechaInicio=["${params.FechaInicio[0]}","${params.FechaInicio[1]}"]&FechaFin=["${params.FechaFin[0]}","${params.FechaFin[1]}"]`;
+        }
+        const url = query ? `${this._URI}estado?${query}` : `${this._URI}estado`;
         return this._http.get<{ status: number; message: string; data: any[] }>(
-            `${this._URI}estado`,
-            body
+            url
         ).pipe(
             map(response => response.data),
             tap(progress => {
+                const filtrarProgress = progress.filter(p => p.Estado !== "");
                 clearTimeout(loaderTimeout);
-                this._progressSignal.set(progress);
+                this._progressSignal.set(filtrarProgress);
                 this._alert.clean();
             }),
             catchError((error) => {
@@ -77,20 +82,22 @@ export class ActivityService {
         this._alert.loader();
         this._http.post<any>(this._URI, data).subscribe({
             next: (response) => {
-                this._http.post<any>('/actividadesUsuario', { Actividad: response.data.Id, Usuario: this.payload.id }).subscribe({
+                this._http.post<any>('/actividadesUsuario/', { Actividad: response.data.Id, Usuario: this.payload.id }).subscribe({
                     next: (response) => {
                         this._alert.setAlert(200, "Tarea registrada exitosamente!");
+                    },
+                    error: (error) => {
+                        this._alert.setAlert(400, "Error al registrar la Tarea");
                     }
-                })
+                });
             },
             error: (error) => {
-                this._alert.setAlert(400, "Error al registrar la Tarea")
+                this._alert.setAlert(400, "Error al registrar la Tarea");
             }
         })
     }
 
     public put(data: any): void {
-        console.log(data)
         this._http.put<any>(`${this._URI}${data.Id}`, data).subscribe({
             next: (response) => {
                 console.log(response)

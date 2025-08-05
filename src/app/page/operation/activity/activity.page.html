@@ -19,7 +19,7 @@
                     <qx-input type="text" styleClass="square" label="Titulo" [required]="true" [(value)]="formPost.Titulo"/>
                     <qx-input type="text" styleClass="square" label="Resumen" [required]="true" [(value)]="formPost.Descripcion"/>
                     <div class="date flex-end">
-                        <qx-select-date label="Vencimiento" [dateInput]="formPost.FechaFin"/>
+                        <qx-select-date label="Vencimiento" [dateInput]="to()"/>
                         <qx-button type="label" styleClass="square danger-ghost" label="Cancelar" (onClick)="cancelForm()"/>
                         <qx-button type="label" styleClass="square success-ghost" label="Guardar" (onClick)="guardarActividad(column.Estado)"/>
                     </div>

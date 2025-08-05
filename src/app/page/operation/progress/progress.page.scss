@@ -8,14 +8,21 @@
     border: 1px solid var(--color-muted);
 
     .date-options {
+        display: flex;
+        flex-direction: row;
         flex: 1;
         gap: 20px;
         padding: 0 20px;
+        max-height: 100px;
+        overflow: hidden; // o auto si quieres scroll interno
 
         qx-select-date {
             flex: 1;
+            max-height: 100%;
+            overflow: hidden;
         }
     }
+
 
     .progress-content {
         flex: 1;

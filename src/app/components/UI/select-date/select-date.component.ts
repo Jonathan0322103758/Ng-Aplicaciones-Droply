@@ -70,7 +70,6 @@ export class SelectDateComponent {
     const value = inputEvent.value;
     this.internalDate.set(value);
     this.dateChange.emit(value);
-    console.log(inputEvent.value)
   }
 
 

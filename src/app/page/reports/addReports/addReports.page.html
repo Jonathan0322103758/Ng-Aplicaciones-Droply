@@ -24,8 +24,9 @@
             </label>
           </div>
           <div class="btn-container flex-row">
-            <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-eye" />
-            <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-download" />
+            <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-eye" (onClick)="openReport(report)" />
+            <qx-button type="icon" styleClass="square success-ghost" icon="fas fa-download"
+              (onClick)="downloadReport(report)" />
             <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-trash" />
           </div>
         </div>
@@ -52,4 +53,10 @@
       </div>
     </div>
   </div>
+  @if(selectedFileUrl && selectedFileType === 'pdf') {
+  <div class="content-page pdf-viewer flex-center">
+    <iframe [src]="selectedFileUrl | safeUrl" width="100%" height="600px" style="border: none;"></iframe>
+    <qx-button type="icon" styleClass="square dark" icon="fas fa-times" (onClick)="closePreview()" />
+  </div>
+  }
 </div>

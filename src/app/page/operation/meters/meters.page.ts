@@ -67,7 +67,7 @@ export class MetersPage implements OnInit {
     location: ""
   };
 
-  public selectedMeter(): Meter | null {
+  public selectedMeter(): any {
     return this.selectedIndex !== null ? this.meters()[this.selectedIndex] : null;
   }
 

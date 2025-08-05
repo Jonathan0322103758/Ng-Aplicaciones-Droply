@@ -36,6 +36,7 @@ export class DatabasePage implements OnInit {
     public password: string = '';
     public selectedTables: string[] = [];
     public selectedTable: string = '';
+    public selectedBackup: string = '';
 
     public formStatus: boolean = false;
     public formType: string = '';
@@ -56,6 +57,16 @@ export class DatabasePage implements OnInit {
             this.selectedTable = table;
         } else {
             this.selectedTable = '';
+        }
+    }
+
+    public selectSingleBackup(event: Event, backup: string): void {
+        const input = event.target as HTMLInputElement;
+        const checked = input?.checked ?? false;
+        if (checked) {
+            this.selectedBackup = backup;
+        } else {
+            this.selectedBackup = '';
         }
     }
 
@@ -95,6 +106,10 @@ export class DatabasePage implements OnInit {
 
     backupByTables() {
         this._database.backupByTables({ username: this.username, password: this.password }, this.selectedTables)
+    }
+
+    restoreDatabase() {
+        this._database.restoreDatabase({username: this.username, password: this.password, backup_file: this.selectedBackup})
     }
 
     formatDatabase() {

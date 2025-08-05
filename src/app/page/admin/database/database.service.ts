@@ -82,10 +82,25 @@ export class DatabaseService {
         });
     }
 
+    public restoreDatabase(credentials: { username: string, password: string, backup_file: string}): void {
+        console.log(credentials)
+        this._alert.setAlert(300, "ADVERTENCIA!!! ¿Seguro de restaurar la base de datos?, Es posible que los datos se sobreescriban o se eliminen datos que aun no han sido respaldados.");
+        this._alert.confirmCallback = () => {
+            this._http.post(`${this._URI}/restore`, credentials).subscribe({
+                next: (response: any) => {
+                    this._alert.setAlert(200, "Base de datos restaurada con éxito");
+                },
+                error: (error) => {
+                    this._alert.setAlert(400, "Error al restaurar la base de datos, credenciales incorrectas");
+                }
+            });
+        }
+    }
+
     public formatDatabase(credentials: { username: string, password: string }): void {
         this._alert.setAlert(300, "ADVERTENCIA!!! ¿Seguro de formatear la base de datos?, se eliminarán todos los datos registrados. Recomendación: Realizar un respaldo antes de continuar.");
         this._alert.confirmCallback = () => {
-            this._http.post(`${this._URI}/format`, credentials).subscribe({
+            this._http.post(`${this._URI}/reset`, credentials).subscribe({
                 next: (response: any) => {
                     this._alert.setAlert(200, "Base de datos formateada con éxito");
                 },

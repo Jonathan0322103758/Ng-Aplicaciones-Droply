@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from "@angular/core";
 import { ActivityCardComponent } from "@Component/shared/activity-card/activity-card.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
@@ -31,17 +31,18 @@ export class ActivityPage {
   public newTasks: { [columnId: number]: { title: string; summary: string } } = {};
 
   private estadoMap: Record<string, number> = {
-    'Archivado': 6,
-    'En Pausa': 5,
+    'Archivado': 4,
+    'En Pausa': 3,
     'Finalizado': 2,
     'En Progreso': 1
   };
+  public to = signal(new Date());
 
   public formPost = {
     Titulo: '',
     Descripcion: '',
     FechaInicio: new Date().toISOString().split('.')[0] + 'Z',
-    FechaFin: new Date(),
+    FechaFin: null,
     Tipo: 1,
     Estado: null
   }
@@ -117,7 +118,7 @@ export class ActivityPage {
       ...this.formPost,
       Estado: estadoId,
       FechaInicio: now,
-      FechaFin: now,
+      FechaFin: this.to().toISOString().split('.')[0] + 'Z',
       Actualizado: now
     };
 

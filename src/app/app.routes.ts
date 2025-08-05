@@ -13,7 +13,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/home/home.page').then((m) => m.HomePage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2, 3, 4]
+            allowedRoles: [1, 2, 3]
         }
     },
     {
@@ -21,7 +21,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/admin/users/users.page').then((m) => m.UsersPage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2]
+            allowedRoles: [1]
         }
     },
     {
@@ -29,7 +29,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/admin/permitions/permitions.page').then((m) => m.PermitionsPage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2]
+            allowedRoles: [1]
         }
     },
     {
@@ -37,7 +37,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/admin/database/database.page').then((m) => m.DatabasePage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2]
+            allowedRoles: [1]
         }
     },
     {
@@ -45,7 +45,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/admin/notifications/notifications.page').then((m) => m.NotificationsPage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2, 3, 4]
+            allowedRoles: [1, 2, 3]
         }
     },
     {
@@ -53,7 +53,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/operation/meters/meters.page').then((m) => m.MetersPage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2, 3, 4]
+            allowedRoles: [1, 2, 3]
         }
     },
     {
@@ -69,7 +69,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/operation/progress/progress.page').then((m) => m.ProgressPage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2, 3, 4]
+            allowedRoles: [1, 2, 3]
         }
     },
     {
@@ -77,7 +77,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/operation/activity/activity.page').then((m) => m.ActivityPage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2, 3, 4]
+            allowedRoles: [1, 2, 3]
         }
     },
     {
@@ -93,7 +93,7 @@ export const routes: Routes = [
         loadComponent: () => import('./page/reports/addReports/addReports.page').then((m) => m.AddReportsPage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2, 3, 4]
+            allowedRoles: [1, 2, 3]
         }
     },
     {
