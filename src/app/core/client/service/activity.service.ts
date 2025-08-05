@@ -22,16 +22,20 @@ export class ActivityService {
 
         return this._http.get<{ status: number; message: string; data: any[] }>(`/mis/actividades/`).pipe(
             map(response => {
+                console.log(response)
                 const original = response.data;
 
                 const columnas = estadosFijos.map((estado, index) => {
                     const match = original.find(c => c.Estado === estado);
+                    console.log(match, 'match')
                     return {
                         _id: index + 1,
                         Estado: estado,
                         Actividades: match?.Actividades || []
                     };
                 });
+
+                console.log(columnas, 'columnas')
 
                 return columnas;
             }),
@@ -98,7 +102,7 @@ export class ActivityService {
     }
 
     public put(data: any): void {
-        this._http.put<any>(`${this._URI}${data.Id}`, data).subscribe({
+        this._http.put<any>(`${this._URI}${data.Actividad.Id}`, data).subscribe({
             next: (response) => {
                 console.log(response)
             },
@@ -110,9 +114,7 @@ export class ActivityService {
 
     public delete(data: any): void {
         this._alert.loader()
-        this._http.get<any>(`/actividadesUsuario/?Usuario=${this.payload.Id}&Actividad=${data.Id}`).subscribe({
-            next: (response) => {
-                this._http.delete<any>(`/actividadesUsuario/${response[0].Id}`).subscribe({
+            this._http.delete<any>(`/actividadesUsuario/${data.Id}`).subscribe({
             next: (response) => {
                 this._alert.setAlert(200, "Tarea eliminada exitosamente!");
             },
@@ -121,13 +123,6 @@ export class ActivityService {
                 console.error(error)
             }
         })
-            },
-            error: (error) => {
-                this._alert.setAlert(400, "Error al eliminar la Tarea");
-                console.error(error)
-            }
-        })
-
     }
 
     public getProgress(): any[] {

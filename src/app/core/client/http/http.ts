@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
-  private readonly _URL = 'https://senators-dat-creator-accompanied.trycloudflare.com';
+  private readonly _URL = 'http://192.168.15.201';
   private readonly _http = inject(HttpClient);
 
   private getHeaders(): HttpHeaders {

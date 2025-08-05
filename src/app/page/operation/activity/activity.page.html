@@ -29,11 +29,11 @@
                 <div cdkDrag class="task-wrapper">
                     <div class="task-placeholder" *cdkDragPlaceholder></div>
     
-                    <qx-activity-card [title]="task.Titulo" [fromTo]="getFromTo(task.FechaInicio, task.FechaFin)"
-                        [summary]="task.Descripcion" />
-                    <!-- <div class="flex-end">
+                    <qx-activity-card [title]="task.Actividad.Titulo" [fromTo]="getFromTo(task.Actividad.FechaInicio, task.Actividad.FechaFin)"
+                        [summary]="task.Actividad.Descripcion" />
+                    <div class="flex-end">
                         <qx-button type="icon" styleClass="square danger-ghost" (onClick)="deleteTarea(task)" icon="fas fa-trash"/>
-                    </div> -->
+                    </div>
                 </div>
                 }
             </div>
