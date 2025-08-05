@@ -16,11 +16,7 @@
                         <div class="text-light">{{ meter.Codigo}}</div>
                         <div class="text-light">{{ meter.Tipo }}</div>
                     </div>
-                    @if(meter.status) {
                     <qx-badge styleClass="rounded success" text="Habilitado" />
-                    } @else {
-                    <qx-badge styleClass="rounded danger" text="Deshabilitado" />
-                    }
                 </div>
                 }
                 @if(meters().length === 0) {
@@ -48,11 +44,7 @@
                         }}</label>
                     <label class="text-light"><span class="text-bold">Ubicación:</span> {{ selectedMeter()!.location
                         }}</label>
-                    @if(selectedMeter()?.status) {
                     <qx-badge styleClass="rounded success" text="Habilitado" />
-                    } @else {
-                    <qx-badge styleClass="rounded danger" text="Deshabilitado" />
-                    }
                 </div>
             </div>
             <div class="from-to flex-row">

@@ -130,7 +130,9 @@ export class ActivityPage {
     this.cancelForm();
   }
 
-
+  deleteTarea(data: any) : void {
+    this._activityService.delete(data);
+  }
 
 
   public getFromTo(startDate: string, endDate: string): string {

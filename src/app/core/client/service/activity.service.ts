@@ -108,6 +108,28 @@ export class ActivityService {
         })
     }
 
+    public delete(data: any): void {
+        this._alert.loader()
+        this._http.get<any>(`/actividadesUsuario/?Usuario=${this.payload.Id}&Actividad=${data.Id}`).subscribe({
+            next: (response) => {
+                this._http.delete<any>(`/actividadesUsuario/${response[0].Id}`).subscribe({
+            next: (response) => {
+                this._alert.setAlert(200, "Tarea eliminada exitosamente!");
+            },
+            error: (error) => {
+                this._alert.setAlert(400, "Error al eliminar la Tarea");
+                console.error(error)
+            }
+        })
+            },
+            error: (error) => {
+                this._alert.setAlert(400, "Error al eliminar la Tarea");
+                console.error(error)
+            }
+        })
+
+    }
+
     public getProgress(): any[] {
         return this._progressSignal()
     }

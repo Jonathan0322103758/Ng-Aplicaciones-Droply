@@ -6,7 +6,6 @@
         <qx-title-header title="Lista de bitácoras"/>
         <div class="options flex-end">
           <qx-button type="label-icon" styleClass="square primary-ghost" icon="fas fa-plus" label="Nueva bitácora" (onClick)="logFormStatus()"/>
-          <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-file-pdf" label="Exportar PDF"/>
         </div>
         <div class="body-list">
             @for(log of logs(); track log.Id) {
@@ -55,11 +54,11 @@
           <label class="text-light"><span class="text-bold">Responsable: </span>{{ logDetail().Usuario }}</label>
           <label class="text-bold">Descripción:</label>
           <p class="text-light">{{ logDetail().Descripcion }}</p>
-          <label class="text-light"><span class="text-bold">Creado: </span>{{ logDetail().Creado }}</label>
-          <label class="text-light"><span class="text-bold">Actualizado: </span>{{ logDetail().Actualizado }}</label>
+          <label class="text-light"><span class="text-bold">Creado: </span>{{ logDetail().Creado | date: 'dd/MM/yyyy, hh:mm:ss a' }}</label>
+          <!-- <label class="text-light"><span class="text-bold">Actualizado: </span>{{ logDetail().Actualizado | date: 'dd/MM/yyyy, hh:mm:ss a'}}</label> -->
           <div class="flex-end">
             <qx-button type="label-icon" styleClass="square danger-ghost" icon="fas fa-close" label="Eliminar" (onClick)="deleteLog()"/>
-            <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-fas fa-pen" label="Editar" />
+            <!-- <qx-button type="label-icon" styleClass="square success-ghost" icon="fas fa-fas fa-pen" label="Editar" /> -->
           </div>
         </div>
       </div>

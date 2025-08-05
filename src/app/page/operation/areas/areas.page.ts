@@ -46,7 +46,7 @@ export class AreasPage implements OnInit {
     public lineForm = {
         Codigo: "",
         Area: null,
-        Medidor: null,
+        Medidor: 1,
     }
 
     public lineFormUpdate = {
@@ -84,7 +84,6 @@ export class AreasPage implements OnInit {
         this.lineFormUpdate.Id = null;
         this.lineForm.Codigo = '';
         this.lineForm.Area = null;
-        this.lineForm.Medidor = null;
         this.lineFormUpdate.Codigo = '';
         this.lineFormUpdate.Area = null;
         this.lineFormUpdate.Medidor = null;
@@ -102,7 +101,7 @@ export class AreasPage implements OnInit {
         const area = this.lineForm.Area ?? "";
         const medidor = this.lineForm.Medidor ?? "";
 
-        return codigo.trim() !== "" && area.trim() !== "" && medidor.trim() !== "" ? false : true;
+        return codigo.trim() !== "" && area.trim() !== "" ? false : true;
     }
 
     public changeView(view: string): void {
@@ -121,8 +120,6 @@ export class AreasPage implements OnInit {
         this.updateForm = true;
         this.lineFormUpdate.Id = line.Id;
         this.lineFormUpdate.Codigo = line.Codigo;
-        this.lineFormUpdate.Area = line.Area;
-        this.lineFormUpdate.Medidor = line.Medidor;
     }
 
     /**

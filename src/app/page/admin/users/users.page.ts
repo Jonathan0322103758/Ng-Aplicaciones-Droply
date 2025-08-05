@@ -36,15 +36,15 @@ export class UsersPage {
         public roles: Dropdown[] = [
             {
                 label: "Administrador",
-                value: 2
+                value: 1
             },
             {
                 label: "Gerente",
-                value: 3
+                value: 2
             },
             {
                 label: "Auditor",
-                value: 4
+                value: 3
             },
         ]
 
