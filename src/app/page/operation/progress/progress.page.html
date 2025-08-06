@@ -4,10 +4,10 @@
   <div class="container flex-column">
     <qx-title-header title="Progreso de actividades" />
     <div class="date-options flex-row">
-      <qx-select-date label="Desde:" [dateInput]="from()" />
-      <qx-select-date label="Hasta:" [dateInput]="to()" />
-      <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-calendar" label="Aplicar"
-        (onClick)="sendDate()" />
+      <!-- <qx-select-date label="Desde:" [dateInput]="from()" /> -->
+      <!-- <qx-select-date label="Hasta:" [dateInput]="to()" /> -->
+      <!-- <qx-button type="label-icon" [styleClass]="buttonStyle()" icon="fas fa-calendar" label="Aplicar" -->
+      <!-- (onClick)="sendDate()" /> -->
     </div>
     <div class="progress-content flex-column">
       @for (task of progress(); track task.Estado) {
@@ -24,14 +24,13 @@
       </div>
       }
       <qx-info
-        info="Esta sección presenta un resumen del progreso de actividades registradas en el sistema, agrupadas por estado. 
-              Cada barra de progreso indica la cantidad de actividades que se encuentran en un determinado estado, en relación al total de actividades activas. 
+        info="Esta sección muestra un resumen del progreso de las actividades registradas en el sistema, agrupadas por su estado actual.  
+        Cada barra representa la cantidad de actividades en un estado específico, en comparación con el total de actividades activas.
 
-              Puedes seleccionar un rango de fechas para filtrar las actividades mostradas usando las opciones 'Desde' y 'Hasta'. 
-              Una vez elegidas las fechas, haz clic en 'Aplicar' para actualizar los datos.
+        Puedes visualizar el avance general para tener una idea rápida del cumplimiento de las tareas y objetivos programados.
 
-              Esta vista es útil para supervisores, responsables de área o personal administrativo que necesita una visión general rápida del avance de las tareas y el cumplimiento de los objetivos programados." 
-      />
+        Esta información es especialmente útil para supervisores, responsables de área y personal administrativo que requiere un seguimiento eficiente del progreso." />
+
     </div>
   </div>
 </div>

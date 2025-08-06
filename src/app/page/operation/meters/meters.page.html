@@ -10,7 +10,7 @@
             <div class="meter-list">
                 @for (meter of meters(); track meter; let i = $index) {
                 <div class="meter-item flex-start {{ meter.status }}" (click)="selectMeter(i)">
-                    <i class="fas fa-gauge"></i>
+                    <img src="../../../../assets/png/Gauge.png">
                     <div class="meter-info flex-column">
                         <div class="text-bold">{{ meter.Codigo }}</div>
                         <div class="text-light">{{ meter.Codigo}}</div>
@@ -36,7 +36,7 @@
                 <qx-button type="icon" styleClass="square danger-ghost" icon="fas fa-ban" (onClick)="deleteMeter()" />
             </div>
             <div class="meter-detail flex-row">
-                <i class="fas fa-gauge"></i>
+                <img src="../../../../assets/png/Gauge.png">
                 <div class="flex-column">
                     <label class="text-light"><span class="text-bold">Código:</span> {{ selectedMeter()!.Codigo
                         }}</label>
@@ -61,7 +61,7 @@
         <div class="content flex-column">
             <qx-title-header [title]="selectedIndex === null ? 'Nuevo medidor' : 'Editar medidor'" />
             <div class="body-content flex-center flex-column">
-                <i class="fas fa-gauge"></i>
+                <img src="../../../../assets/png/Gauge.png">
                 <div class="meter-form flex-center flex-column">
                     <qx-input type="text" styleClass="square" label="Nombre" placeholder="Escribir nombre"
                         [required]="true" [(value)]="meterForm.name" />

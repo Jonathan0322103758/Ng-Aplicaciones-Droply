@@ -1,0 +1,53 @@
+@import "@Scss/abstract/_placeholder.scss";
+
+.single-content {
+    background: var(--bg-surface);
+    border: 1px solid var(--color-muted);
+    border-radius: 5px;
+    gap: 0;
+    .header {
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .body-list {
+        @extend %scrollbar;
+        padding: 20px;
+        flex: 1;
+
+        .activity-card {
+            font-size: 14px;
+            border-bottom: 1px solid var(--color-muted);
+            height: 60px;
+            align-items: center;
+
+            i {
+                padding: 20px;
+            }
+
+            .info-card {
+                flex: 1;
+                gap: 10px;
+
+                .text {
+                    gap: 10px;
+                }
+
+                .date {
+                    font-size: 12px;
+                    gap: 10px;
+                }
+            }
+
+            &:hover {
+                background: var(--color-muted);
+            }
+
+            &.des {
+                padding: 20px 60px;
+                gap: 20px;
+                align-items: start;
+            }
+        }
+    }
+}

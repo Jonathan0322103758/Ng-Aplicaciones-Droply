@@ -16,7 +16,8 @@
 
     .body-list {
         @extend %scrollbar;
-        padding: 29px;
+        padding: 20px;
+
         .log-card {
             font-size: 14px;
             border-bottom: 1px solid var(--color-muted);
@@ -30,6 +31,7 @@
             .info-card {
                 flex: 1;
                 gap: 10px;
+
                 .date {
                     font-size: 12px;
                     gap: 10px;
@@ -101,6 +103,18 @@
             &::placeholder {
                 font-family: "Montserrat", sans-serif;
             }
+        }
+
+        .doc-style {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--color-text);
+            white-space: pre-line;
+            border-radius: 8px;
+
         }
     }
 }

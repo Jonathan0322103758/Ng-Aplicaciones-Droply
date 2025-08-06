@@ -30,6 +30,8 @@ export class ActivityPage {
   public formOpen: { [columnId: number]: boolean } = {};
   public newTasks: { [columnId: number]: { title: string; summary: string } } = {};
 
+  public openModal: boolean = false
+
   private estadoMap: Record<string, number> = {
     'Archivado': 4,
     'En Pausa': 3,
@@ -43,6 +45,16 @@ export class ActivityPage {
     Descripcion: '',
     FechaInicio: new Date().toISOString().split('.')[0] + 'Z',
     FechaFin: null,
+    Tipo: 1,
+    Estado: null
+  }
+
+  public formPut = {
+    Id: null,
+    Titulo: '',
+    Descripcion: '',
+    FechaInicio: new Date().toISOString().split('.')[0] + 'Z',
+    FechaFin: new Date(),
     Tipo: 1,
     Estado: null
   }
@@ -71,6 +83,11 @@ export class ActivityPage {
     Object.keys(this.formOpen).forEach(id => {
       this.formOpen[+id] = false;
     });
+    this.formPost.Titulo = '';
+    this.formPost.Descripcion = '';
+    this.formPut.Titulo = '';
+    this.formPut.Descripcion = '';
+    this.openModal = false;
   }
 
   public drop(event: CdkDragDrop<any[]>, column: any): void {
@@ -134,6 +151,18 @@ export class ActivityPage {
     this._activityService.delete(data);
   }
 
+  guardarPut(): void {
+    this.openModal = false;
+    this._activityService.putAlert(this.formPut)
+  }
+
+  openModalFunc(task: any): void {
+    this.openModal = true;
+    this.formPut.Id = task.Id;
+    this.formPut.Titulo = task.Titulo;
+    this.formPut.Descripcion = task.Descripcion;
+    this.formPut.FechaFin = new Date (task.FechaFin);
+  }
 
   public getFromTo(startDate: string, endDate: string): string {
     const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit' };

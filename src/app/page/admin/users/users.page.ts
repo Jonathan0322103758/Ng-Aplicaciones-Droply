@@ -56,7 +56,7 @@ export class UsersPage {
         SegundoApellido: '',
         Correo: '',
         Matricula: '',
-        Contrasena: '1234567890',
+        // Contrasena: '1234567890',
         Rol: null,
     }
 
@@ -102,7 +102,7 @@ export class UsersPage {
             SegundoApellido: '',
             Correo: '',
             Matricula: '',
-            Contrasena: '1234567890',
+            // Contrasena: '1234567890',
             Rol: null,
         };
     }
@@ -140,7 +140,7 @@ export class UsersPage {
             SegundoApellido: user.SegundoApellido ?? '',
             Correo: user.Correo,
             Matricula: user.Matricula ?? '',
-            Contrasena: '1234567890',
+            // Contrasena: '1234567890',
             Rol: user.Rol === 'Administrador' ? 2 : user.Rol === 'Gerente' ? 3 : 4,
         };
     }

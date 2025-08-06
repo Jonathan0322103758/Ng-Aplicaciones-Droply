@@ -1,43 +1,67 @@
 @if(activity$ | async) {
-    <div class="content-page">
-        <qx-title-header title="Espacio Personal" />
-        <div class="single-content flex-row">
-            @for (column of activity(); let i = $index; track i) {
-            <div class="kanban-column flex-column" cdkDropList [id]="'column-drop-' + i" [cdkDropListData]="column.Actividades"
-                [cdkDropListConnectedTo]="dropListIds()" (cdkDropListDropped)="drop($event, column)">
-                <div class="title flex-column">
-                    <label class="text-bold" [class]="getStatusColor(column.Estado)">{{ column.Estado }}</label>
-                    <div class="bar" [class]="getStatusColor(column.Estado)"></div>
+<div class="content-page">
+    <qx-title-header title="Espacio Personal" />
+    <div class="single-content flex-row">
+        @for (column of activity(); let i = $index; track i) {
+        <div class="kanban-column flex-column" cdkDropList [id]="'column-drop-' + i"
+            [cdkDropListData]="column.Actividades" [cdkDropListConnectedTo]="dropListIds()"
+            (cdkDropListDropped)="drop($event, column)">
+            <div class="title flex-column">
+                <label class="text-bold" [class]="getStatusColor(column.Estado)">{{ column.Estado }}</label>
+                <div class="bar" [class]="getStatusColor(column.Estado)"></div>
+            </div>
+            <div class="flex-end">
+                <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-plus"
+                    (onClick)="toggleForm(column._id)" />
+            </div>
+
+            @if (formOpen[column._id]) {
+            <div class="add-task-card flex-column">
+                <qx-input type="text" styleClass="square" label="Titulo" [required]="true"
+                    [(value)]="formPost.Titulo" />
+                <qx-input type="text" styleClass="square" label="Resumen" [required]="true"
+                    [(value)]="formPost.Descripcion" />
+                <div class="date flex-end">
+                    <qx-select-date label="Vencimiento" [dateInput]="to()" />
+                    <qx-button type="label" styleClass="square danger-ghost" label="Cancelar"
+                        (onClick)="cancelForm()" />
+                    <qx-button type="label" styleClass="square success-ghost" label="Guardar"
+                        (onClick)="guardarActividad(column.Estado)" />
                 </div>
+            </div>
+            }
+            @for (task of column.Actividades; track task) {
+            <div cdkDrag class="task-wrapper">
+                <div class="task-placeholder" *cdkDragPlaceholder></div>
+
+                <qx-activity-card [title]="task.Actividad.Titulo"
+                    [fromTo]="getFromTo(task.Actividad.FechaInicio, task.Actividad.FechaFin)"
+                    [summary]="task.Actividad.Descripcion" />
                 <div class="flex-end">
-                    <qx-button type="icon" styleClass="square primary-ghost" icon="fas fa-plus"
-                        (onClick)="toggleForm(column._id)" />
+                    <qx-button type="icon" styleClass="square success-ghost" (onClick)="openModalFunc(task.Actividad)"
+                        icon="fas fa-pen" />
+                    <qx-button type="icon" styleClass="square danger-ghost" (onClick)="deleteTarea(task)"
+                        icon="fas fa-ban" />
                 </div>
-    
-                @if (formOpen[column._id]) {
-                <div class="add-task-card flex-column">
-                    <qx-input type="text" styleClass="square" label="Titulo" [required]="true" [(value)]="formPost.Titulo"/>
-                    <qx-input type="text" styleClass="square" label="Resumen" [required]="true" [(value)]="formPost.Descripcion"/>
-                    <div class="date flex-end">
-                        <qx-select-date label="Vencimiento" [dateInput]="to()"/>
-                        <qx-button type="label" styleClass="square danger-ghost" label="Cancelar" (onClick)="cancelForm()"/>
-                        <qx-button type="label" styleClass="square success-ghost" label="Guardar" (onClick)="guardarActividad(column.Estado)"/>
-                    </div>
-                </div>
-                }
-                @for (task of column.Actividades; track task) {
-                <div cdkDrag class="task-wrapper">
-                    <div class="task-placeholder" *cdkDragPlaceholder></div>
-    
-                    <qx-activity-card [title]="task.Actividad.Titulo" [fromTo]="getFromTo(task.Actividad.FechaInicio, task.Actividad.FechaFin)"
-                        [summary]="task.Actividad.Descripcion" />
-                    <div class="flex-end">
-                        <qx-button type="icon" styleClass="square danger-ghost" (onClick)="deleteTarea(task)" icon="fas fa-trash"/>
-                    </div>
-                </div>
-                }
             </div>
             }
         </div>
+        }
     </div>
+    @if(openModal) {
+    <div class="overlay"></div>
+    <div class="modal-form">
+        <qx-title-header title="Actualizar"/>
+        <div class="form-body flex-column">
+            <qx-input type="text" styleClass="square" label="Titulo" [required]="true" [(value)]="formPut.Titulo" />
+            <qx-input type="text" styleClass="square" label="Resumen" [required]="true" [(value)]="formPut.Descripcion" />
+            <div class="date flex-end">
+                <qx-select-date label="Vencimiento" [dateInput]="formPut.FechaFin" />
+                <qx-button type="label" styleClass="square danger-ghost" label="Cancelar" (onClick)="cancelForm()" />
+                <qx-button type="label" styleClass="square success-ghost" label="Guardar" (onClick)="guardarPut()" />
+            </div>
+        </div>
+    </div>
+    }
+</div>
 }

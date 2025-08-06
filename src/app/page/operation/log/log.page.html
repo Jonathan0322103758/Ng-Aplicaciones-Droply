@@ -53,7 +53,7 @@
           <label class="text-light"><span class="text-bold">Tipo: </span>{{ logDetail().Tipo }}</label>
           <label class="text-light"><span class="text-bold">Responsable: </span>{{ logDetail().Usuario }}</label>
           <label class="text-bold">Descripción:</label>
-          <p class="text-light">{{ logDetail().Descripcion }}</p>
+          <p class="doc-style text-light" [innerText]="logDetail().Descripcion"></p>
           <label class="text-light"><span class="text-bold">Creado: </span>{{ logDetail().Creado | date: 'dd/MM/yyyy, hh:mm:ss a' }}</label>
           <!-- <label class="text-light"><span class="text-bold">Actualizado: </span>{{ logDetail().Actualizado | date: 'dd/MM/yyyy, hh:mm:ss a'}}</label> -->
           <div class="flex-end">

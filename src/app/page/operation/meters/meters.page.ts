@@ -173,6 +173,5 @@ export class MetersPage implements OnInit {
         }
       }
     }
-
   };
 }

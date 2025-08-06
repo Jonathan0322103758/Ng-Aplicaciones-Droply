@@ -16,11 +16,8 @@ export class AuthService {
             next: (response: any) => {
                 if (response?.data) {
                     localStorage.setItem('token', response.data);
-                    console.log('Login successful:', response);
                     this.router.navigate(['/home']);
                 }
-                this._alert.setAlert(200, "Bienvenido!");
-                console.log('Login successful:', response);
             },
             error: (error) => {
                 this._alert.setAlert(400, "Error al iniciar sesión, credenciales inválidas.");

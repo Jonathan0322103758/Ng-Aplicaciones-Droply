@@ -10,7 +10,7 @@ export class MenuService {
 
   private readonly _allowedPathsByRole: Record<number, string[]> = {
     // 1: ['home', 'admin-users', 'admin-permitions', 'admin-database', 'admin-notifications', 'manage-meters', 'manage-areas', 'general-operation-progress', 'general-operation-activities', 'general-operation-logs', 'reports-add-reports'],
-    1: ['home', 'admin-users', 'admin-permitions', 'admin-database', 'admin-notifications', 'manage-meters', 'manage-areas', 'general-operation-progress', 'general-operation-activities', 'general-operation-logs', 'reports-add-reports'],
+    1: ['home', 'admin-users', 'admin-permitions', 'admin-database', 'admin-notifications', 'manage-meters', 'manage-areas', 'general-operation', 'general-operation-progress', 'general-operation-activities', 'general-operation-logs', 'reports-add-reports'],
     2: ['home', 'admin-notifications', 'manage-meters', 'manage-areas', 'general-operation-progress', 'general-operation-activities', 'general-operation-logs', 'reports-add-reports'],
     3: ['home', 'admin-notifications', 'manage-meters', 'general-operation-progress', 'general-operation-activities', 'reports-add-reports'],
   };
@@ -90,7 +90,8 @@ export class MenuService {
           icon: 'screwdriver-wrench',
           label: 'Actividades',
           pages: [
-            { id: 0, label: 'General', path: 'general-operation-progress' },
+            { id: 0, label: 'General', path: 'general-operation' },
+            { id: 0, label: 'Progreso', path: 'general-operation-progress' },
             { id: 1, label: 'Espacio Personal', path: 'general-operation-activities' },
             { id: 2, label: 'Bitácoras', path: 'general-operation-logs' }
           ]

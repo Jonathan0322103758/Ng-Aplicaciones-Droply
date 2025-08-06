@@ -63,3 +63,35 @@
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   }
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background: var(--bg-glass);
+  z-index: 900;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.modal-form {
+  position: fixed;
+  background: var(--bg-surface);
+  border: 1px solid var(--color-muted);
+  border-radius: 5px;
+  max-width: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  .form-body {
+    padding: 20px;
+    gap: 20px;
+
+    .date {
+      gap: 10px;
+    }
+  }
+}

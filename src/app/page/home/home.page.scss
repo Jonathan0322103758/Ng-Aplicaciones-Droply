@@ -1,0 +1,113 @@
+@import "@Scss/abstract/_placeholder.scss";
+
+.single-content {
+    height: 100%;
+    overflow-y: hidden;
+    .head {
+        flex: 1;
+        gap: 20px;
+    }
+
+    .chart-card-xl {
+        flex: 1;
+        padding: 20px;
+        gap: 20px;
+        background: var(--bg-surface);
+        border: 1px solid var(--color-muted);
+        border-radius: 5px;
+
+        .from-to {
+            width: 100%;
+            gap: 20px;
+            qx-select-date {
+                width: 100%;
+            }
+        }
+
+        canvas {
+            max-width:calc(100% - 40px);
+            max-height: 500px;
+        }
+    }
+
+    .lines-gauge {
+        @extend %scrollbar;
+        gap: 20px;
+        max-height: 750px;
+    }
+
+    .target-line-gauge {
+        position: relative;
+        flex: 1;
+        padding: 10px;
+        background: var(--bg-surface);
+
+        img {
+            width: 100px;
+        }
+
+        .info {
+            padding: 20px;
+        }
+
+        qx-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    }
+}
+
+
+.input-date {
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: var(--font-family, Arial, sans-serif);
+  color: var(--color-text);
+}
+
+.input-date label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.input-date input[type="date"] {
+  width: 100%;
+  padding: 0.4rem 0.75rem;
+  border: 1.5px solid var(--color-muted);
+  border-radius: 5px;
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--bg-surface);
+  transition: border-color 0.3s ease;
+  outline-offset: 2px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Hover y focus para input date */
+.input-date input[type="date"]:hover {
+  border-color: var(--accent-color);
+}
+
+.input-date input[type="date"]:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 6px var(--accent-color);
+}
+
+/* Placeholder color si aplica */
+.input-date input[type="date"]::placeholder {
+  color: var(--color-muted);
+}
+
+/* Disabled */
+.input-date input[type="date"]:disabled {
+  background-color: var(--bg-disabled, #f5f5f5);
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+
+/* Para icono calendario si usas alguno custom, o puedes usar un ::after con background svg */

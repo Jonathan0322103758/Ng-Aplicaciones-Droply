@@ -18,24 +18,20 @@ export class ActivityService {
 
     public fetch(): Observable<any[]> {
         const loaderTimeout = this._alert.delayedLoader();
-        const estadosFijos = ['Archivado', 'En Progreso', 'En Pausa', 'Finalizado',];
+        const estadosFijos = ['Archivado', 'En Pausa', 'En Progreso', 'Finalizado'];
 
         return this._http.get<{ status: number; message: string; data: any[] }>(`/mis/actividades/`).pipe(
             map(response => {
-                console.log(response)
                 const original = response.data;
 
                 const columnas = estadosFijos.map((estado, index) => {
                     const match = original.find(c => c.Estado === estado);
-                    console.log(match, 'match')
                     return {
                         _id: index + 1,
                         Estado: estado,
                         Actividades: match?.Actividades || []
                     };
                 });
-
-                console.log(columnas, 'columnas')
 
                 return columnas;
             }),
@@ -46,6 +42,28 @@ export class ActivityService {
             }),
             catchError(error => {
                 this._alert.setAlert(400, "Error al obtener las tareas");
+                return of([]);
+            })
+        );
+    }
+
+    public fetchGeneral(): Observable<any[]> {
+        const loaderTimeout = this._alert.delayedLoader();
+        return this._http.get<{ status: number; message: string; data: any[] }>(`${this._URI}`).pipe(
+            map(response => {
+                const estadoOrden = ['Archivado', 'En Pausa', 'En Progreso', 'Finalizado'];
+                return response.data.sort((a, b) =>
+                    estadoOrden.indexOf(a.Estado) - estadoOrden.indexOf(b.Estado)
+                );
+            }),
+            tap(activity => {
+                clearTimeout(loaderTimeout);
+                this._activitySignal.set(activity);
+                this._alert.clean();
+            }),
+            catchError(error => {
+                clearTimeout(loaderTimeout);
+                this._alert.setAlert(400, "Error al obtener las áreas");
                 return of([]);
             })
         );
@@ -112,9 +130,21 @@ export class ActivityService {
         })
     }
 
+    public putAlert(data: any): void {
+        this._alert.loader()
+        this._http.put<any>(`${this._URI}${data.Id}`, data).subscribe({
+            next: (response) => {
+                this._alert.setAlert(200, "Tarea actualizada exitosamente!");
+            },
+            error: (error) => {
+                this._alert.setAlert(400, "Error al actualizar la Tarea");
+            }
+        })
+    }
+
     public delete(data: any): void {
         this._alert.loader()
-            this._http.delete<any>(`/actividadesUsuario/${data.Id}`).subscribe({
+        this._http.delete<any>(`/actividadesUsuario/${data.Id}`).subscribe({
             next: (response) => {
                 this._alert.setAlert(200, "Tarea eliminada exitosamente!");
             },

@@ -65,11 +65,19 @@ export const routes: Routes = [
         }
     },
     {
+        path: 'general-operation',
+        loadComponent: () => import('./page/operation/general/general.page').then((m) => m.Generalpage),
+        canActivate: [authGuard, roleGuard],
+        data: {
+            allowedRoles: [1, 2, 3]
+        }
+    },
+    {
         path: 'general-operation-progress',
         loadComponent: () => import('./page/operation/progress/progress.page').then((m) => m.ProgressPage),
         canActivate: [authGuard, roleGuard],
         data: {
-            allowedRoles: [1, 2, 3]
+            allowedRoles: [1, 3]
         }
     },
     {

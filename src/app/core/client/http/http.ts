@@ -1,10 +1,11 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HttpParameterCodec } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
-  private readonly _URL = 'http://192.168.15.201';
+  private readonly _URL = 'http://192.168.1.207';
   private readonly _http = inject(HttpClient);
 
   private getHeaders(): HttpHeaders {
@@ -16,9 +17,24 @@ export class ClientService {
   }
 
   get<T>(uri: string, params?: { [key: string]: any }): Observable<T> {
+    let httpParams = new HttpParams({ encoder: new CustomHttpEncoder() });
+
+    if (params) {
+      for (const key of Object.keys(params)) {
+        const value = params[key];
+
+        // Si es array, permite múltiples valores con la misma clave
+        if (Array.isArray(value)) {
+          value.forEach(val => httpParams = httpParams.append(key, val));
+        } else {
+          httpParams = httpParams.append(key, value);
+        }
+      }
+    }
+
     return this._http.get<T>(`${this._URL}${uri}`, {
       headers: this.getHeaders(),
-      params: params ? params : {},
+      params: httpParams
     });
   }
 
@@ -38,3 +54,20 @@ export class ClientService {
   }
 }
 
+class CustomHttpEncoder implements HttpParameterCodec {
+  encodeKey(key: string): string {
+    return key;
+  }
+
+  encodeValue(value: string): string {
+    return value;
+  }
+
+  decodeKey(key: string): string {
+    return key;
+  }
+
+  decodeValue(value: string): string {
+    return value;
+  }
+}

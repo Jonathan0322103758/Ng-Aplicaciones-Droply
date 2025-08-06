@@ -1,0 +1,38 @@
+@if(activity$ | async) {
+    <div class="content-page">
+        <qx-title-header title="General"/>
+        <div class="single-content flex-column">
+          <qx-title-header title="Actividades"/>
+          <div class="header flex-end">
+            <qx-badge text="Archivado" styleClass="square warning" (click)="setFilter('Archivado')"/>
+            <qx-badge text="En Pausa" styleClass="square info" (click)="setFilter('En Pausa')"/>
+            <qx-badge text="En Progreso" styleClass="square secondary" (click)="setFilter('En Progreso')"/>
+            <qx-badge text="Finalizado" styleClass="square success" (click)="setFilter('Finalizado')"/>
+            <qx-badge text="Todas la actividades" styleClass="square primary" (click)="setFilter('')"/>
+          </div>
+            <div class="body-list">
+            @for(activity of filterActivity(); track activity.Id) {
+              <div class="activity-card flex-row"  (click)="activeId() === activity.Id ? activeId.set(null) : activeId.set(activity.Id)">
+                <i class="fas fa-list-check"></i>
+                <div class="info-card flex-between">
+                  <div class="text flex-column">
+                  <label class="text-bold">{{ activity.Tipo }} - {{ activity.Titulo }}</label>
+                  <small class="text-light">{{ activity.Estado }}</small>
+                </div>
+                <div class="date flex-column">
+                  <label class="text-light"><span class="text-bold">Publicado: </span>{{ activity.FechaInicio | date: 'dd/MM/yyyy, hh:mm:ss a'}}</label>
+                  <label class="text-light"><span class="text-bold">Vencimiento: </span>{{ activity.FechaFin | date: 'dd/MM/yyyy, hh:mm:ss a'}}</label>
+                </div>
+                </div>
+              </div>
+              @if(activeId() === activity.Id) {
+                <div class="activity-card des flex-start flex-column">
+                    <label class="text-bold">Actividad: </label>
+                    <label class="text-light">{{ activity.Descripcion }}</label>
+                </div>
+              }
+            }
+        </div>
+        </div>
+    </div>
+}
