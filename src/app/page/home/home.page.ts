@@ -5,7 +5,7 @@ import { LinesService } from "@Client/service/line.service";
 import { DemoLandingComponent } from "@Component/feature/demo-landing/demo-landing.component";
 import { PreferenceComponent } from "@Component/feature/preference/preference.component";
 import { TitleHeaderComponent } from "@Component/shared/title-header/title-header.component";
-import { BadgeComponent, ButtonComponent, SelectDateComponent } from "@Component/UI/standalone";
+import { BadgeComponent, ButtonComponent, InfoComponent, SelectDateComponent } from "@Component/UI/standalone";
 import { ChartConfiguration, ChartType } from "chart.js";
 import { NgChartsModule } from "ng2-charts";
 import { Observable } from "rxjs";
@@ -21,7 +21,7 @@ import 'chartjs-adapter-date-fns';
         PreferenceComponent,
         DemoLandingComponent,
         NgChartsModule,
-        SelectDateComponent,
+        InfoComponent,
         BadgeComponent,
         ButtonComponent
     ],
@@ -62,6 +62,10 @@ export class HomePage implements OnInit {
                 }
             ]
         };
+    }
+
+    calcularRef(): void {
+        window.open('http://10.102.221.79:5500/calculo.html', '_blank');
     }
 
     chartData: ChartConfiguration['data'] = {

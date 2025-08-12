@@ -5,7 +5,7 @@ import { HttpParameterCodec } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
-  private readonly _URL = 'http://192.168.1.207';
+  private readonly _URL = 'http://10.102.221.79';
   private readonly _http = inject(HttpClient);
 
   private getHeaders(): HttpHeaders {

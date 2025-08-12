@@ -27,6 +27,7 @@
             </div>
             <div class="chart-card-xl flex-column">
                 <qx-title-header title="Consumo General" />
+
                 <div class="from-to flex-row">
                     <div class="from-to flex-row">
                         <div class="input-date native-input">
@@ -40,6 +41,8 @@
 
                         <qx-button type="label-icon" styleClass="square primary-ghost" icon="fas fa-calendar"
                             label="Aplicar" (onClick)="consultarPeriodo()" />
+                        <qx-button type="label-icon" styleClass="square primary-ghost" icon="fas fa-dollar-sign"
+                            label="Cálcular" (onClick)="calcularRef()" />
                     </div>
                 </div>
                 <canvas baseChart [data]="getChartDataPorMes()" [options]="chartOptions" [type]="chartType">

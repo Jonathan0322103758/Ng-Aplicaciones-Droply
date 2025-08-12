@@ -12,7 +12,7 @@ export class LecService {
     private readonly _lecSignalMes: WritableSignal<any[]> = signal<any[]>([]);
 
     public fetchByMes(from?: string, to?: string): Observable<any[]> {
-
+        this._alert.loader();
         // Construir query params solo si existen from y to
         let params = '';
         if (from) params += `FechaRegistro=>&FechaRegistro=${from}`;
